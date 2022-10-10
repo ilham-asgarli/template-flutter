@@ -1,0 +1,18 @@
+flutter_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/images/ic_playstore.png"
+  image_path_ios: "assets/images/ic_appstore.png"
+  min_sdk_android: 16 # android min sdk min:16, default 21
+  #adaptive_icon_background: "#ffffff"
+  #adaptive_icon_foreground: "assets/images/ic_playstore.png"
+  web:
+    generate: false
+    image_path: "assets/images/ic_playstore.png"
+    background_color: "#ffffff"
+    theme_color: "#ffffff"
+  windows:
+    generate: false
+    image_path: "assets/images/ic_playstore.png"
+    icon_size: 48 # min:48, max:256, default: 48
