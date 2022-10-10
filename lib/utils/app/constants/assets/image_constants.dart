@@ -5,9 +5,9 @@ class ImageConstants {
 
   ImageConstants._init();
 
-  String get logoLightMode => toPng('ic_logo_light');
-  String get logoDarkMode => toPng('ic_logo_dark');
-  String get logoPlayStore => toPng('ic_playstore');
+  String get icPlayStore => toPng('ic_playstore');
+
+  String get icAppStore => toPng('ic_appstore');
 
   String toPng(String name) => 'assets/images/$name.png';
 }
