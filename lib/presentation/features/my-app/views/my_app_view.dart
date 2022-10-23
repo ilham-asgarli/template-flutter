@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:template/utils/app/bloc/theme/theme_bloc.dart';
+import 'package:sizer/sizer.dart';
 
 import '../../../../core/base/views/base_view.dart';
+import '../../../../utils/app/bloc/theme/theme_bloc.dart';
 import '../../../../core/init/navigation/navigation_service.dart';
 import '../../../../utils/app/config/navigation/navigation_route.dart';
 import '../../../../utils/app/config/theme/common_theme.dart';
@@ -30,12 +30,9 @@ class _MyAppViewState extends State<MyAppView> {
         _myAppViewModel = model;
       },
       onPageBuilder: (BuildContext context, MyAppViewModel viewModel) =>
-          ScreenUtilInit(
-        designSize: const Size(400, 700),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) {
-          return BlocBuilder<ThemeBloc, ThemeState>(builder: (context, state) {
+          Sizer(builder: (context, orientation, deviceType) {
+        return BlocBuilder<ThemeBloc, ThemeState>(
+          builder: (context, state) {
             ThemeMode? themeMode;
             ThemeData? themeData;
 
@@ -59,9 +56,9 @@ class _MyAppViewState extends State<MyAppView> {
               navigatorKey: NavigationService.instance.navigatorKey,
               initialRoute: _myAppViewModel.getInitialRoute(),
             );
-          });
-        },
-      ),
+          },
+        );
+      }),
     );
   }
 }

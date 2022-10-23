@@ -27,8 +27,6 @@ void main() async {
       fallbackLocale: const Locale('en', 'US'),
       child: MultiBlocProvider(
         providers: [
-          /*...ApplicationProvider.instance.dependItems,
-            ...ApplicationProvider.instance.uiChangesItems*/
           BlocProvider(
             create: (_) => ThemeBloc(),
           ),
