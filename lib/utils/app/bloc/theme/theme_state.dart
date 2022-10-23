@@ -4,25 +4,18 @@ abstract class ThemeState extends Equatable {
   const ThemeState();
 }
 
-/*class ThemeInitial extends ThemeState {
-  ThemeInitial()
-      : super(
-          themeData: CommonTheme.instance.getTheme(
-            CustomLightTheme.instance.getLightTheme(),
-          ),
-          appThemeEnum: AppThemes.LIGHT,
-          themeMode: ThemeMode.system,
-          isDarkMode: false,
-        );
+class ThemeInitial extends ThemeState {
+  final ThemeMode? themeMode;
+
+  const ThemeInitial({
+    this.themeMode = ThemeMode.system,
+  });
 
   @override
   List<Object?> get props => [
-        themeData,
-        appThemeEnum,
         themeMode,
-        isDarkMode,
       ];
-}*/
+}
 
 class ThemeChanged extends ThemeState {
   final ThemeData? themeData;
@@ -32,9 +25,9 @@ class ThemeChanged extends ThemeState {
 
   const ThemeChanged({
     this.themeData,
-    this.appThemeEnum = AppThemes.LIGHT,
-    this.themeMode = ThemeMode.system,
-    this.isDarkMode = false,
+    this.appThemeEnum,
+    this.themeMode,
+    this.isDarkMode,
   });
 
   @override

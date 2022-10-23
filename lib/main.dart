@@ -30,8 +30,7 @@ void main() async {
           /*...ApplicationProvider.instance.dependItems,
             ...ApplicationProvider.instance.uiChangesItems*/
           BlocProvider(
-            create: (_) =>
-                ThemeBloc()..add(const ChangeTheme(isDarkMode: true)),
+            create: (_) => ThemeBloc(),
           ),
         ],
         child: DevicePreview(

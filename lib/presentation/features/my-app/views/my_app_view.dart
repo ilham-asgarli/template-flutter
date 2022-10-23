@@ -35,18 +35,31 @@ class _MyAppViewState extends State<MyAppView> {
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
-          return MaterialApp(
-            scrollBehavior: const ScrollBehavior().copyWith(overscroll: false),
-            debugShowCheckedModeBanner: false,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            darkTheme: CommonTheme.instance
-                .getTheme(CustomDarkTheme.instance.getDarkTheme()),
-            onGenerateRoute: NavigationRoute.instance.generateRoute,
-            navigatorKey: NavigationService.instance.navigatorKey,
-            initialRoute: _myAppViewModel.getInitialRoute(),
-          );
+          return BlocBuilder<ThemeBloc, ThemeState>(builder: (context, state) {
+            ThemeMode? themeMode;
+            ThemeData? themeData;
+
+            if (state is ThemeChanged) {
+              themeMode = state.themeMode;
+              themeData = state.themeData;
+            }
+
+            return MaterialApp(
+              scrollBehavior:
+                  const ScrollBehavior().copyWith(overscroll: false),
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
+              themeMode: themeMode,
+              theme: themeData,
+              darkTheme: CommonTheme.instance
+                  .getTheme(CustomDarkTheme.instance.getDarkTheme()),
+              onGenerateRoute: NavigationRoute.instance.generateRoute,
+              navigatorKey: NavigationService.instance.navigatorKey,
+              initialRoute: _myAppViewModel.getInitialRoute(),
+            );
+          });
         },
       ),
     );

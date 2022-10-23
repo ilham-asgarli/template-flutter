@@ -11,7 +11,6 @@ class NavigationRoute {
   NavigationRoute._init();
 
   Route<dynamic> generateRoute(RouteSettings settings) {
-    print(NavigationConstants.HOME);
     switch (settings.name) {
       case NavigationConstants.HOME:
         return normalNavigate(
