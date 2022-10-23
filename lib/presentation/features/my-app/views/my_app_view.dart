@@ -31,7 +31,7 @@ class _MyAppViewState extends State<MyAppView> {
       },
       onPageBuilder: (BuildContext context, MyAppViewModel viewModel) =>
           ScreenUtilInit(
-        designSize: const Size(400, 700),
+        designSize: const Size(400, 750),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (context, child) {
