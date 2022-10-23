@@ -2,27 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:template/presentation/features/home/views/home_view.dart';
 
 import '../../../../presentation/features/not-found-navigation/views/not_found_navigation_view.dart';
-import '../../constants/navigation/navigation_constants.dart';
+import '../../constants/router/router_constants.dart';
 
-class NavigationRoute {
-  static final NavigationRoute _instance = NavigationRoute._init();
+class AppRouter {
+  static final AppRouter _instance = AppRouter._init();
 
-  static NavigationRoute get instance => _instance;
+  static AppRouter get instance => _instance;
 
-  NavigationRoute._init();
+  AppRouter._init();
 
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case NavigationConstants.HOME:
+      case RouterConstants.HOME:
         return normalNavigate(
           const HomeView(),
-          NavigationConstants.HOME,
+          RouterConstants.HOME,
         );
       default:
         //throw NavigateException<SettingsDynamicModel>(args.arguments);
         return normalNavigate(
           const NotFoundNavigationView(),
-          NavigationConstants.NOT_FOUND,
+          RouterConstants.NOT_FOUND,
         );
     }
   }

@@ -12,7 +12,7 @@ import '../../../../utils/app/config/theme/light_theme.dart';
 import '../../../../utils/app/constants/cache/shared_preferences_constants.dart';
 import '../../../../utils/app/constants/colors/app_colors.dart';
 import '../../../../utils/app/constants/enums/app_theme_enum.dart';
-import '../../../../utils/app/constants/navigation/navigation_constants.dart';
+import '../../../../utils/app/constants/router/router_constants.dart';
 
 class MyAppViewModel with BaseViewModel {
   ThemeMode? themeMode;
@@ -39,7 +39,7 @@ class MyAppViewModel with BaseViewModel {
   }
 
   String getInitialRoute() {
-    return NavigationConstants.HOME;
+    return RouterConstants.HOME;
   }
 
   setTheme(context) async {

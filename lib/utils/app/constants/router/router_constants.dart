@@ -5,7 +5,7 @@ For example, if the route was /a/b/c, then the app would start with
 the three routes /a, /a/b, and /a/b/c loaded, in that order.
  */
 
-class NavigationConstants {
+class RouterConstants {
   static const NOT_FOUND = "/404";
   static const HOME = "/";
   static const LOGIN = "login";

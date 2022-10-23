@@ -1,4 +1,4 @@
-part of '../core_http.dart';
+part of 'core_http.dart';
 
 extension _CoreHttpOperations on CoreHttp {
   _sendRequest(

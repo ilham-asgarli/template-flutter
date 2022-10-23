@@ -11,7 +11,7 @@ import '../../base/models/base_model.dart';
 import '../../exceptions/network/http_exception.dart';
 import 'IResponseModel.dart';
 
-part './network_core/core_operations.dart';
+part 'core_operations.dart';
 
 class CoreHttp {
   static final CoreHttp _instance = CoreHttp._init();
