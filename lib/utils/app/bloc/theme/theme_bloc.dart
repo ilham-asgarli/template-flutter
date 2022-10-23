@@ -7,7 +7,6 @@ import '../../config/theme/light_theme.dart';
 import '../../constants/enums/app_theme_enum.dart';
 
 part 'theme_event.dart';
-
 part 'theme_state.dart';
 
 class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {

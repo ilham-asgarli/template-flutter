@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/base/views/base_view.dart';
-import '../../../../utils/app/bloc/theme/theme_bloc.dart';
 import '../../../../core/init/navigation/navigation_service.dart';
+import '../../../../utils/app/bloc/theme/theme_bloc.dart';
 import '../../../../utils/app/config/navigation/navigation_route.dart';
 import '../../../../utils/app/config/theme/common_theme.dart';
 import '../../../../utils/app/config/theme/dark_theme.dart';
