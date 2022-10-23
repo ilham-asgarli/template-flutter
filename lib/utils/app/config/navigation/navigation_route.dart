@@ -11,7 +11,13 @@ class NavigationRoute {
   NavigationRoute._init();
 
   Route<dynamic> generateRoute(RouteSettings settings) {
+    print(NavigationConstants.HOME);
     switch (settings.name) {
+      case NavigationConstants.HOME:
+        return normalNavigate(
+          const NotFoundNavigation(),
+          NavigationConstants.HOME,
+        );
       default:
         //throw NavigateException<SettingsDynamicModel>(args.arguments);
         return normalNavigate(

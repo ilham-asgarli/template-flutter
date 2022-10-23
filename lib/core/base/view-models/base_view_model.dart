@@ -11,7 +11,7 @@ abstract class BaseViewModel {
   SharedPreferencesManager sharedPreferencesManager =
       SharedPreferencesManager.instance;
   NavigationService navigation = NavigationService.instance;
-  Box hiveBox = Hive.box(HiveConstants.userBox);
+  //Box hiveBox = Hive.box(HiveConstants.userBox);
 
   /// If you want to set user info before screen created call super.init(); first at override on init function
   void init(context) {

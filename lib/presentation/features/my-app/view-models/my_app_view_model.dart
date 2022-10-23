@@ -12,21 +12,23 @@ class MyAppViewModel with BaseViewModel {
   @override
   void init(context) async {
     super.init(context);
-    await setTheme(context);
+    //await setTheme(context);
     FlutterNativeSplash.remove();
   }
 
   String getInitialRoute() {
-    String? accessToken = hiveBox.get(HiveConstants.accessToken);
+    /*String? accessToken = hiveBox.get(HiveConstants.accessToken);
 
     if (accessToken == null) {
       return NavigationConstants.LOGIN;
     } else {
       return NavigationConstants.HOME;
-    }
+    }*/
+
+    return NavigationConstants.HOME;
   }
 
-  setTheme(context) async {
+  /*setTheme(context) async {
     ThemeNotifier themeNotifier = Provider.of(context);
     bool? isDarkMode = sharedPreferencesManager.getBoolValue(
       SharedPreferencesConstants.isDarkMode,
@@ -37,5 +39,5 @@ class MyAppViewModel with BaseViewModel {
             ? ThemeMode.dark
             : ThemeMode.light;
     themeNotifier.setThemeMode(themeMode);
-  }
+  }*/
 }

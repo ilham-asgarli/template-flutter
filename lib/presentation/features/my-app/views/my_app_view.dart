@@ -1,14 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:provider/provider.dart';
+import 'package:template/utils/app/bloc/theme/theme_bloc.dart';
 
 import '../../../../core/base/views/base_view.dart';
 import '../../../../core/init/navigation/navigation_service.dart';
 import '../../../../utils/app/config/navigation/navigation_route.dart';
 import '../../../../utils/app/config/theme/common_theme.dart';
 import '../../../../utils/app/config/theme/dark_theme.dart';
-import '../../../../utils/app/notifiers/theme_notifier.dart';
 import '../view-models/my_app_view_model.dart';
 
 class MyAppView extends StatefulWidget {
@@ -41,8 +41,6 @@ class _MyAppViewState extends State<MyAppView> {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            themeMode: context.watch<ThemeNotifier>().themeMode,
-            theme: context.watch<ThemeNotifier>().themeData,
             darkTheme: CommonTheme.instance
                 .getTheme(CustomDarkTheme.instance.getDarkTheme()),
             onGenerateRoute: NavigationRoute.instance.generateRoute,
