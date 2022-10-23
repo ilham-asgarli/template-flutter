@@ -19,13 +19,13 @@ class ThemeInitial extends ThemeState {
 
 class ThemeChanged extends ThemeState {
   final ThemeData? themeData;
-  final AppThemes? appThemeEnum;
+  final AppTheme? appTheme;
   final ThemeMode? themeMode;
   final bool? isDarkMode;
 
   const ThemeChanged({
     this.themeData,
-    this.appThemeEnum,
+    this.appTheme,
     this.themeMode,
     this.isDarkMode,
   });
@@ -33,7 +33,7 @@ class ThemeChanged extends ThemeState {
   @override
   List<Object?> get props => [
         themeData,
-        appThemeEnum,
+        appTheme,
         themeMode,
         isDarkMode,
       ];

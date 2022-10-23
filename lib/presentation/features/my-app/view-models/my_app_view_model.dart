@@ -3,27 +3,38 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:template/utils/app/config/theme/common_theme.dart';
 
 import '../../../../core/base/view-models/base_view_model.dart';
 import '../../../../utils/app/bloc/theme/theme_bloc.dart';
+import '../../../../utils/app/config/theme/dark_theme.dart';
+import '../../../../utils/app/config/theme/light_theme.dart';
 import '../../../../utils/app/constants/colors/app_colors.dart';
+import '../../../../utils/app/constants/enums/app_theme_enum.dart';
 import '../../../../utils/app/constants/navigation/navigation_constants.dart';
 import '../../../../utils/app/constants/cache/shared_preferences_constants.dart';
 
 class MyAppViewModel with BaseViewModel {
   ThemeMode? themeMode;
   bool? isDarkMode;
+  ThemeData? themeData;
+  AppTheme? appTheme;
 
   @override
   void init(context) async {
     super.init(context);
+
     setTheme(context);
+
     BlocProvider.of<ThemeBloc>(context).add(
       ChangeTheme(
         themeMode: themeMode,
         isDarkMode: isDarkMode,
+        appTheme: appTheme,
+        themeData: themeData,
       ),
     );
+
     FlutterNativeSplash.remove();
   }
 
@@ -35,23 +46,39 @@ class MyAppViewModel with BaseViewModel {
     isDarkMode = sharedPreferencesManager.getBoolValue(
       SharedPreferencesConstants.isDarkMode,
     );
-    themeMode = isDarkMode == null
+
+    appTheme = isDarkMode == null
         ? null
         : isDarkMode!
-            ? ThemeMode.dark
-            : ThemeMode.light;
-    setThemeMode(themeMode);
+            ? AppTheme.DARK
+            : AppTheme.LIGHT;
+
+    changeTheme(appTheme);
   }
 
-  getSystemThemeMode() {
-    Brightness brightness = SchedulerBinding.instance.window.platformBrightness;
-    return brightness == Brightness.light ? ThemeMode.light : ThemeMode.dark;
+  void changeTheme(AppTheme? theme) {
+    if (theme == AppTheme.DARK) {
+      themeData = CommonTheme.instance
+          .getTheme(CustomDarkTheme.instance.getDarkTheme());
+      appTheme = AppTheme.DARK;
+      setThemeMode(ThemeMode.dark);
+    } else if (theme == AppTheme.LIGHT) {
+      themeData = CommonTheme.instance
+          .getTheme(CustomLightTheme.instance.getLightTheme());
+      appTheme = AppTheme.LIGHT;
+      setThemeMode(ThemeMode.light);
+    }
   }
 
   setThemeMode(ThemeMode? themeMode) {
     this.themeMode = themeMode ?? getSystemThemeMode();
     isDarkMode = this.themeMode == ThemeMode.dark;
     setSystemUIOverlayStyle(this.themeMode);
+  }
+
+  getSystemThemeMode() {
+    Brightness brightness = SchedulerBinding.instance.window.platformBrightness;
+    return brightness == Brightness.light ? ThemeMode.light : ThemeMode.dark;
   }
 
   SystemUiOverlayStyle systemUiOverlayStyle(ThemeMode? currentMode) {
@@ -84,6 +111,10 @@ class MyAppViewModel with BaseViewModel {
   }
 
   void setSystemUIOverlayStyle(ThemeMode? currentMode) {
-    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle(currentMode));
+    SystemChrome.setSystemUIOverlayStyle(
+      systemUiOverlayStyle(
+        currentMode,
+      ),
+    );
   }
 }

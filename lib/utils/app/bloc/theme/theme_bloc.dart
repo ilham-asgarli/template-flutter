@@ -18,7 +18,7 @@ class ThemeBloc extends Bloc<ThemeEvent, ThemeState> {
   _onChangeTheme(ChangeTheme event, Emitter<ThemeState> emit) {
     emit(
       ThemeChanged(
-        appThemeEnum: event.appThemeEnum ?? AppThemes.LIGHT,
+        appTheme: event.appTheme ?? AppTheme.LIGHT,
         themeData: event.themeData ??
             CommonTheme.instance.getTheme(
               CustomLightTheme.instance.getLightTheme(),

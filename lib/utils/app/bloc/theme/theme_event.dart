@@ -6,13 +6,13 @@ abstract class ThemeEvent extends Equatable {
 
 class ChangeTheme extends ThemeEvent {
   final ThemeData? themeData;
-  final AppThemes? appThemeEnum;
+  final AppTheme? appTheme;
   final ThemeMode? themeMode;
   final bool? isDarkMode;
 
   const ChangeTheme({
     this.themeData,
-    this.appThemeEnum,
+    this.appTheme,
     this.themeMode,
     this.isDarkMode,
   });
@@ -20,7 +20,7 @@ class ChangeTheme extends ThemeEvent {
   @override
   List<Object?> get props => [
         themeData,
-        appThemeEnum,
+        appTheme,
         themeMode,
         isDarkMode,
       ];

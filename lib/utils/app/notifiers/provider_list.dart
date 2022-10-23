@@ -1,7 +1,4 @@
-import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-
-import 'theme_notifier.dart';
 
 class ApplicationProvider {
   static ApplicationProvider? _instance;
@@ -16,9 +13,9 @@ class ApplicationProvider {
   List<SingleChildWidget> singleItems = [];
 
   List<SingleChildWidget> dependItems = [
-    ChangeNotifierProvider(
+    /*ChangeNotifierProvider(
       create: (_) => ThemeNotifier(),
-    ),
+    ),*/
     //Provider.value(value: NavigationService.instance),
   ];
 
