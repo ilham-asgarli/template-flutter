@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:template/presentation/features/home/views/home_view.dart';
 
 import '../../constants/navigation/navigation_constants.dart';
-import '../../../../presentation/features/not-found-navigation/views/not_found_navigation.dart';
+import '../../../../presentation/features/not-found-navigation/views/not_found_navigation_view.dart';
 
 class NavigationRoute {
   static final NavigationRoute _instance = NavigationRoute._init();
@@ -14,13 +15,13 @@ class NavigationRoute {
     switch (settings.name) {
       case NavigationConstants.HOME:
         return normalNavigate(
-          const NotFoundNavigation(),
+          const HomeView(),
           NavigationConstants.HOME,
         );
       default:
         //throw NavigateException<SettingsDynamicModel>(args.arguments);
         return normalNavigate(
-          const NotFoundNavigation(),
+          const NotFoundNavigationView(),
           NavigationConstants.NOT_FOUND,
         );
     }

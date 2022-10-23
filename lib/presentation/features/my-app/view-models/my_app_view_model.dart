@@ -68,12 +68,13 @@ class MyAppViewModel with BaseViewModel {
       appTheme = AppTheme.LIGHT;
       setThemeMode(ThemeMode.light);
     }
+
+    setSystemUIOverlayStyle(theme);
   }
 
   setThemeMode(ThemeMode? themeMode) {
     this.themeMode = themeMode ?? getSystemThemeMode();
     isDarkMode = this.themeMode == ThemeMode.dark;
-    setSystemUIOverlayStyle(this.themeMode);
   }
 
   getSystemThemeMode() {
@@ -81,7 +82,7 @@ class MyAppViewModel with BaseViewModel {
     return brightness == Brightness.light ? ThemeMode.light : ThemeMode.dark;
   }
 
-  SystemUiOverlayStyle systemUiOverlayStyle(ThemeMode? currentMode) {
+  SystemUiOverlayStyle systemUiOverlayStyle(AppTheme? theme) {
     return SystemUiOverlayStyle(
       // status bar color
       statusBarColor: AppColors.mainColor,
@@ -90,30 +91,30 @@ class MyAppViewModel with BaseViewModel {
       // status barIcon Brightness
       statusBarIconBrightness: Brightness.light,
       // navigation bar color
-      systemNavigationBarColor: currentMode == ThemeMode.light
+      systemNavigationBarColor: theme == AppTheme.LIGHT
           ? AppColors.light
-          : currentMode == ThemeMode.dark
+          : theme == AppTheme.DARK
               ? AppColors.dark
               : null,
       // navigation bar icon
-      systemNavigationBarIconBrightness: currentMode == ThemeMode.light
+      systemNavigationBarIconBrightness: theme == AppTheme.LIGHT
           ? Brightness.dark
-          : currentMode == ThemeMode.dark
+          : theme == AppTheme.DARK
               ? Brightness.light
               : null,
       // navigation bar divider color
-      systemNavigationBarDividerColor: currentMode == ThemeMode.light
+      systemNavigationBarDividerColor: theme == AppTheme.LIGHT
           ? AppColors.light
-          : currentMode == ThemeMode.dark
+          : theme == AppTheme.DARK
               ? AppColors.dark
               : null,
     );
   }
 
-  void setSystemUIOverlayStyle(ThemeMode? currentMode) {
+  void setSystemUIOverlayStyle(AppTheme? theme) {
     SystemChrome.setSystemUIOverlayStyle(
       systemUiOverlayStyle(
-        currentMode,
+        theme,
       ),
     );
   }
