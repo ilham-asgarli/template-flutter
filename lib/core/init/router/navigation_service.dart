@@ -4,6 +4,7 @@ import 'INavigationService.dart';
 
 class NavigationService implements INavigationService {
   static final NavigationService _instance = NavigationService._init();
+
   static NavigationService get instance => _instance;
 
   NavigationService._init();
@@ -18,6 +19,7 @@ class NavigationService implements INavigationService {
 
   @override
   Future<void> navigateToPageClear({String? path, Object? data}) async {
-    await navigatorKey.currentState!.pushNamedAndRemoveUntil(path!, removeAllOldRoutes, arguments: data);
+    await navigatorKey.currentState!
+        .pushNamedAndRemoveUntil(path!, removeAllOldRoutes, arguments: data);
   }
 }

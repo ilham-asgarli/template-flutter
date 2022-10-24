@@ -12,6 +12,6 @@ extension WidgetExtension on Widget {
       );
 
   Widget horizontalSpace(BuildContext context, double val) => SizedBox(
-    width: context.dynamicWidth(val),
-  );
+        width: context.dynamicWidth(val),
+      );
 }

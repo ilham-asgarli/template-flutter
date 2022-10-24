@@ -3,10 +3,10 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:template/utils/app/config/theme/common_theme.dart';
 
 import '../../../../core/base/view-models/base_view_model.dart';
 import '../../../../utils/app/bloc/theme/theme_bloc.dart';
+import '../../../../utils/app/config/theme/common_theme.dart';
 import '../../../../utils/app/config/theme/dark_theme.dart';
 import '../../../../utils/app/config/theme/light_theme.dart';
 import '../../../../utils/app/constants/cache/shared_preferences_constants.dart';
