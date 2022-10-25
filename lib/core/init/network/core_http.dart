@@ -9,7 +9,7 @@ import '../../../utils/app/constants/enums/http_request_enum.dart';
 import '../../base/models/base_error.dart';
 import '../../base/models/base_model.dart';
 import '../../exceptions/network/http_exception.dart';
-import 'IResponseModel.dart';
+import 'interfaces/response_model.dart';
 
 part 'core_operations.dart';
 

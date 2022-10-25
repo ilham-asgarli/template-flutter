@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import 'INavigationService.dart';
+import 'interfaces/navigation_service.dart';
 
 class NavigationService implements INavigationService {
   static final NavigationService _instance = NavigationService._init();
