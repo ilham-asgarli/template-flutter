@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
+import 'package:hive_flutter/adapters.dart';
 import 'package:path_provider/path_provider.dart';
 
 class HiveManager {
@@ -11,7 +12,8 @@ class HiveManager {
 
   Future<Box> openHiveBox(String boxName) async {
     if (!kIsWeb && !Hive.isBoxOpen(boxName)) {
-      Hive.init((await getApplicationDocumentsDirectory()).path);
+      //Hive.init((await getApplicationDocumentsDirectory()).path);
+      await Hive.initFlutter();
     }
 
     return await Hive.openBox(boxName);
