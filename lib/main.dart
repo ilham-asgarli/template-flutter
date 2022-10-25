@@ -7,11 +7,9 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:template/utils/app/bloc/theme/theme_bloc.dart';
 
-import 'core/init/cache/hive_manager.dart';
 import 'core/init/cache/shared_preferences_manager.dart';
 import 'generated/codegen_loader.g.dart';
 import 'presentation/features/my-app/views/my_app_view.dart';
-import 'utils/app/constants/cache/hive_constants.dart';
 
 void main() async {
   init();

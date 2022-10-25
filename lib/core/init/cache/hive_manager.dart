@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
-import 'package:path_provider/path_provider.dart';
 
 class HiveManager {
   static final HiveManager _instance = HiveManager._init();
