@@ -35,10 +35,11 @@ Widget app() {
   return EasyLocalization(
     supportedLocales: const [
       Locale('az', 'AZ'),
+      Locale('en', 'US'),
     ],
     path: 'assets/translations',
     assetLoader: const CodegenLoader(),
-    startLocale: const Locale('az', 'AZ'),
+    //startLocale: const Locale('az', 'AZ'),
     fallbackLocale: const Locale('en', 'US'),
     child: MultiBlocProvider(
       providers: [
