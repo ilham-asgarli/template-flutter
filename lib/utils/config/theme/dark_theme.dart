@@ -7,8 +7,6 @@ class CustomDarkTheme {
   CustomDarkTheme._init();
 
   ThemeData getDarkTheme() {
-    return ThemeData.dark().copyWith(
-
-    );
+    return ThemeData.dark();
   }
 }

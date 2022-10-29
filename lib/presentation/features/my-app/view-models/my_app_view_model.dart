@@ -6,11 +6,11 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../../../../core/base/view-models/base_view_model.dart';
 import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
-import '../../../../utils/logic/config/theme/common_theme.dart';
-import '../../../../utils/logic/config/theme/dark_theme.dart';
-import '../../../../utils/logic/config/theme/light_theme.dart';
+import '../../../../utils/config/theme/common_theme.dart';
+import '../../../../utils/config/theme/dark_theme.dart';
+import '../../../../utils/config/theme/light_theme.dart';
 import '../../../../utils/logic/constants/cache/shared_preferences_constants.dart';
-import '../../../../utils/logic/constants/colors/app_colors.dart';
+import '../../../../utils/ui/constants/colors/app_colors.dart';
 import '../../../../utils/logic/constants/enums/app_theme_enum.dart';
 import '../../../../utils/logic/constants/router/router_constants.dart';
 
