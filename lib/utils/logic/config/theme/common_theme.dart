@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../utils/app/constants/colors/app_colors.dart';
+import '../../../../utils/logic/constants/colors/app_colors.dart';
 
 class CommonTheme {
   static final CommonTheme _instance = CommonTheme._init();
