@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:http/http.dart';
 
 import '../../../core/base/models/base_http.dart';
-import '../../../utils/app/constants/api/api_url_constants.dart';
-import '../../../utils/app/constants/enums/http_request_enum.dart';
+import '../../../utils/logic/constants/api/api_url_constants.dart';
+import '../../../utils/logic/constants/enums/http_request_enum.dart';
 import '../../base/models/base_error.dart';
 import '../../base/models/base_model.dart';
 import '../../exceptions/network/http_exception.dart';

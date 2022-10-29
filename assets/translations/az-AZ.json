@@ -1,3 +1,4 @@
 {
-  "notFoundNavigation": "403"
+  "notFoundNavigation": "403",
+  "noInternet": "İnternet bağlantınız yoxdur."
 }

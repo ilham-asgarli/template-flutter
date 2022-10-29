@@ -2,5 +2,6 @@
 
 abstract class  LocaleKeys {
   static const notFoundNavigation = 'notFoundNavigation';
+  static const noInternet = 'noInternet';
 
 }

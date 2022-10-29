@@ -15,10 +15,16 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> az_AZ = {
-  "notFoundNavigation": "403"
+  "notFoundNavigation": "403",
+  "noInternet": "İnternet bağlantınız yoxdur."
 };
-static const Map<String,dynamic> en_Us = {
-  "notFoundNavigation": "403"
+static const Map<String,dynamic> en_US = {
+  "notFoundNavigation": "403",
+  "noInternet": "You don't have internet connection."
 };
-static const Map<String, Map<String,dynamic>> mapLocales = {"az_AZ": az_AZ, "en_Us": en_Us};
+static const Map<String,dynamic> tr_TR = {
+  "notFoundNavigation": "403",
+  "noInternet": "İnternet bağlantınız yok."
+};
+static const Map<String, Map<String,dynamic>> mapLocales = {"az_AZ": az_AZ, "en_US": en_US, "tr_TR": tr_TR};
 }
