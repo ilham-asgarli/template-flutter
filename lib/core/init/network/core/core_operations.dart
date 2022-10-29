@@ -14,10 +14,12 @@ extension _CoreHttpOperations on CoreHttp {
     try {
       switch (type) {
         case HttpTypes.GET:
-          response =
-              await Client().get(Uri.parse(url), headers: <String, String>{
-            HttpHeaders.authorizationHeader: accessToken ?? "",
-          });
+          response = await Client().get(
+            Uri.parse(url),
+            headers: <String, String>{
+              HttpHeaders.authorizationHeader: accessToken ?? "",
+            },
+          );
           break;
         case HttpTypes.POST:
           response = await Client().post(
