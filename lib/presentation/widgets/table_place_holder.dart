@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/extensions/widget_extension.dart';
-import '../../utils/logic/constants/colors/app_colors.dart';
+import '../../utils/app/constants/colors/app_colors.dart';
 import 'my_shimmer.dart';
 
 class TablePlaceHolder extends StatelessWidget {

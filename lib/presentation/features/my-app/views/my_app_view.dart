@@ -5,11 +5,11 @@ import 'package:sizer/sizer.dart';
 
 import '../../../../core/init/router/navigation_service.dart';
 import '../../../../generated/locale_keys.g.dart';
-import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
-import '../../../../utils/logic/config/router/app_router.dart';
-import '../../../../utils/logic/config/theme/common_theme.dart';
-import '../../../../utils/logic/config/theme/dark_theme.dart';
-import '../../../../utils/logic/state/cubit/network/network_cubit.dart';
+import '../../../../utils/app/state/bloc/theme/theme_bloc.dart';
+import '../../../../utils/app/config/router/app_router.dart';
+import '../../../../utils/app/config/theme/common_theme.dart';
+import '../../../../utils/app/config/theme/dark_theme.dart';
+import '../../../../utils/app/state/cubit/network/network_cubit.dart';
 import '../../../widgets/have_no.dart';
 import '../view-models/my_app_view_model.dart';
 

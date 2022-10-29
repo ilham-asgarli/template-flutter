@@ -5,14 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../../../../core/base/view-models/base_view_model.dart';
-import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
-import '../../../../utils/logic/config/theme/common_theme.dart';
-import '../../../../utils/logic/config/theme/dark_theme.dart';
-import '../../../../utils/logic/config/theme/light_theme.dart';
-import '../../../../utils/logic/constants/cache/shared_preferences_constants.dart';
-import '../../../../utils/logic/constants/colors/app_colors.dart';
-import '../../../../utils/logic/constants/enums/app_theme_enum.dart';
-import '../../../../utils/logic/constants/router/router_constants.dart';
+import '../../../../utils/app/state/bloc/theme/theme_bloc.dart';
+import '../../../../utils/app/config/theme/common_theme.dart';
+import '../../../../utils/app/config/theme/dark_theme.dart';
+import '../../../../utils/app/config/theme/light_theme.dart';
+import '../../../../utils/app/constants/cache/shared_preferences_constants.dart';
+import '../../../../utils/app/constants/colors/app_colors.dart';
+import '../../../../utils/app/constants/enums/app_theme_enum.dart';
+import '../../../../utils/app/constants/router/router_constants.dart';
 
 class MyAppViewModel with BaseViewModel {
   ThemeMode? themeMode;

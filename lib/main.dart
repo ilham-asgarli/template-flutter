@@ -9,8 +9,8 @@ import 'package:path_provider/path_provider.dart';
 import 'core/init/cache/shared_preferences_manager.dart';
 import 'generated/codegen_loader.g.dart';
 import 'presentation/features/my-app/views/my_app_view.dart';
-import 'utils/logic/state/cubit/network/network_cubit.dart';
-import 'utils/logic/state/bloc/theme/theme_bloc.dart';
+import 'utils/app/state/cubit/network/network_cubit.dart';
+import 'utils/app/state/bloc/theme/theme_bloc.dart';
 
 void main() async {
   init();
