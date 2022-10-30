@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 
 import '../../../core/init/cache/shared_preferences_manager.dart';
 import '../../logic/constants/cache/shared_preferences_constants.dart';
@@ -12,12 +13,11 @@ class CommonTheme {
 
   CommonTheme._init();
 
-  ThemeData getTheme(ThemeData theme) {
-    return theme.copyWith(
+  ThemeData getTheme({
+    required ThemeData customThemeData,
+  }) {
+    return customThemeData.copyWith(
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      colorScheme: ColorScheme.fromSwatch(
-        primarySwatch: AppColors.mainColor,
-      ),
     );
   }
 
@@ -36,5 +36,28 @@ class CommonTheme {
         : isDarkMode
             ? ThemeMode.dark
             : ThemeMode.light;
+  }
+
+  SystemUiOverlayStyle systemUiOverlayStyle() {
+    return const SystemUiOverlayStyle(
+      // status bar color
+      statusBarColor: AppColors.mainColor,
+      // status bar brightness
+      statusBarBrightness: Brightness.light,
+      // status barIcon Brightness
+      statusBarIconBrightness: Brightness.light,
+      // navigation bar color
+      systemNavigationBarColor: null,
+      // navigation bar icon
+      systemNavigationBarIconBrightness: null,
+      // navigation bar divider color
+      systemNavigationBarDividerColor: null,
+    );
+  }
+
+  void setSystemUIOverlayStyle() {
+    SystemChrome.setSystemUIOverlayStyle(
+      systemUiOverlayStyle(),
+    );
   }
 }

@@ -13,7 +13,7 @@ extension _CoreHttpOperations on CoreHttp {
 
     try {
       switch (type) {
-        case HttpTypes.GET:
+        case HttpTypes.get:
           response = await Client().get(
             Uri.parse(url),
             headers: <String, String>{
@@ -21,7 +21,7 @@ extension _CoreHttpOperations on CoreHttp {
             },
           );
           break;
-        case HttpTypes.POST:
+        case HttpTypes.post:
           response = await Client().post(
             Uri.parse(url),
             headers: <String, String>{

@@ -3,15 +3,15 @@ import '../../utils/logic/constants/enums/http_request_enum.dart';
 extension NetworkTypeExtension on HttpTypes? {
   String get rawValue {
     switch (this) {
-      case HttpTypes.GET:
+      case HttpTypes.get:
         return 'GET';
-      case HttpTypes.POST:
+      case HttpTypes.post:
         return 'POST';
-      case HttpTypes.PUT:
+      case HttpTypes.put:
         return "PUT";
-      case HttpTypes.PATCH:
+      case HttpTypes.patch:
         return "PATCH";
-      case HttpTypes.DELETE:
+      case HttpTypes.delete:
         return "DELETE";
       default:
         throw 'ERROR TYPE';

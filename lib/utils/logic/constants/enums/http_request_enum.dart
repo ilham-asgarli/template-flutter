@@ -1,1 +1,1 @@
-enum HttpTypes { GET, POST, PUT, PATCH, DELETE }
+enum HttpTypes { get, post, put, patch, delete }
