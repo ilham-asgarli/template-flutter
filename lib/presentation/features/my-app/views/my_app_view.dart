@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
+import 'package:template/utils/config/theme/light_theme.dart';
 
 import '../../../../core/init/router/navigation_service.dart';
 import '../../../../generated/locale_keys.g.dart';
@@ -23,9 +24,6 @@ class MyAppView extends StatefulWidget {
 class _MyAppViewState extends State<MyAppView> {
   final MyAppViewModel _myAppViewModel = MyAppViewModel();
 
-  ThemeMode? _themeMode;
-  ThemeData? _themeData;
-
   @override
   void initState() {
     _myAppViewModel.init(context);
@@ -42,25 +40,22 @@ class _MyAppViewState extends State<MyAppView> {
   Widget buildThemeBloc() {
     return BlocBuilder<ThemeBloc, ThemeState>(
       builder: (context, ThemeState state) {
-        if (state is ThemeChanged) {
-          _themeMode = state.themeMode;
-          _themeData = state.themeData;
-        }
-
-        return buildApp();
+        return buildApp(state);
       },
     );
   }
 
-  Widget buildApp() {
+  Widget buildApp(ThemeState themeState) {
     return MaterialApp(
       scrollBehavior: const ScrollBehavior().copyWith(overscroll: false),
       debugShowCheckedModeBanner: false,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
-      themeMode: _themeMode,
-      theme: _themeData,
+      themeMode: themeState.themeMode,
+      theme: CommonTheme.instance.getTheme(
+        CustomLightTheme.instance.getLightTheme(),
+      ),
       darkTheme: CommonTheme.instance.getTheme(
         CustomDarkTheme.instance.getDarkTheme(),
       ),
@@ -100,10 +95,12 @@ class _MyAppViewState extends State<MyAppView> {
   }
 
   buildNoInternetWidget() {
-    return Scaffold(
-      body: HaveNo(
-        description: LocaleKeys.noInternet.tr(),
-        iconData: Icons.wifi_off_rounded,
+    return SafeArea(
+      child: Scaffold(
+        body: HaveNo(
+          description: LocaleKeys.noInternet.tr(),
+          iconData: Icons.wifi_off_rounded,
+        ),
       ),
     );
   }

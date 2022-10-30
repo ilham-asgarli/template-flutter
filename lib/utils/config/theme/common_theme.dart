@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
+import '../../../core/init/cache/shared_preferences_manager.dart';
+import '../../logic/constants/cache/shared_preferences_constants.dart';
 import '../../ui/constants/colors/app_colors.dart';
 
 class CommonTheme {
@@ -17,4 +20,20 @@ class CommonTheme {
       ),
     );
   }
-}
+
+  ThemeMode getSystemThemeMode() {
+    Brightness brightness = SchedulerBinding.instance.window.platformBrightness;
+    return brightness == Brightness.light ? ThemeMode.light : ThemeMode.dark;
+  }
+
+  ThemeMode? getThemeMode() {
+    bool? isDarkMode = SharedPreferencesManager.instance.getBoolValue(
+      SharedPreferencesConstants.isDarkMode,
+    );
+
+    return isDarkMode == null
+        ? null
+        : isDarkMode
+        ? ThemeMode.dark
+        : ThemeMode.light;
+  }
