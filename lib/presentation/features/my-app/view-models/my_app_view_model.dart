@@ -1,11 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import '../../../../core/base/view-models/base_view_model.dart';
-import '../../../../utils/logic/constants/cache/shared_preferences_constants.dart';
-import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
 import '../../../../utils/ui/constants/colors/app_colors.dart';
 import '../../../../utils/logic/constants/enums/app_theme_enum.dart';
 import '../../../../utils/logic/constants/router/router_constants.dart';

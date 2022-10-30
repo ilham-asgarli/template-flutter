@@ -26,7 +26,7 @@ class CommonTheme {
     return brightness == Brightness.light ? ThemeMode.light : ThemeMode.dark;
   }
 
-  ThemeMode? getThemeMode() {
+  ThemeMode? getThemeModePreference() {
     bool? isDarkMode = SharedPreferencesManager.instance.getBoolValue(
       SharedPreferencesConstants.isDarkMode,
     );
