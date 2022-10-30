@@ -10,8 +10,14 @@ class NetworkInitial extends NetworkState {
 }
 
 class ConnectionSuccess extends NetworkState {
+  final ConnectivityResult connectivityResult;
+
+  const ConnectionSuccess({
+    required this.connectivityResult,
+  });
+
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [connectivityResult];
 }
 
 class ConnectionFailure extends NetworkState {

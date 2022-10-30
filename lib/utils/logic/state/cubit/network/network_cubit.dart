@@ -10,21 +10,45 @@ class NetworkCubit extends Cubit<NetworkState> {
   StreamSubscription? _subscription;
 
   NetworkCubit() : super(NetworkInitial()) {
+    startCheckConnectivityAndChangeState();
+  }
+
+  void startCheckConnectivityAndChangeState() async {
+    await firstCheckConnectivityAndChangeState();
+    subscribeToConnectivityResultAndChangeState();
+  }
+
+  Future<void> firstCheckConnectivityAndChangeState() async {
+    ConnectivityResult result = await Connectivity().checkConnectivity();
+    changeStateByConnectivityResult(result);
+  }
+
+  void subscribeToConnectivityResultAndChangeState() {
     _subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-      switch (result) {
-        case ConnectivityResult.bluetooth:
-        case ConnectivityResult.wifi:
-        case ConnectivityResult.ethernet:
-        case ConnectivityResult.mobile:
-        case ConnectivityResult.vpn:
-          emit(ConnectionSuccess());
-          break;
-        case ConnectivityResult.none:
-          emit(ConnectionFailure());
-      }
+      changeStateByConnectivityResult(result);
     });
+  }
+
+  void changeStateByConnectivityResult(ConnectivityResult result) {
+    switch (result) {
+      case ConnectivityResult.bluetooth:
+      case ConnectivityResult.wifi:
+      case ConnectivityResult.ethernet:
+      case ConnectivityResult.mobile:
+      case ConnectivityResult.vpn:
+        emit(
+          ConnectionSuccess(
+            connectivityResult: result,
+          ),
+        );
+        break;
+      case ConnectivityResult.none:
+        emit(
+          ConnectionFailure(),
+        );
+    }
   }
 
   @override

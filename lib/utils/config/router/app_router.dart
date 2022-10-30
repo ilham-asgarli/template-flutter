@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:template/presentation/features/home/views/home_view.dart';
 
+import '../../../presentation/features/home/views/home_view.dart';
 import '../../../presentation/features/not-found-navigation/views/not_found_navigation_view.dart';
 import '../../logic/constants/router/router_constants.dart';
 
