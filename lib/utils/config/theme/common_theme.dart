@@ -34,6 +34,7 @@ class CommonTheme {
     return isDarkMode == null
         ? null
         : isDarkMode
-        ? ThemeMode.dark
-        : ThemeMode.light;
+            ? ThemeMode.dark
+            : ThemeMode.light;
   }
+}
