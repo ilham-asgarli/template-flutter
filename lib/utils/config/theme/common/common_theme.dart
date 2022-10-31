@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:template/utils/config/theme/custom/second_theme.dart';
-import 'package:template/utils/ui/constants/enums/app_theme_enum.dart';
 
 import '../../../../core/init/cache/shared_preferences_manager.dart';
 import '../../../logic/constants/cache/shared_preferences_constants.dart';
 import '../../../ui/constants/colors/app_colors.dart';
+import '../../../ui/constants/enums/app_theme_enum.dart';
 import '../custom/main_theme.dart';
+import '../custom/second_theme.dart';
 
 class CommonTheme {
   static final CommonTheme _instance = CommonTheme._init();

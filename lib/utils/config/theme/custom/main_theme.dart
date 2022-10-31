@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:template/utils/config/theme/interfaces/custom_theme.dart';
 
 import '../../../ui/constants/colors/app_colors.dart';
+import '../interfaces/custom_theme.dart';
 
 class MainTheme extends CustomTheme {
   static final MainTheme _instance = MainTheme._init();
