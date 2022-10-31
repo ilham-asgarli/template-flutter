@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:template/core/extensions/string_extension.dart';
-import 'package:template/utils/config/theme/common_theme.dart';
+import 'package:template/utils/config/theme/common/common_theme.dart';
 
 import '../../../../ui/constants/enums/app_theme_enum.dart';
 

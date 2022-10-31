@@ -1,25 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:template/utils/config/theme/interfaces/custom_theme.dart';
 
-import '../../ui/constants/colors/app_colors.dart';
+import '../../../ui/constants/colors/app_colors.dart';
 
-class SecondTheme {
-  static final SecondTheme _instance = SecondTheme._init();
+class MainTheme extends CustomTheme {
+  static final MainTheme _instance = MainTheme._init();
 
-  static SecondTheme get instance => _instance;
+  static MainTheme get instance => _instance;
 
-  SecondTheme._init();
+  MainTheme._init();
 
+  @override
   ThemeData getTheme({
     required ThemeData modeThemeData,
   }) {
     return modeThemeData.copyWith(
       colorScheme: ColorScheme.fromSwatch(
-        primarySwatch: Colors.red,
+        primarySwatch: AppColors.mainColor,
       ),
     );
   }
 
+  @override
   SystemUiOverlayStyle systemUiOverlayStyle() {
     return SystemUiOverlayStyle(
       // status bar color

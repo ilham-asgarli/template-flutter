@@ -7,7 +7,7 @@ import '../../../../core/init/router/navigation_service.dart';
 import '../../../../generated/locale_keys.g.dart';
 import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
 import '../../../../utils/config/router/app_router.dart';
-import '../../../../utils/config/theme/common_theme.dart';
+import '../../../../utils/config/theme/common/common_theme.dart';
 import '../../../../utils/logic/state/cubit/network/network_cubit.dart';
 import '../../../widgets/have_no.dart';
 import '../view-models/my_app_view_model.dart';
