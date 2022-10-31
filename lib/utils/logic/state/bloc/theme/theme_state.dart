@@ -1,11 +1,11 @@
 part of 'theme_bloc.dart';
 
 class ThemeState extends Equatable {
-  final AppTheme? appTheme;
+  final AppTheme appTheme;
   final ThemeMode? themeMode;
 
   const ThemeState({
-    this.appTheme,
+    required this.appTheme,
     this.themeMode,
   });
 
@@ -19,8 +19,8 @@ class ThemeState extends Equatable {
   factory ThemeState.fromMap(Map<String, dynamic> map) {
     return ThemeState(
       themeMode:
-          (map["themeMode"] as String).toEnum<ThemeMode>(ThemeMode.values)!,
-      appTheme: (map["appTheme"] as String).toEnum<AppTheme>(AppTheme.values),
+          (map["themeMode"] as String).toEnum<ThemeMode>(ThemeMode.values),
+      appTheme: (map["appTheme"] as String).toEnum<AppTheme>(AppTheme.values)!,
     );
   }
 

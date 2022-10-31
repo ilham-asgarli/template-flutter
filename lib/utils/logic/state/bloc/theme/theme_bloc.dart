@@ -16,6 +16,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
   ThemeBloc()
       : super(
           ThemeState(
+            appTheme: AppTheme.main,
             themeMode: CommonTheme.instance.getThemeModePreference(),
           ),
         ) {

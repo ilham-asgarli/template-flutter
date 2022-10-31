@@ -5,11 +5,11 @@ abstract class ThemeEvent extends Equatable {
 }
 
 class ChangeTheme extends ThemeEvent {
-  final AppTheme? appTheme;
+  final AppTheme appTheme;
   final ThemeMode? themeMode;
 
   const ChangeTheme({
-    this.appTheme,
+    required this.appTheme,
     this.themeMode,
   });
 

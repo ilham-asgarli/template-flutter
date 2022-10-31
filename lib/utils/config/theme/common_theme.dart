@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:template/utils/config/theme/second_theme.dart';
+import 'package:template/utils/ui/constants/enums/app_theme_enum.dart';
 
 import '../../../core/init/cache/shared_preferences_manager.dart';
 import '../../logic/constants/cache/shared_preferences_constants.dart';
 import '../../ui/constants/colors/app_colors.dart';
+import 'main_theme.dart';
 
 class CommonTheme {
   static final CommonTheme _instance = CommonTheme._init();
@@ -14,11 +17,25 @@ class CommonTheme {
   CommonTheme._init();
 
   ThemeData getTheme({
-    required ThemeData customThemeData,
+    required AppTheme appTheme,
+    required ThemeData modeThemeData,
   }) {
-    return customThemeData.copyWith(
+    return getCustomThemeData(appTheme, modeThemeData).copyWith(
       visualDensity: VisualDensity.adaptivePlatformDensity,
     );
+  }
+
+  ThemeData getCustomThemeData(AppTheme appTheme, ThemeData modeThemeData) {
+    switch (appTheme) {
+      case AppTheme.main:
+        return MainTheme.instance.getTheme(
+          modeThemeData: modeThemeData,
+        );
+      case AppTheme.second:
+        return SecondTheme.instance.getTheme(
+          modeThemeData: modeThemeData,
+        );
+    }
   }
 
   ThemeMode getSystemThemeMode() {

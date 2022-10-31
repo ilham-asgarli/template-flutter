@@ -2,14 +2,12 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
-import 'package:template/utils/config/theme/second_theme.dart';
 
 import '../../../../core/init/router/navigation_service.dart';
 import '../../../../generated/locale_keys.g.dart';
 import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
 import '../../../../utils/config/router/app_router.dart';
 import '../../../../utils/config/theme/common_theme.dart';
-import '../../../../utils/config/theme/main_theme.dart';
 import '../../../../utils/logic/state/cubit/network/network_cubit.dart';
 import '../../../widgets/have_no.dart';
 import '../view-models/my_app_view_model.dart';
@@ -54,14 +52,12 @@ class _MyAppViewState extends State<MyAppView> {
       locale: context.locale,
       themeMode: themeState.themeMode,
       theme: CommonTheme.instance.getTheme(
-        customThemeData: MainTheme.instance.getTheme(
-          modeThemeData: ThemeData.light(),
-        ),
+        appTheme: themeState.appTheme,
+        modeThemeData: ThemeData.light(),
       ),
       darkTheme: CommonTheme.instance.getTheme(
-        customThemeData: SecondTheme.instance.getTheme(
-          modeThemeData: ThemeData.dark(),
-        ),
+        appTheme: themeState.appTheme,
+        modeThemeData: ThemeData.dark(),
       ),
       onGenerateRoute: AppRouter.instance.generateRoute,
       navigatorKey: NavigationService.instance.navigatorKey,
