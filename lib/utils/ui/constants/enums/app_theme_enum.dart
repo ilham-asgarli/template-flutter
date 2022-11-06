@@ -1,1 +1,1 @@
-enum AppTheme { main, second }
+enum AppTheme { main }

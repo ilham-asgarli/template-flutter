@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../init/cache/shared_preferences_manager.dart';
-import '../../init/router/navigation_service.dart';
+import '../../cache/shared_preferences_manager.dart';
+import '../../router/navigation_service.dart';
 
 abstract class BaseViewModel {
   late BuildContext buildContext;

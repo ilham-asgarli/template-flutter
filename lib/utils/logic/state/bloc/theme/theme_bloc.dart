@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../../../../../core/extensions/string_extension.dart';
-import '../../../../config/theme/common/common_theme.dart';
 import '../../../../ui/constants/enums/app_theme_enum.dart';
+import '../../../helpers/theme/theme_helper.dart';
 
 part 'theme_event.dart';
 part 'theme_state.dart';
@@ -16,7 +16,7 @@ class ThemeBloc extends HydratedBloc<ThemeEvent, ThemeState> {
       : super(
           ThemeState(
             appTheme: AppTheme.main,
-            themeMode: CommonTheme.instance.getThemeModePreference(),
+            themeMode: ThemeHelper.instance.getThemeModePreference(),
           ),
         ) {
     on<ChangeTheme>(_onChangeTheme);

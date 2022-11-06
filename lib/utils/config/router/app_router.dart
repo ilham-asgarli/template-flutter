@@ -5,24 +5,22 @@ import '../../../presentation/features/not-found-navigation/views/not_found_navi
 import '../../logic/constants/router/router_constants.dart';
 
 class AppRouter {
-  static final AppRouter _instance = AppRouter._init();
-
-  static AppRouter get instance => _instance;
+  static final AppRouter instance = AppRouter._init();
 
   AppRouter._init();
 
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RouterConstants.HOME:
+      case RouterConstants.home:
         return normalNavigate(
           const HomeView(),
-          RouterConstants.HOME,
+          RouterConstants.home,
         );
       default:
         //throw NavigateException<SettingsDynamicModel>(args.arguments);
         return normalNavigate(
           const NotFoundNavigationView(),
-          RouterConstants.NOT_FOUND,
+          RouterConstants.notFound,
         );
     }
   }

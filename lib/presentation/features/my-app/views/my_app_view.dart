@@ -2,10 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
+import '../../../../utils/logic/helpers/theme/theme_helper.dart';
 
 import '../../../../core/base/views/base_app_lifecycle_view.dart';
-import '../../../../core/init/router/navigation_service.dart';
-import '../../../../generated/locale_keys.g.dart';
+import '../../../../core/constants/app/global_key_constants.dart';
+import '../../../../core/locale/locale_keys.g.dart';
 import '../../../../utils/config/router/app_router.dart';
 import '../../../../utils/config/theme/common/common_theme.dart';
 import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
@@ -38,7 +39,10 @@ class _MyAppViewState extends State<MyAppView> {
 
   Widget buildThemeBloc() {
     return BlocBuilder<ThemeBloc, ThemeState>(
-      builder: (context, ThemeState state) {
+      builder: (BuildContext context, ThemeState state) {
+        ThemeHelper.instance
+            .setSystemUIOverlayStyleWithAppTheme(state.appTheme);
+
         return buildApp(state);
       },
     );
@@ -55,14 +59,15 @@ class _MyAppViewState extends State<MyAppView> {
         themeMode: themeState.themeMode,
         theme: CommonTheme.instance.getTheme(
           appTheme: themeState.appTheme,
-          modeThemeData: ThemeData.light(),
+          themeMode: ThemeMode.light,
         ),
         darkTheme: CommonTheme.instance.getTheme(
           appTheme: themeState.appTheme,
-          modeThemeData: ThemeData.dark(),
+          themeMode: ThemeMode.dark,
         ),
+        scaffoldMessengerKey: GlobalKeyConstants.scaffoldMessengerKey,
+        navigatorKey: GlobalKeyConstants.navigatorKey,
         onGenerateRoute: AppRouter.instance.generateRoute,
-        navigatorKey: NavigationService.instance.navigatorKey,
         initialRoute: _myAppViewModel.getInitialRoute(),
         builder: (context, Widget? child) {
           return buildNetworkCubit(child);

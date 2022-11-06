@@ -6,14 +6,6 @@ the three routes /a, /a/b, and /a/b/c loaded, in that order.
  */
 
 class RouterConstants {
-  static const NOT_FOUND = "/404";
-  static const HOME = "/";
-  static const LOGIN = "login";
-  static const CHAT = "/dashboard/chat";
-  static const CHAT_ITEM = "/dashboard/chat/item";
-  static const TIMETABLE = "/school/timeline";
-  static const CONTRACT = "/school/contracts-item";
-  static const CONTRACTS = "/school/contracts";
-  static const SCHEDULE = "/school/calendar";
-  static const CONTRACT_DETAILS = "/school/contracts/details";
+  static const notFound = "/404";
+  static const home = "/";
 }

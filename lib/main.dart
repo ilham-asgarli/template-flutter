@@ -6,12 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'core/constants/app/locale_constants.dart';
 
-import 'core/init/cache/shared_preferences_manager.dart';
-import 'generated/codegen_loader.g.dart';
+import 'core/cache/shared_preferences_manager.dart';
 import 'presentation/features/my-app/views/my_app_view.dart';
-import 'utils/logic/state/cubit/network/network_cubit.dart';
 import 'utils/logic/state/bloc/theme/theme_bloc.dart';
+import 'utils/logic/state/cubit/network/network_cubit.dart';
 
 void main() async {
   init();
@@ -37,22 +37,17 @@ void init() async {
 
 Widget app() {
   return EasyLocalization(
-    supportedLocales: const [
-      Locale('en', 'US'),
-      Locale('az', 'AZ'),
-      Locale('tr', 'TR'),
-    ],
-    path: 'assets/translations',
-    assetLoader: const CodegenLoader(),
-    startLocale: const Locale('az', 'AZ'),
-    fallbackLocale: const Locale('en', 'US'),
+    supportedLocales: LocaleConstants.supportedLocales,
+    path: LocaleConstants.path,
+    startLocale: LocaleConstants.azAZ,
+    fallbackLocale: LocaleConstants.enUS,
     child: MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (_) => ThemeBloc(),
         ),
         BlocProvider(
-          create: (context) => NetworkCubit(),
+          create: (_) => NetworkCubit(),
         ),
       ],
       child: DevicePreview(

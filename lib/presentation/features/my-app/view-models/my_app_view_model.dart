@@ -9,6 +9,6 @@ class MyAppViewModel with BaseViewModel {
   }
 
   String getInitialRoute() {
-    return RouterConstants.HOME;
+    return RouterConstants.home;
   }
 }
