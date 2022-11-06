@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '../interfaces/custom_theme.dart';
-import '../../../../logic/helpers/theme/theme_helper.dart';
 
+import '../../../../logic/helpers/theme/theme_helper.dart';
 import '../../../constants/colors/app_colors.dart';
 import '../../../constants/enums/app_theme_enum.dart';
+import '../interfaces/custom_theme.dart';
 
 class CommonTheme {
   static final CommonTheme instance = CommonTheme._init();
