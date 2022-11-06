@@ -14,7 +14,7 @@ class NavigationService implements INavigationService {
       (Route<dynamic> route) => false;
 
   @override
-  Future<void> navigateToPage({String? path, Object? data}) async {
+  Future<void> navigateToPage({required String? path, Object? data}) async {
     await navigatorKey.currentState!.pushNamed(path!, arguments: data);
   }
 

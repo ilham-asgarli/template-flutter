@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 
+import '../../../../core/base/views/base_app_lifecycle_view.dart';
 import '../../../../core/init/router/navigation_service.dart';
 import '../../../../generated/locale_keys.g.dart';
-import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
 import '../../../../utils/config/router/app_router.dart';
 import '../../../../utils/config/theme/common/common_theme.dart';
+import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
 import '../../../../utils/logic/state/cubit/network/network_cubit.dart';
 import '../../../widgets/have_no.dart';
 import '../view-models/my_app_view_model.dart';
@@ -44,27 +45,29 @@ class _MyAppViewState extends State<MyAppView> {
   }
 
   Widget buildApp(ThemeState themeState) {
-    return MaterialApp(
-      scrollBehavior: const ScrollBehavior().copyWith(overscroll: false),
-      debugShowCheckedModeBanner: false,
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
-      themeMode: themeState.themeMode,
-      theme: CommonTheme.instance.getTheme(
-        appTheme: themeState.appTheme,
-        modeThemeData: ThemeData.light(),
+    return BaseAppLifeCycleView(
+      child: MaterialApp(
+        scrollBehavior: const ScrollBehavior().copyWith(overscroll: false),
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        themeMode: themeState.themeMode,
+        theme: CommonTheme.instance.getTheme(
+          appTheme: themeState.appTheme,
+          modeThemeData: ThemeData.light(),
+        ),
+        darkTheme: CommonTheme.instance.getTheme(
+          appTheme: themeState.appTheme,
+          modeThemeData: ThemeData.dark(),
+        ),
+        onGenerateRoute: AppRouter.instance.generateRoute,
+        navigatorKey: NavigationService.instance.navigatorKey,
+        initialRoute: _myAppViewModel.getInitialRoute(),
+        builder: (context, Widget? child) {
+          return buildNetworkCubit(child);
+        },
       ),
-      darkTheme: CommonTheme.instance.getTheme(
-        appTheme: themeState.appTheme,
-        modeThemeData: ThemeData.dark(),
-      ),
-      onGenerateRoute: AppRouter.instance.generateRoute,
-      navigatorKey: NavigationService.instance.navigatorKey,
-      initialRoute: _myAppViewModel.getInitialRoute(),
-      builder: (context, child) {
-        return buildNetworkCubit(child);
-      },
     );
   }
 
@@ -94,7 +97,7 @@ class _MyAppViewState extends State<MyAppView> {
     );
   }
 
-  buildNoInternetWidget() {
+  Widget buildNoInternetWidget() {
     return SafeArea(
       child: Scaffold(
         body: HaveNo(
