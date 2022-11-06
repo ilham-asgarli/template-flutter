@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../cache/shared_preferences_manager.dart';
-import '../../router/navigation_service.dart';
+import '../../router/core/router_service.dart';
 
 abstract class BaseViewModel {
   late BuildContext buildContext;
 
   SharedPreferencesManager sharedPreferencesManager =
       SharedPreferencesManager.instance;
-  NavigationService navigation = NavigationService.instance;
+  RouterService navigation = RouterService.instance;
 
   //Box hiveBox = Hive.box(HiveConstants.userBox);
 

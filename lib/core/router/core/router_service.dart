@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../constants/app/global_key_constants.dart';
 
-import 'interfaces/navigation_service.dart';
+import '../../constants/app/global_key_constants.dart';
+import '../interfaces/router_service.dart';
 
-class NavigationService implements INavigationService {
-  static final NavigationService instance = NavigationService._init();
+class RouterService implements IRouterService {
+  static final RouterService instance = RouterService._init();
 
-  NavigationService._init();
+  RouterService._init();
 
   bool Function(Route<dynamic>) removeAllOldRoutes =
       (Route<dynamic> route) => false;
