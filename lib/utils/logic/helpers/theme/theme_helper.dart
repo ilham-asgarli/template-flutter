@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import '../../../config/theme/common/common_theme.dart';
+import '../../../ui/config/theme/common/common_theme.dart';
 
 import '../../../../core/cache/shared_preferences_manager.dart';
-import '../../../config/theme/custom/main_theme.dart';
-import '../../../config/theme/interfaces/custom_theme.dart';
+import '../../../ui/config/theme/custom/main_theme.dart';
+import '../../../ui/config/theme/interfaces/custom_theme.dart';
 import '../../../ui/constants/enums/app_theme_enum.dart';
 import '../../constants/cache/shared_preferences_constants.dart';
 

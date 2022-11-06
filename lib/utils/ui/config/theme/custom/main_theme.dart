@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../ui/constants/colors/app_colors.dart';
+import '../../../constants/colors/app_colors.dart';
 import '../interfaces/custom_theme.dart';
 
 class MainTheme extends CustomTheme {
