@@ -7,7 +7,11 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SafeArea(
       child: Scaffold(
-        body: Placeholder(),
+        body: Center(
+          child: Text(
+            "Home View",
+          ),
+        ),
       ),
     );
   }
