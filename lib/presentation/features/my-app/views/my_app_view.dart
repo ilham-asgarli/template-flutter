@@ -5,7 +5,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../../../core/base/views/base_app_lifecycle_view.dart';
 import '../../../../core/constants/app/global_key_constants.dart';
-import '../../../../utils/logic/config/router/app_router.dart';
+import '../../../../utils/logic/config/router/config_router.dart';
 import '../../../../utils/logic/constants/locale/locale_keys.g.dart';
 import '../../../../utils/logic/helpers/theme/theme_helper.dart';
 import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
@@ -67,7 +67,7 @@ class _MyAppViewState extends State<MyAppView> {
         ),
         scaffoldMessengerKey: GlobalKeyConstants.scaffoldMessengerKey,
         navigatorKey: GlobalKeyConstants.navigatorKey,
-        onGenerateRoute: AppRouter.instance.generateRoute,
+        onGenerateRoute: ConfigRouter.instance.generateRoute,
         initialRoute: _myAppViewModel.getInitialRoute(),
         builder: (context, Widget? child) {
           return buildNetworkCubit(child);

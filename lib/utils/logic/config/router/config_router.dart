@@ -4,10 +4,10 @@ import '../../../../presentation/features/home/views/home_view.dart';
 import '../../../../presentation/features/not-found-navigation/views/not_found_navigation_view.dart';
 import '../../constants/router/router_constants.dart';
 
-class AppRouter {
-  static final AppRouter instance = AppRouter._init();
+class ConfigRouter {
+  static final ConfigRouter instance = ConfigRouter._init();
 
-  AppRouter._init();
+  ConfigRouter._init();
 
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
