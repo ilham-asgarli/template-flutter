@@ -6,9 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
-import 'core/constants/app/locale_constants.dart';
 
 import 'core/cache/shared_preferences_manager.dart';
+import 'core/constants/app/locale_constants.dart';
 import 'presentation/features/my-app/views/my_app_view.dart';
 import 'utils/logic/state/bloc/theme/theme_bloc.dart';
 import 'utils/logic/state/cubit/network/network_cubit.dart';
