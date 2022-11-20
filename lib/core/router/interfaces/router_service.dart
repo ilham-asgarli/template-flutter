@@ -1,4 +1,5 @@
 abstract class IRouterService {
-  Future<void> navigateToPage({required String? path, Object? data});
-  Future<void> navigateToPageClear({required String? path, Object? data});
+  Future<void> pushNamed({required String path, Object? data});
+  Future<void> pushNamedAndRemoveUntil({required String path, Object? data});
+  Future<void> pushReplacementNamed({required String path, Object? data});
 }

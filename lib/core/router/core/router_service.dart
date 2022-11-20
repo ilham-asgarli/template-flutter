@@ -12,14 +12,34 @@ class RouterService implements IRouterService {
       (Route<dynamic> route) => false;
 
   @override
-  Future<void> navigateToPage({required String? path, Object? data}) async {
-    await GlobalKeyConstants.navigatorKey.currentState!
-        .pushNamed(path!, arguments: data);
+  Future<void> pushNamed({required String path, Object? data}) async {
+    await GlobalKeyConstants.navigatorKey.currentState!.pushNamed(
+      path,
+      arguments: data,
+    );
   }
 
   @override
-  Future<void> navigateToPageClear({String? path, Object? data}) async {
-    await GlobalKeyConstants.navigatorKey.currentState!
-        .pushNamedAndRemoveUntil(path!, removeAllOldRoutes, arguments: data);
+  Future<void> pushNamedAndRemoveUntil({
+    required String path,
+    Object? data,
+    String? removeUntilPageName,
+  }) async {
+    await GlobalKeyConstants.navigatorKey.currentState!.pushNamedAndRemoveUntil(
+      path,
+      removeUntilPageName == null
+          ? removeAllOldRoutes
+          : ModalRoute.withName(removeUntilPageName),
+      arguments: data,
+    );
+  }
+
+  @override
+  Future<void> pushReplacementNamed(
+      {required String path, Object? data}) async {
+    await GlobalKeyConstants.navigatorKey.currentState!.pushReplacementNamed(
+      path,
+      arguments: data,
+    );
   }
 }
