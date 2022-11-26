@@ -1,7 +1,13 @@
 extension StringLocalization on String {}
 
+extension StringConcat on String {
+  concat(String s) => this + s;
+  concatIfNotEmpty(String s) => isNotEmpty ? this + s : "";
+}
+
 extension ImagePathExtension on String {
   String get toSVG => 'assets/images/svg/$this.svg';
+  String get toPNG => 'assets/images/$this.png';
 }
 
 extension StringCasingExtension on String {
