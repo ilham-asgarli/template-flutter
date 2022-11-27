@@ -14,10 +14,10 @@ import 'utils/logic/state/bloc/theme/theme_bloc.dart';
 import 'utils/logic/state/cubit/network/network_cubit.dart';
 
 void main() async {
-  init();
+  await init();
 }
 
-void init() async {
+Future<void> init() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await EasyLocalization.ensureInitialized();
