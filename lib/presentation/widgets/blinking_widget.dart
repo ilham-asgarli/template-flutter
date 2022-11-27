@@ -1,6 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
+
+import 'auto_bool.dart';
 
 class BlinkingWidget extends StatefulWidget {
   final Widget child;
@@ -19,32 +19,17 @@ class BlinkingWidget extends StatefulWidget {
 }
 
 class _BlinkingWidgetState extends State<BlinkingWidget> {
-  bool isVisible = false;
-  late Timer timer;
-
-  @override
-  void initState() {
-    timer = Timer.periodic(Duration(seconds: widget.periodDuration), (Timer t) {
-      setState(() {
-        isVisible = !isVisible;
-      });
-    });
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    timer.cancel();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
-    return AnimatedSwitcher(
-      duration: Duration(
-        seconds: widget.animateDuration,
-      ),
-      child: isVisible ? widget.child : null,
+    return AutoBool(
+      child: (b) {
+        return AnimatedSwitcher(
+          duration: Duration(
+            seconds: widget.animateDuration,
+          ),
+          child: b ? widget.child : null,
+        );
+      },
     );
   }
 }
