@@ -22,11 +22,11 @@ class MyAppView extends StatefulWidget {
 }
 
 class _MyAppViewState extends State<MyAppView> {
-  final MyAppViewModel _myAppViewModel = MyAppViewModel();
+  late final MyAppViewModel _myAppViewModel;
 
   @override
   void initState() {
-    _myAppViewModel.init(context);
+    _myAppViewModel = MyAppViewModel(context: context);
     super.initState();
   }
 
