@@ -4,9 +4,13 @@ import '../../utils/ui/constants/colors/app_colors.dart';
 
 class FractionallySizedCircularProgressIndicator extends StatelessWidget {
   final double factor;
+  final Color? color;
 
-  const FractionallySizedCircularProgressIndicator({this.factor = 1, Key? key})
-      : super(key: key);
+  const FractionallySizedCircularProgressIndicator({
+    this.factor = 1,
+    this.color,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +19,8 @@ class FractionallySizedCircularProgressIndicator extends StatelessWidget {
         return SizedBox(
           width: constraints.maxHeight * factor,
           height: constraints.maxHeight * factor,
-          child: const CircularProgressIndicator(
-            color: AppColors.secondColor,
+          child: CircularProgressIndicator(
+            color: color ?? AppColors.secondColor,
           ),
         );
       },
