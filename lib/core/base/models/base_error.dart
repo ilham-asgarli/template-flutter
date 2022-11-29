@@ -1,7 +1,7 @@
-import '../../network/interfaces/error_model.dart';
+import 'base_response.dart';
 
-class BaseError implements IErrorModel {
-  BaseError(this.message);
+class BaseError implements BaseResponse {
+  BaseError({this.message});
 
   @override
   String? message;

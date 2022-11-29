@@ -7,14 +7,14 @@ extension _CoreHttpOperations on CoreHttp {
     required data,
     String? accessToken,
   }) async {
-    Response? response;
+    http.Response? response;
 
     url = ApiUrlConstants.base + url;
 
     try {
       switch (type) {
         case HttpTypes.get:
-          response = await Client().get(
+          response = await http.Client().get(
             Uri.parse(url),
             headers: <String, String>{
               HttpHeaders.authorizationHeader: accessToken ?? "",
@@ -22,7 +22,7 @@ extension _CoreHttpOperations on CoreHttp {
           );
           break;
         case HttpTypes.post:
-          response = await Client().post(
+          response = await http.Client().post(
             Uri.parse(url),
             headers: <String, String>{
               HttpHeaders.authorizationHeader: accessToken ?? "",
@@ -45,7 +45,7 @@ extension _CoreHttpOperations on CoreHttp {
   }
 
   R? _returnResponse<R, T extends BaseModel>(
-    Response response, {
+    http.Response response, {
     required T parseModel,
   }) {
     dynamic jsonDecoded = json.decode("{}");

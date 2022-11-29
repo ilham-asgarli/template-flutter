@@ -1,16 +1,16 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 import '../../../../utils/logic/constants/api/api_url_constants.dart';
 import '../../base/models/base_error.dart';
 import '../../base/models/base_http.dart';
 import '../../base/models/base_model.dart';
+import '../../base/models/base_response.dart';
+import '../../base/models/base_success.dart';
 import '../../constants/enums/http_request_enum.dart';
 import '../../exceptions/network/http_exception.dart';
-import '../interfaces/response_model.dart';
-import '../models/response_model.dart';
 
 part 'core_operations.dart';
 
@@ -21,7 +21,7 @@ class CoreHttp {
 
   CoreHttp._init();
 
-  Future<IResponseModel<R>> send<R, T extends BaseModel>(
+  Future<BaseResponse> send<R, T extends BaseModel>(
     String url, {
     required HttpTypes type,
     required T parseModel,
@@ -29,7 +29,7 @@ class CoreHttp {
     accessToken,
   }) async {
     try {
-      Response? response = await _sendRequest(
+      http.Response? response = await _sendRequest(
         url,
         type: type,
         data: data,
@@ -39,17 +39,17 @@ class CoreHttp {
       if (response != null) {
         try {
           final model = _returnResponse<R, T>(response, parseModel: parseModel);
-          return ResponseModel<R>(data: model);
+          return BaseSuccess(data: model);
         } on InvalidInputException catch (e) {
-          return ResponseModel(error: BaseError(e.toString()));
+          return BaseError(message: e.toString());
         } on Exception catch (e) {
-          return ResponseModel(error: BaseError(e.toString()));
+          return BaseError(message: e.toString());
         }
       } else {
-        return ResponseModel(error: BaseError("Wrong http method"));
+        return BaseError(message: "Wrong http method");
       }
     } on Exception catch (e) {
-      return ResponseModel(error: BaseError(e.toString()));
+      return BaseError(message: e.toString());
     }
   }
 }
