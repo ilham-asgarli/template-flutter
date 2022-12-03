@@ -1,8 +1,5 @@
 import 'base_response.dart';
 
-class BaseError implements BaseResponse {
-  BaseError({this.message});
-
-  @override
-  String? message;
+class BaseError<T> extends BaseResponse<T> {
+  BaseError({super.message});
 }

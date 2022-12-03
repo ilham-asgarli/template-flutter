@@ -1,5 +1,5 @@
-class BaseResponse {
+abstract class BaseResponse<T> {
   String? message;
 
-  BaseResponse(this.message);
+  BaseResponse({this.message});
 }
