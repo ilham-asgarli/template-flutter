@@ -1,5 +1,10 @@
-abstract class BaseResponse<T> {
+abstract class BaseResponse<T> extends Error {
   String? message;
 
   BaseResponse({this.message});
+
+  @override
+  String toString() {
+    return message ?? "";
+  }
 }
