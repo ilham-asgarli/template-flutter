@@ -1,5 +1,5 @@
 extension IntExtension on int? {
-  String toFixed(int count) {
+  String toFixed(int count, {bool visibility = false}) {
     if (this != null) {
       if (toString().length == count) {
         return toString();
@@ -7,7 +7,7 @@ extension IntExtension on int? {
         return "${"0" * (count - toString().length)}${toString()}";
       }
     } else {
-      return "";
+      return visibility ? "00" : "";
     }
   }
 }
