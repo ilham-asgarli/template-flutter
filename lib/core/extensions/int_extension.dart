@@ -10,4 +10,9 @@ extension IntExtension on int? {
       return visibility ? "00" : "";
     }
   }
+
+  int toZeroOrPositive() {
+    int i = this ?? 0;
+    return i < 0 ? 0 : i;
+  }
 }
