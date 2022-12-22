@@ -4,8 +4,6 @@ import '../../../../core/base/view-models/base_view_model.dart';
 import '../../../../utils/logic/constants/router/router_constants.dart';
 
 class MyAppViewModel extends BaseViewModel {
-  MyAppViewModel({required super.context});
-
   void removeSplashScreen() {
     FlutterNativeSplash.remove();
   }

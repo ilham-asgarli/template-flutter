@@ -22,13 +22,7 @@ class MyAppView extends StatefulWidget {
 }
 
 class _MyAppViewState extends State<MyAppView> {
-  late final MyAppViewModel _myAppViewModel;
-
-  @override
-  void initState() {
-    _myAppViewModel = MyAppViewModel(context: context);
-    super.initState();
-  }
+  late final MyAppViewModel _myAppViewModel = MyAppViewModel();
 
   @override
   Widget build(BuildContext context) {
