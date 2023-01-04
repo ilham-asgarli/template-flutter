@@ -22,7 +22,7 @@ class MyAppView extends StatefulWidget {
 }
 
 class _MyAppViewState extends State<MyAppView> {
-  late final MyAppViewModel _myAppViewModel = MyAppViewModel();
+  final MyAppViewModel _myAppViewModel = MyAppViewModel();
 
   @override
   Widget build(BuildContext context) {
