@@ -13,8 +13,8 @@ class MainTheme extends CustomTheme {
     required ThemeData modeThemeData,
   }) {
     return modeThemeData.copyWith(
-      colorScheme: ColorScheme.fromSwatch(
-        primarySwatch: AppColors.mainColor,
+      colorScheme: ColorScheme.fromSwatch().copyWith(
+        primary: AppColors.mainColor,
       ),
     );
   }
