@@ -71,23 +71,21 @@ class _MyAppViewState extends State<MyAppView> {
   }
 
   Widget buildNetworkCubit(Widget? child) {
-    final networkCubitState = context.watch<NetworkCubit>().state;
-
     return BlocBuilder<NetworkCubit, NetworkState>(
       builder: (context, NetworkState state) {
         if (child == null) {
           return const SizedBox();
         }
 
-        if (networkCubitState is! NetworkInitial) {
+        if (state is! NetworkInitial) {
           _myAppViewModel.removeSplashScreen();
         }
 
-        if (networkCubitState is ConnectionSuccess) {
+        if (state is ConnectionSuccess) {
           return child;
         }
 
-        if (networkCubitState is ConnectionFailure) {
+        if (state is ConnectionFailure) {
           return buildNoInternetWidget();
         }
 
