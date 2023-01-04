@@ -25,7 +25,7 @@ class HaveNo extends StatelessWidget {
             size: 100,
             color: context.colorScheme.background,
           ),
-          context.widget.verticalSpace(context, 0.05),
+          context.widget.dynamicVerticalSpace(context, 0.05),
           Text(
             description,
             style: TextStyle(

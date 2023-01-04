@@ -52,7 +52,7 @@ class TablePlaceHolder extends StatelessWidget {
             ? const SizedBox(
                 height: 10,
               )
-            : context.widget.verticalSpace(context, 0.01);
+            : context.widget.dynamicVerticalSpace(context, 0.01);
       },
     );
   }
