@@ -36,7 +36,7 @@ class CommonTheme {
       // status barIcon Brightness
       statusBarIconBrightness: Brightness.light,
       // navigation bar color
-      systemNavigationBarColor: AppColors.dark,
+      systemNavigationBarColor: AppColors.mainColor,
       // navigation bar icon
       systemNavigationBarIconBrightness: Brightness.light,
       // navigation bar divider color
