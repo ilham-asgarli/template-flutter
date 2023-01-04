@@ -97,12 +97,10 @@ class _MyAppViewState extends State<MyAppView> {
   }
 
   Widget buildNoInternetWidget() {
-    return SafeArea(
-      child: Scaffold(
-        body: HaveNo(
-          description: LocaleKeys.noInternet.tr(),
-          iconData: Icons.wifi_off_rounded,
-        ),
+    return Scaffold(
+      body: HaveNo(
+        description: LocaleKeys.noInternet.tr(),
+        iconData: Icons.wifi_off_rounded,
       ),
     );
   }
