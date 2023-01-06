@@ -42,4 +42,20 @@ class RouterService implements IRouterService {
       arguments: data,
     );
   }
+
+  @override
+  void pop() async {
+    GlobalKeyConstants.navigatorKey.currentState!.pop();
+  }
+
+  @override
+  void popUntil({
+    String? removeUntilPageName,
+  }) {
+    GlobalKeyConstants.navigatorKey.currentState!.popUntil(
+      removeUntilPageName == null
+          ? removeAllOldRoutes
+          : ModalRoute.withName(removeUntilPageName),
+    );
+  }
 }
