@@ -1,1 +1,7 @@
-abstract class BaseViewModel {}
+abstract class BaseViewModel {
+  BaseViewModel() {
+    init();
+  }
+
+  void init() {}
+}
