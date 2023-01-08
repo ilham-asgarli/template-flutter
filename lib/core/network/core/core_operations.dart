@@ -44,7 +44,7 @@ extension _CoreHttpOperations on CoreHttp {
     }
   }
 
-  R? _returnResponse<R, T extends BaseModel>(
+  R _returnResponse<R, T extends BaseModel>(
     http.Response response, {
     required T parseModel,
   }) {
@@ -75,13 +75,13 @@ extension _CoreHttpOperations on CoreHttp {
     }
   }
 
-  R? _responseParser<R, T>(BaseModel model, dynamic data) {
+  R _responseParser<R, T>(BaseModel model, dynamic data) {
     if (data is List) {
       return data.map((e) => model.fromJson(e)).toList().cast<T>() as R;
     } else if (data is Map) {
       return model.fromJson(data as Map<String, dynamic>) as R;
     }
 
-    return data as R?;
+    return data as R;
   }
 }
