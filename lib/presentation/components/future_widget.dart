@@ -20,10 +20,12 @@ class FutureWidget<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (snapshot.connectionState) {
       case ConnectionState.waiting:
-        return waitingWidget ??
-            const Center(
-              child: CircularProgressIndicator(),
-            );
+        return snapshot.hasData
+            ? successWidget(snapshot.data as T)
+            : waitingWidget ??
+                const Center(
+                  child: CircularProgressIndicator(),
+                );
       case ConnectionState.done:
       default:
         if (snapshot.hasError) {
