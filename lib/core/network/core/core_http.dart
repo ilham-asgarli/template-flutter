@@ -21,7 +21,7 @@ class CoreHttp {
 
   CoreHttp._init();
 
-  Future<BaseResponse> send<R, T extends BaseModel>(
+  Future<BaseResponse<R>> send<R, T extends BaseModel>(
     String url, {
     required HttpTypes type,
     required T parseModel,
@@ -39,7 +39,7 @@ class CoreHttp {
       if (response != null) {
         try {
           final model = _returnResponse<R, T>(response, parseModel: parseModel);
-          return BaseSuccess(data: model);
+          return BaseSuccess<R>(data: model);
         } on InvalidInputException catch (e) {
           return BaseError(message: e.toString());
         } on Exception catch (e) {
