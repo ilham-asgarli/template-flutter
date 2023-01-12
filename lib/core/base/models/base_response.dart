@@ -1,4 +1,4 @@
-abstract class BaseResponse<T> extends Error {
+abstract class BaseResponse<T> {
   String? message;
 
   BaseResponse({this.message});
