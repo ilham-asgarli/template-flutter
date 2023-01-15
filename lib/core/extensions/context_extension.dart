@@ -15,6 +15,8 @@ extension MediaQueryExtension on BuildContext {
 
   double get width => mediaQuery.size.width;
 
+  double get minProperty => min<double>(width, height);
+
   double get lowValue => height * 0.01;
 
   double get normalValue => height * 0.02;

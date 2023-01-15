@@ -6,14 +6,22 @@ import '../interfaces/router_service.dart';
 class RouterService implements IRouterService {
   static final RouterService instance = RouterService._init();
 
-  RouterService._init();
+  GlobalKey<NavigatorState>? navigatorKey;
+
+  RouterService({this.navigatorKey}) {
+    navigatorKey ??= GlobalKeyConstants.navigatorKey;
+  }
+
+  RouterService._init() {
+    navigatorKey ??= GlobalKeyConstants.navigatorKey;
+  }
 
   bool Function(Route<dynamic>) removeAllOldRoutes =
       (Route<dynamic> route) => false;
 
   @override
   Future<void> pushNamed({required String path, Object? data}) async {
-    await GlobalKeyConstants.navigatorKey.currentState!.pushNamed(
+    await navigatorKey?.currentState?.pushNamed(
       path,
       arguments: data,
     );
@@ -25,7 +33,7 @@ class RouterService implements IRouterService {
     Object? data,
     String? removeUntilPageName,
   }) async {
-    await GlobalKeyConstants.navigatorKey.currentState!.pushNamedAndRemoveUntil(
+    await navigatorKey?.currentState?.pushNamedAndRemoveUntil(
       path,
       removeUntilPageName == null
           ? removeAllOldRoutes
@@ -37,7 +45,7 @@ class RouterService implements IRouterService {
   @override
   Future<void> pushReplacementNamed(
       {required String path, Object? data}) async {
-    await GlobalKeyConstants.navigatorKey.currentState!.pushReplacementNamed(
+    await navigatorKey?.currentState?.pushReplacementNamed(
       path,
       arguments: data,
     );
@@ -45,14 +53,14 @@ class RouterService implements IRouterService {
 
   @override
   void pop() async {
-    GlobalKeyConstants.navigatorKey.currentState!.pop();
+    navigatorKey?.currentState?.pop();
   }
 
   @override
   void popUntil({
     String? removeUntilPageName,
   }) {
-    GlobalKeyConstants.navigatorKey.currentState!.popUntil(
+    navigatorKey?.currentState?.popUntil(
       removeUntilPageName == null
           ? removeAllOldRoutes
           : ModalRoute.withName(removeUntilPageName),
