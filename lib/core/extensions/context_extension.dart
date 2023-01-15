@@ -2,12 +2,16 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../constants/enums/app_enum.dart';
+
 extension ContextExtension on BuildContext {
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 
-  double dynamicWidth(double val) => mediaQuery.size.width * val;
+  double dynamicWidth(double val) => width * val;
 
-  double dynamicHeight(double val) => mediaQuery.size.height * val;
+  double dynamicHeight(double val) => height * val;
+
+  double dynamicMinProperty(double val) => min<double>(width, height) * val;
 }
 
 extension MediaQueryExtension on BuildContext {
@@ -16,6 +20,9 @@ extension MediaQueryExtension on BuildContext {
   double get width => mediaQuery.size.width;
 
   double get minProperty => min<double>(width, height);
+
+  SizeProperty get minSizeProperty =>
+      width == minProperty ? SizeProperty.width : SizeProperty.height;
 
   double get lowValue => height * 0.01;
 

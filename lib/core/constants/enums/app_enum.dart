@@ -1,0 +1,1 @@
+enum SizeProperty { width, height }
