@@ -30,14 +30,12 @@ extension EnumExtension on String {
   T? valueToEnum<T>(Iterable<T?> values) {
     return values.firstWhere(
       (type) => type.toString().split(".").last == this,
-      orElse: () => null,
     );
   }
 
   T? toEnum<T>(Iterable<T?> values) {
     return values.firstWhere(
       (type) => type.toString() == this,
-      orElse: () => null,
     );
   }
 }
