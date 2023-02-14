@@ -76,7 +76,7 @@ extension PaddingExtensionSymetric on BuildContext {
       EdgeInsets.symmetric(horizontal: highValue);
 }
 
-extension PageExtension on BuildContext {
+extension ColorExtension on BuildContext {
   Color get randomColor => Colors.primaries[Random().nextInt(17)];
 }
 
@@ -84,4 +84,19 @@ extension DurationExtension on BuildContext {
   Duration get lowDuration => const Duration(milliseconds: 500);
 
   Duration get normalDuration => const Duration(seconds: 1);
+}
+
+extension SpaceExtension on BuildContext {
+  Widget dynamicVerticalSpace(double val) => SizedBox(
+        height: dynamicHeight(val),
+      );
+
+  Widget dynamicHorizontalSpace(double val) => SizedBox(
+        width: dynamicWidth(val),
+      );
+
+  Widget dynamicMinSizePropertySpace(double val) => SizedBox(
+        width: minSizeProperty == SizeProperty.width ? val : 0,
+        height: minSizeProperty == SizeProperty.height ? val : 0,
+      );
 }
