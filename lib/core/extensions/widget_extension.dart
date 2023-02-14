@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../../core/extensions/context_extension.dart';
 import '../constants/enums/app_enum.dart';
@@ -16,7 +16,7 @@ extension WidgetExtension on Widget {
         width: context.dynamicWidth(val),
       );
 
-  Widget dynamicMinPropertySpace(BuildContext context, double val) => SizedBox(
+  Widget dynamicMinSizePropertySpace(BuildContext context, double val) => SizedBox(
         width: context.minSizeProperty == SizeProperty.width
             ? context.dynamicWidth(val)
             : 0,
@@ -25,15 +25,7 @@ extension WidgetExtension on Widget {
             : 0,
       );
 
-  Widget verticalSpace(double val) => SizedBox(
-        height: val,
-      );
-
-  Widget horizontalSpace(double val) => SizedBox(
-        width: val,
-      );
-
-  Widget minPropertySpace(BuildContext context, double val) => SizedBox(
+  Widget minSizePropertySpace(BuildContext context, double val) => SizedBox(
         width: context.minSizeProperty == SizeProperty.width ? val : 0,
         height: context.minSizeProperty == SizeProperty.height ? val : 0,
       );
