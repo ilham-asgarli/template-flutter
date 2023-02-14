@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/extensions/context_extension.dart';
-import '../../../core/extensions/widget_extension.dart';
 import '../../utils/ui/constants/colors/app_colors.dart';
 import 'my_shimmer.dart';
 
@@ -52,7 +51,7 @@ class TablePlaceHolder extends StatelessWidget {
             ? const SizedBox(
                 height: 10,
               )
-            : context.widget.dynamicVerticalSpace(context, 0.01);
+            : context.dynamicVerticalSpace(0.01);
       },
     );
   }
