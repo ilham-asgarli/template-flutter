@@ -4,9 +4,7 @@ import '../../../core/extensions/context_extension.dart';
 import '../constants/enums/app_enum.dart';
 
 extension WidgetExtension on Widget {
-  Widget get toSliver {
-    return SliverToBoxAdapter(child: this);
-  }
+  Widget get toSliver => SliverToBoxAdapter(child: this);
 
   Widget dynamicVerticalSpace(BuildContext context, double val) => SizedBox(
         height: context.dynamicHeight(val),
