@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../core/extensions/double_extension.dart';
+import '../../core/extensions/num_extension.dart';
 
 class RadioTile<T> extends StatefulWidget {
   final Widget? title;
