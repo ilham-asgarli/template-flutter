@@ -35,7 +35,7 @@ class _RadioTileState<T> extends State<RadioTile<T>> {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: defaultOnChanged,
       child: Padding(
         padding: widget.padding,
