@@ -7,7 +7,7 @@ class RadioTile<T> extends StatefulWidget {
   final EdgeInsets padding;
   final T? groupValue;
   final T value;
-  final Function(T?) onChanged;
+  final Function(T?)? onChanged;
   final double titleLeftPadding;
 
   const RadioTile({
@@ -17,7 +17,7 @@ class RadioTile<T> extends StatefulWidget {
     this.titleLeftPadding = 10,
     this.groupValue,
     required this.value,
-    required this.onChanged,
+    this.onChanged,
   }) : super(key: key);
 
   @override
@@ -68,7 +68,7 @@ class _RadioTileState<T> extends State<RadioTile<T>> {
       setState(() {
         groupValue = widget.value;
       });
-      widget.onChanged(groupValue);
+      if (widget.onChanged != null) widget.onChanged!(groupValue);
     } else {
       setState(() {
         groupValue = null;
