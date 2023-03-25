@@ -14,7 +14,7 @@ class ConfigRouter {
       case RouterConstants.home:
         return normalNavigate(
           const HomeView(),
-          RouterConstants.home,
+          settings.name!,
         );
       default:
         //throw NavigateException<SettingsDynamicModel>(args.arguments);
