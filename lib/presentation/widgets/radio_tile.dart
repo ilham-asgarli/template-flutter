@@ -65,11 +65,11 @@ class _RadioTileState<T> extends State<RadioTile<T>> {
   }
 
   void defaultOnChanged() {
+    if (widget.onChanged != null) widget.onChanged!(groupValue);
     if (widget.value != groupValue) {
       setState(() {
         groupValue = widget.value;
       });
-      if (widget.onChanged != null) widget.onChanged!(groupValue);
     } else {
       setState(() {
         groupValue = null;
