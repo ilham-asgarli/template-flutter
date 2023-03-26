@@ -40,6 +40,7 @@ class _RadioTileState<T> extends State<RadioTile<T>> {
       child: Padding(
         padding: widget.padding,
         child: Row(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Radio<T>(
               visualDensity: const VisualDensity(
