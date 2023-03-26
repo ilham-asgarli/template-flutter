@@ -2,13 +2,17 @@ extension StringLocalization on String {}
 
 extension StringConcat on String {
   String concat(String s) => this + s;
+
   String concatIfNotEmpty(String s) => isNotEmpty ? this + s : "";
 }
 
 extension ImagePathExtension on String {
   String get toSVG => 'assets/images/svg/$this.svg';
+
   String get toPNG => 'assets/images/$this.png';
+
   String get toJPEG => 'assets/images/$this.jpeg';
+
   String get toJPG => 'assets/images/$this.jpg';
 }
 
@@ -29,13 +33,30 @@ extension StringCasingExtension on String {
 extension EnumExtension on String {
   T? valueToEnum<T>(Iterable<T?> values) {
     return values.firstWhere(
-      (type) => type.toString().split(".").last == this,
+          (type) => type.toString().split(".").last == this,
     );
   }
 
   T? toEnum<T>(Iterable<T?> values) {
     return values.firstWhere(
-      (type) => type.toString() == this,
+          (type) => type.toString() == this,
     );
+  }
+}
+
+extension SplitExtension on String {
+  List<String> splitToThree(
+      final String regex,
+      ) {
+    int startIndex = indexOf(regex);
+    int endIndex = startIndex + regex.length;
+
+    return startIndex != -1
+        ? [
+      substring(0, startIndex),
+      regex, // = substring(startIndex, endIndex)
+      substring(endIndex),
+    ]
+        : ["", "", ""];
   }
 }
