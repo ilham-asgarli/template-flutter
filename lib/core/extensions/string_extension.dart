@@ -6,7 +6,7 @@ extension StringConcat on String {
   String concatIfNotEmpty(String s) => isNotEmpty ? this + s : "";
 }
 
-extension ImagePathExtension on String {
+extension ImagePath on String {
   String get toSVG => 'assets/images/svg/$this.svg';
 
   String get toPNG => 'assets/images/$this.png';
@@ -20,7 +20,7 @@ extension Env on String {
   String get toEnv => 'assets/env/$this.env';
 }
 
-extension StringCasingExtension on String {
+extension StringCasing on String {
   String toFirstLetterCapitalized() =>
       length > 0 ? '${this[0].toUpperCase()}${substring(1).toLowerCase()}' : '';
 
@@ -30,33 +30,38 @@ extension StringCasingExtension on String {
       .join(' ');
 }
 
-extension EnumExtension on String {
+extension Enum on String {
   T? valueToEnum<T>(Iterable<T?> values) {
     return values.firstWhere(
-          (type) => type.toString().split(".").last == this,
+      (type) => type.toString().split(".").last == this,
     );
   }
 
   T? toEnum<T>(Iterable<T?> values) {
     return values.firstWhere(
-          (type) => type.toString() == this,
+      (type) => type.toString() == this,
     );
   }
 }
 
-extension SplitExtension on String {
+extension Split on String {
   List<String> splitToThree(
-      final String regex,
-      ) {
+    final String regex,
+  ) {
     int startIndex = indexOf(regex);
     int endIndex = startIndex + regex.length;
 
     return startIndex != -1
         ? [
-      substring(0, startIndex),
-      regex, // = substring(startIndex, endIndex)
-      substring(endIndex),
-    ]
+            substring(0, startIndex),
+            regex, // = substring(startIndex, endIndex)
+            substring(endIndex),
+          ]
         : ["", "", ""];
   }
+}
+
+extension Check on String? {
+  bool get isNull => this == null;
+  bool get isNullOrEmpty => isNull || this!.isEmpty;
 }
