@@ -63,5 +63,7 @@ extension Split on String {
 
 extension Check on String? {
   bool get isNull => this == null;
+  bool get isNotNull => !isNull;
   bool get isNullOrEmpty => isNull || this!.isEmpty;
+  bool get isNotNullOrEmpty => !isNullOrEmpty;
 }
