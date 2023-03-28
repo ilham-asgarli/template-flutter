@@ -50,6 +50,7 @@ class _RadioTileState<T> extends State<RadioTile<T>> {
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               groupValue: groupValue,
               value: widget.value,
+              toggleable: true,
               onChanged: (T? newValue) {
                 defaultOnChanged();
               },
