@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import '../../../../presentation/features/home/views/home_view.dart';
 import '../../../../presentation/features/not-found-navigation/views/not_found_navigation_view.dart';
 import '../../constants/router/router_constants.dart';
+import 'interfaces/router_interface.dart';
 
-class ConfigRouter {
+class ConfigRouter extends RouterInterface {
   static final ConfigRouter instance = ConfigRouter._init();
 
   ConfigRouter._init();
 
+  @override
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case RouterConstants.home:
@@ -23,12 +25,5 @@ class ConfigRouter {
           RouterConstants.notFound,
         );
     }
-  }
-
-  MaterialPageRoute normalNavigate(Widget widget, String pageName) {
-    return MaterialPageRoute(
-      builder: (context) => widget,
-      settings: RouteSettings(name: pageName),
-    );
   }
 }
