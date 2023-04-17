@@ -12,12 +12,12 @@ class ConfigRouter extends RouterInterface {
 
   @override
   Route<dynamic> generateRoute(RouteSettings settings) {
+    final Widget widget;
+
     switch (settings.name) {
       case RouterConstants.home:
-        return normalNavigate(
-          const MainView(),
-          settings.name!,
-        );
+        widget = const MainView();
+        break;
       default:
         //throw NavigateException<SettingsDynamicModel>(args.arguments);
         return normalNavigate(
@@ -25,5 +25,10 @@ class ConfigRouter extends RouterInterface {
           RouterConstants.notFound,
         );
     }
+
+    return normalNavigate(
+      widget,
+      settings.name!,
+    );
   }
 }
