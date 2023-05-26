@@ -9,8 +9,6 @@ extension _CoreHttpOperations on CoreHttp {
   }) async {
     http.Response? response;
 
-    url = ApiUrlConstants.base + url;
-
     try {
       switch (type) {
         case HttpTypes.get:
