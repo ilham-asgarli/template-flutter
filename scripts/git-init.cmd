@@ -4,4 +4,4 @@ git branch -M main
 set /p "origin=Origin: "
 if [%origin%]==[] goto :origin_set
 git remote add origin %origin%
-.\push.cmd
+scripts\push.cmd
