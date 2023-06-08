@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/base/views/base_app_lifecycle_view.dart';
+import '../../../../core/constants/app/app_localizations.dart';
 import '../../../../core/constants/app/global_key_constants.dart';
 import '../../../../utils/logic/config/router/config_router.dart';
 import '../../../../utils/logic/helpers/theme/theme_helper.dart';
