@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -51,6 +52,7 @@ class _MyAppViewState extends State<MyAppView> {
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
+        locale: kDebugMode ? const Locale("tr", "TR") : null,
         themeMode: themeState.themeMode,
         theme: CommonTheme.instance.getTheme(
           appTheme: themeState.appTheme,
