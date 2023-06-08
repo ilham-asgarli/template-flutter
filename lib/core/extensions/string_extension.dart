@@ -17,7 +17,9 @@ extension ImagePath on String {
 }
 
 extension Env on String {
-  String get toEnv => 'assets/env/$this.env';
+  String get toEnvDevelopment => 'assets/env/$this.env.development';
+  String get toEnvProduction => 'assets/env/$this.env.development';
+  String get toEnvExample => 'assets/env/$this.env.example';
 }
 
 extension StringCasing on String {
@@ -63,7 +65,22 @@ extension Split on String {
 
 extension Check on String? {
   bool get isNull => this == null;
+
   bool get isNotNull => !isNull;
+
   bool get isNullOrEmpty => isNull || this!.isEmpty;
+
   bool get isNotNullOrEmpty => !isNullOrEmpty;
+}
+
+extension Validation on String? {
+  bool get isEmail {
+    if (isNull) {
+      return false;
+    }
+
+    const pattern = r'^[\w-]+(\.[\w-]+)*@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$';
+    final regex = RegExp(pattern);
+    return regex.hasMatch(this!);
+  }
 }

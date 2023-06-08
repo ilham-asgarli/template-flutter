@@ -1,13 +1,12 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/base/views/base_app_lifecycle_view.dart';
 import '../../../../core/constants/app/global_key_constants.dart';
 import '../../../../utils/logic/config/router/config_router.dart';
-import '../../../../utils/logic/constants/locale/locale_keys.g.dart';
 import '../../../../utils/logic/helpers/theme/theme_helper.dart';
 import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
 import '../../../../utils/logic/state/cubit/network/network_cubit.dart';
@@ -50,9 +49,8 @@ class _MyAppViewState extends State<MyAppView> {
       child: MaterialApp(
         scrollBehavior: const ScrollBehavior().copyWith(overscroll: false),
         debugShowCheckedModeBanner: false,
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         themeMode: themeState.themeMode,
         theme: CommonTheme.instance.getTheme(
           appTheme: themeState.appTheme,
@@ -100,7 +98,7 @@ class _MyAppViewState extends State<MyAppView> {
   Widget buildNoInternetWidget() {
     return Scaffold(
       body: HaveNo(
-        description: LocaleKeys.noInternet.tr(),
+        description: AppLocalizations.of(context)!.noInternet,
         iconData: Icons.wifi_off_rounded,
       ),
     );

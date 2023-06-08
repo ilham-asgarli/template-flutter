@@ -139,4 +139,5 @@ android/app/google-services.json
 macos/firebase_app_id_file.json
 macos/Runner/GoogleService-Info.plist
 
-*.env
+.env*
+!.env.example
