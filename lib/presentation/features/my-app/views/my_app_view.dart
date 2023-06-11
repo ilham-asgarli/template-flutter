@@ -89,7 +89,7 @@ class _MyAppViewState extends State<MyAppView> {
         }
 
         if (state is ConnectionFailure) {
-          return buildNoInternetWidget();
+          return buildNoInternetWidget(context);
         }
 
         return const SizedBox();
@@ -97,7 +97,7 @@ class _MyAppViewState extends State<MyAppView> {
     );
   }
 
-  Widget buildNoInternetWidget() {
+  Widget buildNoInternetWidget(BuildContext context) {
     return Scaffold(
       body: HaveNo(
         description: AppLocalizations.of(context)!.noInternet,
