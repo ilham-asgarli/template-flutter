@@ -20,8 +20,10 @@ class RouterService implements RouterInterface {
       (Route<dynamic> route) => false;
 
   @override
-  Future<T?> pushNamed<T extends Object?>(
-      {required String path, Object? data}) async {
+  Future<T?> pushNamed<T extends Object?>({
+    required String path,
+    Object? data,
+  }) async {
     return await navigatorKey?.currentState?.pushNamed<T>(
       path,
       arguments: data,
