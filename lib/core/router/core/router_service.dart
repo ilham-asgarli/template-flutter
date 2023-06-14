@@ -22,7 +22,7 @@ class RouterService implements RouterInterface {
   @override
   Future<T?> pushNamed<T extends Object?>(
       {required String path, Object? data}) async {
-    return await navigatorKey?.currentState?.pushNamed(
+    return await navigatorKey?.currentState?.pushNamed<T>(
       path,
       arguments: data,
     );
@@ -44,9 +44,11 @@ class RouterService implements RouterInterface {
   }
 
   @override
-  Future<T?> pushReplacementNamed<T extends Object?>(
-      {required String path, Object? data}) async {
-    return await navigatorKey?.currentState?.pushReplacementNamed(
+  Future<T?> pushReplacementNamed<T extends Object?, TO extends Object?>({
+    required String path,
+    Object? data,
+  }) async {
+    return await navigatorKey?.currentState?.pushReplacementNamed<T, TO>(
       path,
       arguments: data,
     );

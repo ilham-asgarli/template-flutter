@@ -9,7 +9,7 @@ abstract class RouterInterface {
     Object? data,
   });
 
-  Future<void> pushReplacementNamed<T extends Object?>({
+  Future<void> pushReplacementNamed<T extends Object?, TO extends Object?>({
     required String path,
     Object? data,
   });
