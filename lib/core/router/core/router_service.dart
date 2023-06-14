@@ -21,10 +21,14 @@ class RouterService implements RouterInterface {
 
   @override
   Future<T?> pushNamed<T extends Object?>({
+    BuildContext? context,
     required String path,
     Object? data,
   }) async {
-    return await navigatorKey?.currentState?.pushNamed<T>(
+    return await (context != null
+            ? Navigator.of(context)
+            : navigatorKey?.currentState)
+        ?.pushNamed<T>(
       path,
       arguments: data,
     );
@@ -32,11 +36,15 @@ class RouterService implements RouterInterface {
 
   @override
   Future<T?> pushNamedAndRemoveUntil<T extends Object?>({
+    BuildContext? context,
     required String path,
     Object? data,
     String? removeUntilPageName,
   }) async {
-    return await navigatorKey?.currentState?.pushNamedAndRemoveUntil<T>(
+    return await (context != null
+            ? Navigator.of(context)
+            : navigatorKey?.currentState)
+        ?.pushNamedAndRemoveUntil<T>(
       path,
       removeUntilPageName == null
           ? removeAllOldRoutes
@@ -47,25 +55,32 @@ class RouterService implements RouterInterface {
 
   @override
   Future<T?> pushReplacementNamed<T extends Object?, TO extends Object?>({
+    BuildContext? context,
     required String path,
     Object? data,
   }) async {
-    return await navigatorKey?.currentState?.pushReplacementNamed<T, TO>(
+    return await (context != null
+            ? Navigator.of(context)
+            : navigatorKey?.currentState)
+        ?.pushReplacementNamed<T, TO>(
       path,
       arguments: data,
     );
   }
 
   @override
-  void pop<T extends Object?>([T? result]) async {
-    navigatorKey?.currentState?.pop(result);
+  void pop<T extends Object?>([BuildContext? context, T? result]) async {
+    (context != null ? Navigator.of(context) : navigatorKey?.currentState)
+        ?.pop(result);
   }
 
   @override
   void popUntil({
+    BuildContext? context,
     String? removeUntilPageName,
   }) {
-    navigatorKey?.currentState?.popUntil(
+    (context != null ? Navigator.of(context) : navigatorKey?.currentState)
+        ?.popUntil(
       removeUntilPageName == null
           ? removeAllOldRoutes
           : ModalRoute.withName(removeUntilPageName),
