@@ -22,13 +22,13 @@ class ConfigRouter extends RouterInterface {
         //throw NavigateException<SettingsDynamicModel>(args.arguments);
         return normalNavigate(
           const NotFoundNavigationView(),
-          RouterConstants.notFound,
+          const RouteSettings(name: RouterConstants.notFound),
         );
     }
 
     return normalNavigate(
       widget,
-      settings.name!,
+      settings,
     );
   }
 }
