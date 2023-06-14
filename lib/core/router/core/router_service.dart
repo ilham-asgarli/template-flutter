@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/app/global_key_constants.dart';
-import '../interfaces/router_service.dart';
+import '../interfaces/router_interface.dart';
 
-class RouterService implements IRouterService {
+class RouterService implements RouterInterface {
   static final RouterService instance = RouterService._init();
 
   GlobalKey<NavigatorState>? navigatorKey;
@@ -20,20 +20,21 @@ class RouterService implements IRouterService {
       (Route<dynamic> route) => false;
 
   @override
-  Future<void> pushNamed({required String path, Object? data}) async {
-    await navigatorKey?.currentState?.pushNamed(
+  Future<T?> pushNamed<T extends Object?>(
+      {required String path, Object? data}) async {
+    return await navigatorKey?.currentState?.pushNamed(
       path,
       arguments: data,
     );
   }
 
   @override
-  Future<void> pushNamedAndRemoveUntil({
+  Future<T?> pushNamedAndRemoveUntil<T extends Object?>({
     required String path,
     Object? data,
     String? removeUntilPageName,
   }) async {
-    await navigatorKey?.currentState?.pushNamedAndRemoveUntil(
+    return await navigatorKey?.currentState?.pushNamedAndRemoveUntil<T>(
       path,
       removeUntilPageName == null
           ? removeAllOldRoutes
@@ -43,17 +44,17 @@ class RouterService implements IRouterService {
   }
 
   @override
-  Future<void> pushReplacementNamed(
+  Future<T?> pushReplacementNamed<T extends Object?>(
       {required String path, Object? data}) async {
-    await navigatorKey?.currentState?.pushReplacementNamed(
+    return await navigatorKey?.currentState?.pushReplacementNamed(
       path,
       arguments: data,
     );
   }
 
   @override
-  void pop() async {
-    navigatorKey?.currentState?.pop();
+  void pop<T extends Object?>([T? result]) async {
+    navigatorKey?.currentState?.pop(result);
   }
 
   @override
