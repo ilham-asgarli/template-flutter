@@ -18,7 +18,7 @@ extension ImagePath on String {
 
 extension Env on String {
   String get toEnvDevelopment => 'assets/env/$this.env.development';
-  String get toEnvProduction => 'assets/env/$this.env.development';
+  String get toEnvProduction => 'assets/env/$this.env.production';
   String get toEnvExample => 'assets/env/$this.env.example';
 }
 
