@@ -3,10 +3,8 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
-import '../../../../utils/logic/constants/api/api_url_constants.dart';
 import '../../base/models/base_error.dart';
 import '../../base/models/base_http.dart';
-import '../../base/models/base_model.dart';
 import '../../base/models/base_response.dart';
 import '../../base/models/base_success.dart';
 import '../../constants/enums/http_request_enum.dart';
@@ -21,10 +19,10 @@ class CoreHttp {
 
   CoreHttp._init();
 
-  Future<BaseResponse<R>> send<R, T extends BaseModel>(
+  Future<BaseResponse<R>> send<R, T>(
     String url, {
     required HttpTypes type,
-    required T parseModel,
+    T Function(Map<String, dynamic>)? fromJson,
     data,
     accessToken,
   }) async {
@@ -37,14 +35,8 @@ class CoreHttp {
       );
 
       if (response != null) {
-        try {
-          final model = _returnResponse<R, T>(response, parseModel: parseModel);
-          return BaseSuccess<R>(data: model);
-        } on InvalidInputException catch (e) {
-          return BaseError(message: e.toString());
-        } on Exception catch (e) {
-          return BaseError(message: e.toString());
-        }
+        final model = _returnResponse<R, T>(response, fromJson: fromJson);
+        return BaseSuccess<R>(data: model);
       } else {
         return BaseError(message: "Wrong http method");
       }

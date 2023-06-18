@@ -32,6 +32,10 @@ class InvalidInputException extends HttpException {
   InvalidInputException([message]) : super(message, "Invalid Input: ");
 }
 
+class NotFoundException extends HttpException {
+  NotFoundException([message]) : super(message, "Not Found: ");
+}
+
 class ServerException extends HttpException {
   ServerException([message]) : super(message, "Server Error: ");
 }
