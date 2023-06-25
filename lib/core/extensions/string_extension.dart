@@ -1,7 +1,5 @@
 import 'package:flutter/foundation.dart';
 
-extension StringLocalization on String {}
-
 extension StringConcat on String {
   String concat(String s) => this + s;
 
@@ -18,7 +16,7 @@ extension ImagePath on String {
   String get toJPG => 'assets/images/$this.jpg';
 }
 
-extension Env on String {
+extension EnvPath on String {
   String get toEnv => kDebugMode ? toEnvDevelopment : toEnvProduction;
   String get toEnvDevelopment => '$this.env.development';
   String get toEnvProduction => '$this.env.production';

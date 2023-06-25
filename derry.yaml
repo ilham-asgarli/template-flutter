@@ -2,6 +2,9 @@ build_runner:
   (description): Generate
   (scripts):
     - dart run build_runner build
+# pregen is for flutter_gen and it will run before gen command. If don't run pub get, build will gives error.
+pregen:
+    - flutter pub get
 gen:
   new:
     (description): Generate
@@ -24,8 +27,8 @@ locale:
   (scripts):
     - flutter gen-l10n
 pub:
-  u:
-    m:
+  upgrade:
+    major:
       (description): Upgrade packages to latest versions
       (scripts):
         - flutter pub upgrade --major-versions

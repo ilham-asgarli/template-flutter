@@ -9,37 +9,61 @@
 
 import 'package:flutter/widgets.dart';
 
-class $AssetsEnvGen {
-  const $AssetsEnvGen();
+class $AssetsAnimationGen {
+  const $AssetsAnimationGen();
 
-  /// File path: assets/env/.env.development
-  String get envDevelopment => 'assets/env/.env.development';
-
-  /// File path: assets/env/.env.example
-  String get envExample => 'assets/env/.env.example';
-
-  /// File path: assets/env/.env.production
-  String get envProduction => 'assets/env/.env.production';
-
-  /// List of all assets
-  List<String> get values => [envDevelopment, envExample, envProduction];
-}
-
-class $AssetsFontsGen {
-  const $AssetsFontsGen();
-
-  /// File path: assets/fonts/.gitkeep
-  String get gitkeep => 'assets/fonts/.gitkeep';
+  /// File path: assets/animation/.gitkeep
+  String get gitkeep => 'assets/animation/.gitkeep';
 
   /// List of all assets
   List<String> get values => [gitkeep];
 }
 
-class $AssetsImagesGen {
-  const $AssetsImagesGen();
+class $AssetsAudioGen {
+  const $AssetsAudioGen();
 
-  /// File path: assets/images/.gitkeep
-  String get gitkeep => 'assets/images/.gitkeep';
+  /// File path: assets/audio/.gitkeep
+  String get gitkeep => 'assets/audio/.gitkeep';
+
+  /// List of all assets
+  List<String> get values => [gitkeep];
+}
+
+class $AssetsFontGen {
+  const $AssetsFontGen();
+
+  /// File path: assets/font/.gitkeep
+  String get gitkeep => 'assets/font/.gitkeep';
+
+  /// List of all assets
+  List<String> get values => [gitkeep];
+}
+
+class $AssetsImageGen {
+  const $AssetsImageGen();
+
+  /// File path: assets/image/.gitkeep
+  String get gitkeep => 'assets/image/.gitkeep';
+
+  /// List of all assets
+  List<String> get values => [gitkeep];
+}
+
+class $AssetsJsonGen {
+  const $AssetsJsonGen();
+
+  /// File path: assets/json/.gitkeep
+  String get gitkeep => 'assets/json/.gitkeep';
+
+  /// List of all assets
+  List<String> get values => [gitkeep];
+}
+
+class $AssetsVideoGen {
+  const $AssetsVideoGen();
+
+  /// File path: assets/video/.gitkeep
+  String get gitkeep => 'assets/video/.gitkeep';
 
   /// List of all assets
   List<String> get values => [gitkeep];
@@ -48,9 +72,12 @@ class $AssetsImagesGen {
 class Assets {
   Assets._();
 
-  static const $AssetsEnvGen env = $AssetsEnvGen();
-  static const $AssetsFontsGen fonts = $AssetsFontsGen();
-  static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsAnimationGen animation = $AssetsAnimationGen();
+  static const $AssetsAudioGen audio = $AssetsAudioGen();
+  static const $AssetsFontGen font = $AssetsFontGen();
+  static const $AssetsImageGen image = $AssetsImageGen();
+  static const $AssetsJsonGen json = $AssetsJsonGen();
+  static const $AssetsVideoGen video = $AssetsVideoGen();
 }
 
 class AssetGenImage {
