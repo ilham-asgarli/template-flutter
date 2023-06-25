@@ -25,6 +25,7 @@ Future<void> init() async {
         ? HydratedStorage.webStorageDirectory
         : await getApplicationDocumentsDirectory(),
   );
+  // HttpOverrides.global = MyHttpOverrides();
 
   runApp(app());
 }
