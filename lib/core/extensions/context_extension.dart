@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import '../../l10n/gen/app_localizations.dart';
 import '../constants/enums/app_enum.dart';
 
 extension ContextExtension on BuildContext {
@@ -103,4 +104,8 @@ extension SpaceExtension on BuildContext {
         width: minSizeProperty == SizeProperty.width ? val : 0,
         height: minSizeProperty == SizeProperty.height ? val : 0,
       );
+}
+
+extension Localization on BuildContext {
+  AppLocalizations get localization => AppLocalizations.of(this)!;
 }

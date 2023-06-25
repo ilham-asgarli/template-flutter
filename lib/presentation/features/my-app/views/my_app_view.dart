@@ -6,6 +6,7 @@ import 'package:sizer/sizer.dart';
 
 import '../../../../core/base/views/base_app_lifecycle_view.dart';
 import '../../../../core/constants/app/global_key_constants.dart';
+import '../../../../core/extensions/context_extension.dart';
 import '../../../../l10n/gen/app_localizations.dart';
 import '../../../../utils/logic/config/router/config_router.dart';
 import '../../../../utils/logic/helpers/theme/theme_helper.dart';
@@ -100,7 +101,7 @@ class _MyAppViewState extends State<MyAppView> {
   Widget buildNoInternetWidget(BuildContext context) {
     return Scaffold(
       body: HaveNo(
-        description: AppLocalizations.of(context)!.noInternet,
+        description: context.localization.noInternet,
         iconData: Icons.wifi_off_rounded,
       ),
     );
