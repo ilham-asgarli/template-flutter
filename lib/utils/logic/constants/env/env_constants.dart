@@ -1,3 +1,3 @@
 class EnvConstants {
-  static const fileName = "";
+  static const fileName = '';
 }

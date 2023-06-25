@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.0 <4.0.0'
+  sdk: '>=3.0.5 <4.0.0'
 
 scripts: derry.yaml
 
@@ -23,7 +23,7 @@ dependencies:
 
   flutter_localizations:
     sdk: flutter
-  # intl: any
+  intl: any
 
   # responsive
   device_preview: ^1.1.0
@@ -34,6 +34,8 @@ dependencies:
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.1
 
+  flutter_gen: ^5.3.1
+
   bloc: ^8.1.0
   flutter_bloc: ^8.1.1
   hydrated_bloc: ^9.0.0
@@ -41,8 +43,10 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
 
+  http: ^0.13.6
+
   flutter_dotenv: ^5.1.0
-  # http: ^0.13.6
+
   equatable: ^2.0.5
   path_provider: ^2.0.11
   shared_preferences: ^2.0.15
@@ -68,6 +72,7 @@ dev_dependencies:
 
   flutter_lints: ^2.0.0
   build_runner: ^2.2.0
+  flutter_gen_runner:
   flutter_launcher_icons: ^0.13.1
   hive_generator: ^2.0.0
   json_serializable: ^6.7.0
@@ -76,10 +81,23 @@ dependency_overrides:
   intl: ^0.18.1
   http: ^1.0.0
 
+flutter_gen:
+  output: lib/gen/
+  line_length: 80
+  integrations:
+    flutter_svg: true
+    flare_flutter: true
+    rive: true
+    lottie: true
+
+  #colors:
+    #inputs:
+      #- assets/color/colors.xml
+
 flutter:
 
   uses-material-design: true
-  generate: true
+  # generate: true
 
   assets:
     - assets/env/

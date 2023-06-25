@@ -1,4 +1,7 @@
-arb-dir: lib/l10n
+arb-dir: lib/l10n/arb
 template-arb-file: app_en.arb
+output-dir: lib/l10n/gen
+# output-class: TestLocalizations
 output-localization-file: app_localizations.dart
 use-escaping: true
+synthetic-package: false

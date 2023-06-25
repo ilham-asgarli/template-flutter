@@ -5,8 +5,8 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/base/views/base_app_lifecycle_view.dart';
-import '../../../../core/constants/app/app_localizations.dart';
 import '../../../../core/constants/app/global_key_constants.dart';
+import '../../../../l10n/gen/app_localizations.dart';
 import '../../../../utils/logic/config/router/config_router.dart';
 import '../../../../utils/logic/helpers/theme/theme_helper.dart';
 import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
