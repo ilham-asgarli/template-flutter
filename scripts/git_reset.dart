@@ -5,7 +5,20 @@ void main() {
   var commitReference = stdin.readLineSync();
 
   if (commitReference != null && commitReference.isNotEmpty) {
-    Process.run('git', ['reset', commitReference]);
-    Process.run('git', ['push', '-f']);
+    Process.run('git', ['reset', commitReference]).then((value) {
+      if (value.exitCode == 0) {
+        print('Git reset successful!');
+      } else {
+        print('Git reset failed. Error: ${value.stderr}');
+      }
+    });
+
+    Process.run('git', ['push', '-f']).then((value) {
+      if (value.exitCode == 0) {
+        print('Git push successful!');
+      } else {
+        print('Git push failed. Error: ${value.stderr}');
+      }
+    });
   }
 }
