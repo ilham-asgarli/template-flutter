@@ -1,0 +1,44 @@
+build_runner:
+  (description): Generate
+  (scripts):
+    - dart run build_runner build
+gen:
+  new:
+    (description): Generate
+    (scripts):
+      - $build_runner
+  clean:
+    (description): Clean generate
+    (scripts):
+    - $build_runner --delete-conflicting-outputs
+splash:
+  (description): Create splash screen
+  (scripts):
+    - flutter pub run flutter_native_splash:create --path=flutter_native_splash.yaml
+icon:
+  (description): Create icon
+  (scripts):
+    - flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons.yaml
+locale:
+  (description): Generate locales
+  (scripts):
+    - flutter gen-l10n
+pub:
+  u:
+    m:
+      (description): Upgrade packages to latest versions
+      (scripts):
+        - flutter pub upgrade --major-versions
+git:
+  init:
+    (description): Initialize git and push to github
+    (scripts):
+      - dart scripts/git_push.dart
+  push:
+    (description): Push to Github
+    (scripts):
+      - dart scripts/git_push.dart
+  origin:
+    (description): Set origin
+    (scripts):
+      - dart scripts/git_origin.dart
