@@ -13,7 +13,9 @@ void main() async {
       print(value.stdout);
       print('Git add successful!');
     } else {
-      print('Git add failed. Error: ${value.stderr}');
+      print(value.stdout);
+      print(value.stderr);
+      print('Git push failed.');
     }
   });
 
@@ -22,7 +24,9 @@ void main() async {
       print(value.stdout);
       print('Git commit successful!');
     } else {
-      print('Git commit failed. Error: ${value.stderr}');
+      print(value.stdout);
+      print(value.stderr);
+      print('Git push failed.');
     }
   });
 
@@ -31,7 +35,9 @@ void main() async {
       print(value.stdout);
       print('Git push successful!');
     } else {
-      print('Git push failed. Error: ${value.stderr}');
+      print(value.stdout);
+      print(value.stderr);
+      print('Git push failed.');
     }
   });
 }

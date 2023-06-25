@@ -10,7 +10,9 @@ void main() {
         print(value.stdout);
         print('Git init successful!');
       } else {
-        print('Git init failed. Error: ${value.stderr}');
+        print(value.stdout);
+        print(value.stderr);
+        print('Git push failed.');
       }
     });
 
@@ -19,7 +21,9 @@ void main() {
         print(value.stdout);
         print('Git branch successful!');
       } else {
-        print('Git branch failed. Error: ${value.stderr}');
+        print(value.stdout);
+        print(value.stderr);
+        print('Git push failed.');
       }
     });
 
@@ -28,7 +32,9 @@ void main() {
         print(value.stdout);
         print('Git remote successful!');
       } else {
-        print('Git remote failed. Error: ${value.stderr}');
+        print(value.stdout);
+        print(value.stderr);
+        print('Git push failed.');
       }
     });
 
@@ -37,7 +43,9 @@ void main() {
         print(value.stdout);
         print('Git git-push start successful!');
       } else {
-        print('Git git-push start failed. Error: ${value.stderr}');
+        print(value.stdout);
+        print(value.stderr);
+        print('Git push failed.');
       }
     });
   }

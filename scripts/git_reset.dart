@@ -10,7 +10,9 @@ void main() {
         print(value.stdout);
         print('Git reset successful!');
       } else {
-        print('Git reset failed. Error: ${value.stderr}');
+        print(value.stdout);
+        print(value.stderr);
+        print('Git push failed.');
       }
     });
 
@@ -19,7 +21,9 @@ void main() {
         print(value.stdout);
         print('Git push successful!');
       } else {
-        print('Git push failed. Error: ${value.stderr}');
+        print(value.stdout);
+        print(value.stderr);
+        print('Git push failed.');
       }
     });
   }

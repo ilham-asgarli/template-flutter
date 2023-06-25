@@ -10,7 +10,9 @@ void main() {
         print(value.stdout);
         print('Git set-url successful!');
       } else {
-        print('Git set-url failed. Error: ${value.stderr}');
+        print(value.stdout);
+        print(value.stderr);
+        print('Git push failed.');
       }
     });
 
