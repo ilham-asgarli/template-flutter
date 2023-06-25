@@ -2,8 +2,19 @@ import 'package:flutter/material.dart';
 
 class BaseAppLifeCycleView extends StatefulWidget {
   final Widget child;
+  final Function()? onResume;
+  final Function()? onPause;
+  final Function()? onInactive;
+  final Function()? onDetach;
 
-  const BaseAppLifeCycleView({Key? key, required this.child}) : super(key: key);
+  const BaseAppLifeCycleView({
+    Key? key,
+    required this.child,
+    this.onResume,
+    this.onPause,
+    this.onInactive,
+    this.onDetach,
+  }) : super(key: key);
 
   @override
   State<BaseAppLifeCycleView> createState() => _BaseAppLifeCycleViewState();
@@ -27,12 +38,16 @@ class _BaseAppLifeCycleViewState extends State<BaseAppLifeCycleView>
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.resumed:
+        widget.onResume?.call();
         break;
       case AppLifecycleState.inactive:
+        widget.onInactive?.call();
         break;
       case AppLifecycleState.paused:
+        widget.onPause?.call();
         break;
       case AppLifecycleState.detached:
+        widget.onDetach?.call();
         break;
     }
   }
