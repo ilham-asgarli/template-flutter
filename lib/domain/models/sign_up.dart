@@ -5,7 +5,7 @@ import '../../utils/logic/helpers/json-serializable/date_time_converter.dart';
 part 'sign_up.freezed.dart';
 part 'sign_up.g.dart';
 
-@freezed
+@Freezed()
 abstract class SignUp with _$SignUp {
   @JsonSerializable(
     fieldRename: FieldRename.snake,

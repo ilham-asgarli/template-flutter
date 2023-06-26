@@ -20,6 +20,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$User {
+  String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   int get password => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
@@ -34,7 +35,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String email, int password, DateTime createdAt});
+  $Res call({String id, String email, int password, DateTime createdAt});
 }
 
 /// @nodoc
@@ -50,11 +51,16 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? email = null,
     Object? password = null,
     Object? createdAt = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -77,7 +83,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, int password, DateTime createdAt});
+  $Res call({String id, String email, int password, DateTime createdAt});
 }
 
 /// @nodoc
@@ -89,11 +95,16 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? email = null,
     Object? password = null,
     Object? createdAt = null,
   }) {
     return _then(_$_User(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -115,11 +126,13 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 @JsonSerializable(
     fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 @DateTimeConverter()
-class _$_User implements _User {
-  const _$_User(this.email, this.password, this.createdAt);
+class _$_User extends _User {
+  const _$_User(this.id, this.email, this.password, this.createdAt) : super._();
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
+  @override
+  final String id;
   @override
   final String email;
   @override
@@ -129,7 +142,7 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(email: $email, password: $password, createdAt: $createdAt)';
+    return 'User(id: $id, email: $email, password: $password, createdAt: $createdAt)';
   }
 
   @override
@@ -137,6 +150,7 @@ class _$_User implements _User {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_User &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
@@ -146,7 +160,7 @@ class _$_User implements _User {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, email, password, createdAt);
+  int get hashCode => Object.hash(runtimeType, id, email, password, createdAt);
 
   @JsonKey(ignore: true)
   @override
@@ -162,13 +176,15 @@ class _$_User implements _User {
   }
 }
 
-abstract class _User implements User {
-  const factory _User(
-          final String email, final int password, final DateTime createdAt) =
-      _$_User;
+abstract class _User extends User {
+  const factory _User(final String id, final String email, final int password,
+      final DateTime createdAt) = _$_User;
+  const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 
+  @override
+  String get id;
   @override
   String get email;
   @override

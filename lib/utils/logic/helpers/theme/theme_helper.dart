@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import '../../../ui/config/theme/common/common_theme.dart';
 
-import '../../../../core/cache/shared_preferences_manager.dart';
+import '../../../ui/config/theme/common/common_theme.dart';
 import '../../../ui/config/theme/custom/main_theme.dart';
 import '../../../ui/config/theme/interfaces/custom_theme.dart';
 import '../../../ui/constants/enums/app_theme_enum.dart';
-import '../../constants/cache/shared_preferences_constants.dart';
 
 class ThemeHelper {
   static final ThemeHelper instance = ThemeHelper._init();
@@ -20,8 +18,10 @@ class ThemeHelper {
   }
 
   ThemeMode? getThemeModePreference() {
-    bool? isDarkMode = SharedPreferencesManager.instance.preferences
-        ?.getBool(SharedPreferencesConstants.isDarkMode);
+    bool? isDarkMode =
+        true /*SharedPreferencesManager.instance.preferences
+        ?.getBool(SharedPreferencesConstants.isDarkMode)*/
+        ;
 
     return isDarkMode == null
         ? null
