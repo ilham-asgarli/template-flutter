@@ -8,8 +8,8 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
 import 'presentation/features/my-app/views/my_app_view.dart';
-import 'utils/logic/state/bloc/theme/theme_bloc.dart';
 import 'utils/logic/state/cubit/network/network_cubit.dart';
+import 'utils/logic/state/cubit/theme/theme_cubit.dart';
 
 void main() async {
   await init();
@@ -33,7 +33,7 @@ Widget app() {
   return MultiBlocProvider(
     providers: [
       BlocProvider(
-        create: (_) => ThemeBloc(),
+        create: (_) => ThemeCubit(),
       ),
       BlocProvider(
         create: (_) => NetworkCubit(),

@@ -5,14 +5,14 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/base/views/base_app_lifecycle_view.dart';
+import '../../../../core/base/views/base_brightness_change_view.dart';
 import '../../../../core/constants/app/global_key_constants.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../l10n/gen/app_localizations.dart';
 import '../../../../utils/logic/config/router/config_router.dart';
 import '../../../../utils/logic/helpers/theme/theme_helper.dart';
-import '../../../../utils/logic/state/bloc/theme/theme_bloc.dart';
 import '../../../../utils/logic/state/cubit/network/network_cubit.dart';
-import '../../../../utils/ui/config/theme/common/common_theme.dart';
+import '../../../../utils/logic/state/cubit/theme/theme_cubit.dart';
 import '../../../widgets/have_no.dart';
 import '../view-models/my_app_view_model.dart';
 
@@ -30,46 +30,33 @@ class _MyAppViewState extends State<MyAppView> {
   Widget build(BuildContext context) {
     return KeyboardVisibilityProvider(
       child: Sizer(
-        builder: (context, orientation, deviceType) => buildThemeBloc(),
+        builder: (context, orientation, deviceType) => buildApp(),
       ),
     );
   }
 
-  Widget buildThemeBloc() {
-    return BlocBuilder<ThemeBloc, ThemeState>(
-      builder: (BuildContext context, ThemeState state) {
-        ThemeHelper.instance
-            .setSystemUIOverlayStyleWithAppTheme(state.appTheme);
-
-        return buildApp(state);
-      },
-    );
-  }
-
-  Widget buildApp(ThemeState themeState) {
+  Widget buildApp() {
     return BaseAppLifeCycleView(
-      child: MaterialApp(
-        scrollBehavior: const ScrollBehavior().copyWith(overscroll: false),
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        locale: kDebugMode ? const Locale("tr", "TR") : null,
-        themeMode: themeState.themeMode,
-        theme: CommonTheme.instance.getTheme(
-          appTheme: themeState.appTheme,
-          themeMode: ThemeMode.light,
-        ),
-        darkTheme: CommonTheme.instance.getTheme(
-          appTheme: themeState.appTheme,
-          themeMode: ThemeMode.dark,
-        ),
-        scaffoldMessengerKey: GlobalKeyConstants.scaffoldMessengerKey,
-        navigatorKey: GlobalKeyConstants.navigatorKey,
-        onGenerateRoute: ConfigRouter.instance.generateRoute,
-        initialRoute: _myAppViewModel.getInitialRoute(),
-        builder: (context, Widget? child) {
-          return buildNetworkCubit(child);
+      child: BaseBrightnessChangeView(
+        onChange: () {
+          BlocProvider.of<ThemeCubit>(context).changeTheme(null);
         },
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
+          locale: kDebugMode ? const Locale("tr", "TR") : null,
+          theme: ThemeHelper.instance
+              .getCustomTheme(context.watch<ThemeCubit>().state.appTheme)
+              .getTheme(),
+          scaffoldMessengerKey: GlobalKeyConstants.scaffoldMessengerKey,
+          navigatorKey: GlobalKeyConstants.navigatorKey,
+          onGenerateRoute: ConfigRouter.instance.generateRoute,
+          initialRoute: _myAppViewModel.getInitialRoute(),
+          builder: (context, Widget? child) {
+            return buildNetworkCubit(child);
+          },
+        ),
       ),
     );
   }

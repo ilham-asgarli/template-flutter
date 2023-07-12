@@ -2,49 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
-import '../../../ui/config/theme/common/common_theme.dart';
-import '../../../ui/config/theme/custom/main_theme.dart';
+import '../../../ui/config/theme/implementations/dark/dark_theme.dart';
+import '../../../ui/config/theme/implementations/light/light_theme.dart';
 import '../../../ui/config/theme/interfaces/custom_theme.dart';
 import '../../../ui/constants/enums/app_theme_enum.dart';
 
 class ThemeHelper {
-  static final ThemeHelper instance = ThemeHelper._init();
+  static ThemeHelper get instance {
+    _instance ??= ThemeHelper._init();
+    return _instance!;
+  }
 
+  static ThemeHelper? _instance;
   ThemeHelper._init();
 
   ThemeMode getSystemThemeMode() {
-    Brightness brightness = SchedulerBinding.instance.window.platformBrightness;
+    Brightness brightness =
+        SchedulerBinding.instance.platformDispatcher.platformBrightness;
     return brightness == Brightness.light ? ThemeMode.light : ThemeMode.dark;
   }
 
-  ThemeMode? getThemeModePreference() {
-    bool? isDarkMode =
-        true /*SharedPreferencesManager.instance.preferences
-        ?.getBool(SharedPreferencesConstants.isDarkMode)*/
-        ;
-
-    return isDarkMode == null
-        ? null
-        : isDarkMode
-            ? ThemeMode.dark
-            : ThemeMode.light;
-  }
-
-  CustomTheme getCustomTheme(AppTheme appTheme) {
+  CustomTheme getCustomTheme(AppTheme? appTheme) {
     switch (appTheme) {
-      case AppTheme.main:
-        return MainTheme.instance;
-    }
-  }
-
-  ThemeData getThemeDataWithThemeMode(ThemeMode themeMode) {
-    switch (themeMode) {
-      case ThemeMode.system:
-        return ThemeData();
-      case ThemeMode.light:
-        return ThemeData.light();
-      case ThemeMode.dark:
-        return ThemeData.dark();
+      case AppTheme.light:
+        return LightTheme.instance;
+      case AppTheme.dark:
+        return DarkTheme.instance;
+      default:
+        return getSystemThemeMode() == ThemeMode.light
+            ? LightTheme.instance
+            : DarkTheme.instance;
     }
   }
 
@@ -54,9 +41,7 @@ class ThemeHelper {
 
   void setSystemUIOverlayStyleWithAppTheme(AppTheme? appTheme) {
     setSystemUIOverlayStyle(
-      appTheme == null
-          ? CommonTheme.instance.systemUiOverlayStyle()
-          : getCustomTheme(appTheme).systemUiOverlayStyle(),
+      getCustomTheme(appTheme).systemUiOverlayStyle(),
     );
   }
 
