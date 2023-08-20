@@ -14,6 +14,7 @@ class ThemeHelper {
   }
 
   static ThemeHelper? _instance;
+
   ThemeHelper._init();
 
   ThemeMode getSystemThemeMode() {
@@ -22,13 +23,19 @@ class ThemeHelper {
     return brightness == Brightness.light ? ThemeMode.light : ThemeMode.dark;
   }
 
-  CustomTheme getCustomTheme(AppTheme? appTheme) {
+  CustomTheme getCustomTheme(AppTheme? appTheme, ThemeMode themeMode) {
     switch (appTheme) {
       case AppTheme.light:
         return LightTheme.instance;
       case AppTheme.dark:
         return DarkTheme.instance;
       default:
+        if (themeMode == ThemeMode.light) {
+          return LightTheme.instance;
+        } else if (themeMode == ThemeMode.dark) {
+          return DarkTheme.instance;
+        }
+
         return getSystemThemeMode() == ThemeMode.light
             ? LightTheme.instance
             : DarkTheme.instance;
@@ -39,9 +46,10 @@ class ThemeHelper {
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
 
-  void setSystemUIOverlayStyleWithAppTheme(AppTheme? appTheme) {
+  void setSystemUIOverlayStyleWithAppTheme(
+      AppTheme? appTheme, ThemeMode themeMode) {
     setSystemUIOverlayStyle(
-      getCustomTheme(appTheme).systemUiOverlayStyle(),
+      getCustomTheme(appTheme, themeMode).systemUiOverlayStyle(),
     );
   }
 

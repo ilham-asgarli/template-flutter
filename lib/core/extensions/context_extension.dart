@@ -7,21 +7,24 @@ import '../constants/enums/app_enum.dart';
 
 extension ContextExtension on BuildContext {
   MediaQueryData get mediaQuery => MediaQuery.of(this);
+  Size get screenSize => MediaQuery.sizeOf(this);
+  EdgeInsets get padding => MediaQuery.paddingOf(this);
+  EdgeInsets get viewInsets => MediaQuery.viewInsetsOf(this);
 }
 
 extension MediaQueryExtension on BuildContext {
-  double get height => mediaQuery.size.height;
+  double get height => screenSize.height;
 
-  double get width => mediaQuery.size.width;
+  double get width => screenSize.width;
 
   double get minProperty => min<double>(width, height);
 
   SizeProperty get minSizeProperty =>
       width == minProperty ? SizeProperty.width : SizeProperty.height;
 
-  double get topPadding => mediaQuery.padding.top;
+  double get topPadding => padding.top;
 
-  double get bottomInset => mediaQuery.viewInsets.bottom;
+  double get bottomInset => viewInsets.bottom;
 
   double get lowValue => height * 0.01;
 

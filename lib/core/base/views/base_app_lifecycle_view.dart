@@ -6,6 +6,7 @@ class BaseAppLifeCycleView extends StatefulWidget {
   final Function()? onPause;
   final Function()? onInactive;
   final Function()? onDetach;
+  final Function()? onHidden;
 
   const BaseAppLifeCycleView({
     Key? key,
@@ -14,6 +15,7 @@ class BaseAppLifeCycleView extends StatefulWidget {
     this.onPause,
     this.onInactive,
     this.onDetach,
+    this.onHidden,
   }) : super(key: key);
 
   @override
@@ -48,6 +50,9 @@ class _BaseAppLifeCycleViewState extends State<BaseAppLifeCycleView>
         break;
       case AppLifecycleState.detached:
         widget.onDetach?.call();
+        break;
+      case AppLifecycleState.hidden:
+        widget.onHidden?.call();
         break;
     }
   }

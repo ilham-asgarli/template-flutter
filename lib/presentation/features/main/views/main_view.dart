@@ -19,15 +19,33 @@ class MainView extends StatelessWidget {
                 "Home View",
               ),
               ElevatedButton(
-                  onPressed: () {
-                    BlocProvider.of<ThemeCubit>(context).changeTheme(
-                      context.read<ThemeCubit>().state.appTheme ==
-                              AppTheme.light
-                          ? AppTheme.dark
-                          : AppTheme.light,
-                    );
-                  },
-                  child: Text("Welcome")),
+                onPressed: () {
+                  var theme =
+                      switch (context.read<ThemeCubit>().state.appTheme) {
+                    AppTheme.light => null,
+                    AppTheme.dark => AppTheme.light,
+                    null => AppTheme.dark,
+                  };
+
+                  BlocProvider.of<ThemeCubit>(context).changeTheme(theme);
+                },
+                child:
+                    Text(context.watch<ThemeCubit>().state.appTheme.toString()),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  var mode =
+                      switch (context.read<ThemeCubit>().state.themeMode) {
+                    ThemeMode.system => ThemeMode.light,
+                    ThemeMode.light => ThemeMode.dark,
+                    ThemeMode.dark => ThemeMode.system,
+                  };
+
+                  BlocProvider.of<ThemeCubit>(context).changeThemeMode(mode);
+                },
+                child: Text(
+                    context.watch<ThemeCubit>().state.themeMode.toString()),
+              ),
             ],
           ),
         ),

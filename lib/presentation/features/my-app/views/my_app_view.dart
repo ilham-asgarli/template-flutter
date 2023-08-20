@@ -47,7 +47,10 @@ class _MyAppViewState extends State<MyAppView> {
           supportedLocales: AppLocalizations.supportedLocales,
           locale: kDebugMode ? const Locale("tr", "TR") : null,
           theme: ThemeHelper.instance
-              .getCustomTheme(context.watch<ThemeCubit>().state.appTheme)
+              .getCustomTheme(
+                context.watch<ThemeCubit>().state.appTheme,
+                context.watch<ThemeCubit>().state.themeMode,
+              )
               .getTheme(),
           scaffoldMessengerKey: GlobalKeyConstants.scaffoldMessengerKey,
           navigatorKey: GlobalKeyConstants.navigatorKey,
