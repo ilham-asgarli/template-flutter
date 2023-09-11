@@ -36,7 +36,7 @@ git:
   init:
     (description): Initialize git and push to github
     (scripts):
-      - dart scripts/git_push.dart
+      - dart scripts/git_init.dart
   push:
     (description): Push to Github
     (scripts):
