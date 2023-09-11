@@ -34,7 +34,7 @@ pub:
         - flutter pub upgrade --major-versions
 git:
   init:
-    (description): Initialize git and push to github
+    (description): Initialize git and push to Github
     (scripts):
       - dart scripts/git_init.dart
   push:
@@ -45,3 +45,7 @@ git:
     (description): Set origin
     (scripts):
       - dart scripts/git_origin.dart
+  reset:
+    (description): Reset to commit reference
+    (scripts):
+      - dart scripts/git_reset.dart
