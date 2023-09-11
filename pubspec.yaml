@@ -32,7 +32,7 @@ dependencies:
   sizer: ^2.0.15
   responsive_framework: ^1.1.0
 
-  freezed: ^2.3.5
+  freezed: ^2.4.1
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.1
 
@@ -85,7 +85,7 @@ dev_dependencies:
   flutter_gen_runner:
   flutter_launcher_icons: ^0.13.1
   hive_generator: ^2.0.0
-  isar_generator: *isar_version
+  #isar_generator: *isar_version
   json_serializable: ^6.7.0
 
 dependency_overrides:
