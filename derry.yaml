@@ -17,11 +17,11 @@ gen:
 splash:
   (description): Create splash screen
   (scripts):
-    - flutter pub run flutter_native_splash:create --path=flutter_native_splash.yaml
+    - dart run flutter_native_splash:create --path=flutter_native_splash.yaml
 icon:
   (description): Create icon
   (scripts):
-    - flutter pub run flutter_launcher_icons:main -f flutter_launcher_icons.yaml
+    - dart run flutter_launcher_icons:main -f flutter_launcher_icons.yaml
 locale:
   (description): Generate locales
   (scripts):
