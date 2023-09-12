@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../l10n/gen/app_localizations.dart';
+import '../../../../core/extensions/context_extension.dart';
 import '../../../../utils/logic/state/cubit/theme/theme_cubit.dart';
 import '../../../../utils/ui/constants/enums/app_theme_enum.dart';
 
@@ -17,7 +17,7 @@ class MainView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                AppLocalizations.of(context)!.noInternet,
+                context.localization.noInternet,
               ),
               ElevatedButton(
                 onPressed: () {
