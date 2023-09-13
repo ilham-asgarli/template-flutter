@@ -38,7 +38,7 @@ void main() {
       }
     });
 
-    Process.run('dart', ['git_push.dart']).then((value) {
+    Process.run('dart', ['scripts/git_push.dart']).then((value) {
       if (value.exitCode == 0) {
         print(value.stdout);
         print('Git git-push start successful!');
