@@ -22,7 +22,7 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   String get id => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  int get password => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
   DateTime get createdAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $UserCopyWith<$Res> {
   factory $UserCopyWith(User value, $Res Function(User) then) =
       _$UserCopyWithImpl<$Res, User>;
   @useResult
-  $Res call({String id, String email, int password, DateTime createdAt});
+  $Res call({String id, String email, String password, DateTime createdAt});
 }
 
 /// @nodoc
@@ -68,7 +68,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       createdAt: null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -83,7 +83,7 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
       __$$_UserCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String email, int password, DateTime createdAt});
+  $Res call({String id, String email, String password, DateTime createdAt});
 }
 
 /// @nodoc
@@ -112,7 +112,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
       null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       null == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -136,7 +136,7 @@ class _$_User extends _User {
   @override
   final String email;
   @override
-  final int password;
+  final String password;
   @override
   final DateTime createdAt;
 
@@ -177,8 +177,8 @@ class _$_User extends _User {
 }
 
 abstract class _User extends User {
-  const factory _User(final String id, final String email, final int password,
-      final DateTime createdAt) = _$_User;
+  const factory _User(final String id, final String email,
+      final String password, final DateTime createdAt) = _$_User;
   const _User._() : super._();
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
@@ -188,7 +188,7 @@ abstract class _User extends User {
   @override
   String get email;
   @override
-  int get password;
+  String get password;
   @override
   DateTime get createdAt;
   @override

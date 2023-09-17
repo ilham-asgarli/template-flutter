@@ -8,7 +8,7 @@ part of 'sign_up.dart';
 
 _$_SignUp _$$_SignUpFromJson(Map<String, dynamic> json) => _$_SignUp(
       json['email'] as String,
-      json['password'] as int,
+      json['password'] as String,
     );
 
 Map<String, dynamic> _$$_SignUpToJson(_$_SignUp instance) => <String, dynamic>{

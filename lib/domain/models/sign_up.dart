@@ -15,7 +15,7 @@ abstract class SignUp with _$SignUp {
   @DateTimeConverter()
   const factory SignUp(
     String email,
-    int password,
+    String password,
   ) = _SignUp;
 
   factory SignUp.fromJson(Map<String, Object?> json) => _$SignUpFromJson(json);

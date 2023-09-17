@@ -21,7 +21,7 @@ SignUp _$SignUpFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$SignUp {
   String get email => throw _privateConstructorUsedError;
-  int get password => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +33,7 @@ abstract class $SignUpCopyWith<$Res> {
   factory $SignUpCopyWith(SignUp value, $Res Function(SignUp) then) =
       _$SignUpCopyWithImpl<$Res, SignUp>;
   @useResult
-  $Res call({String email, int password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -60,7 +60,7 @@ class _$SignUpCopyWithImpl<$Res, $Val extends SignUp>
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ) as $Val);
   }
 }
@@ -71,7 +71,7 @@ abstract class _$$_SignUpCopyWith<$Res> implements $SignUpCopyWith<$Res> {
       __$$_SignUpCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String email, int password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -95,7 +95,7 @@ class __$$_SignUpCopyWithImpl<$Res>
       null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
     ));
   }
 }
@@ -114,7 +114,7 @@ class _$_SignUp implements _SignUp {
   @override
   final String email;
   @override
-  final int password;
+  final String password;
 
   @override
   String toString() {
@@ -150,14 +150,14 @@ class _$_SignUp implements _SignUp {
 }
 
 abstract class _SignUp implements SignUp {
-  const factory _SignUp(final String email, final int password) = _$_SignUp;
+  const factory _SignUp(final String email, final String password) = _$_SignUp;
 
   factory _SignUp.fromJson(Map<String, dynamic> json) = _$_SignUp.fromJson;
 
   @override
   String get email;
   @override
-  int get password;
+  String get password;
   @override
   @JsonKey(ignore: true)
   _$$_SignUpCopyWith<_$_SignUp> get copyWith =>

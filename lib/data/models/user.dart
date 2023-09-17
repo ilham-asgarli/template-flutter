@@ -21,7 +21,7 @@ class User with _$User {
   const factory User(
     String id,
     String email,
-    int password,
+    String password,
     DateTime createdAt,
   ) = _User;
 
