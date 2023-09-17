@@ -27,11 +27,10 @@ locale:
   (scripts):
     - flutter gen-l10n
 pub:
-  upgrade:
-    major:
-      (description): Upgrade packages to latest versions
-      (scripts):
-        - flutter pub upgrade --major-versions
+  major:
+    (description): Upgrade packages to latest versions
+    (scripts):
+      - flutter pub upgrade --major-versions
 git:
   init:
     (description): Initialize git and push to Github
