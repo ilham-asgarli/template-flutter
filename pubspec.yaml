@@ -50,6 +50,8 @@ dependencies:
 
   http: ^0.13.6
 
+  dartz: ^0.10.1
+
   flutter_dotenv: ^5.1.0
 
   fnv: ^1.0.1
