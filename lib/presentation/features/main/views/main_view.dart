@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/extensions/context_extension.dart';
+import '../../../../core/extensions/num_extension.dart';
 import '../../../../utils/logic/state/cubit/theme/theme_cubit.dart';
 import '../../../../utils/ui/constants/enums/app_theme_enum.dart';
 
@@ -19,6 +20,7 @@ class MainView extends StatelessWidget {
               Text(
                 context.localization.noInternet,
               ),
+              10.verticalSpace,
               ElevatedButton(
                 onPressed: () {
                   var theme =
@@ -33,6 +35,7 @@ class MainView extends StatelessWidget {
                 child:
                     Text(context.watch<ThemeCubit>().state.appTheme.toString()),
               ),
+              10.verticalSpace,
               ElevatedButton(
                 onPressed: () {
                   var mode =

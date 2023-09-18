@@ -23,9 +23,14 @@ dependencies:
 
   flutter_native_splash: ^2.3.2
 
+  flutter_web_plugins:
+    sdk: flutter
+
   flutter_localizations:
     sdk: flutter
   intl: any
+
+  go_router: ^10.1.2
 
   # responsive
   device_preview: ^1.1.0
@@ -89,6 +94,7 @@ dev_dependencies:
   hive_generator: ^2.0.1
   isar_generator: *isar_version
   json_serializable: ^6.7.1
+  go_router_builder: ^2.3.2
 
 # dependency_overrides:
 
