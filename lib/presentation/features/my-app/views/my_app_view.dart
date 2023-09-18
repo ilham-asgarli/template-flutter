@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/base/views/base_app_lifecycle_view.dart';
@@ -14,6 +15,7 @@ import '../../../../utils/logic/helpers/theme/theme_helper.dart';
 import '../../../../utils/logic/state/cubit/network/network_cubit.dart';
 import '../../../../utils/logic/state/cubit/theme/theme_cubit.dart';
 import '../../../widgets/have_no.dart';
+import '../../not-found-navigation/views/not_found_navigation_view.dart';
 import '../view-models/my_app_view_model.dart';
 
 class MyAppView extends StatefulWidget {
@@ -41,7 +43,15 @@ class _MyAppViewState extends State<MyAppView> {
         onChange: () {
           BlocProvider.of<ThemeCubit>(context).changeTheme(null);
         },
-        child: MaterialApp(
+        child: MaterialApp.router(
+          routerConfig: GoRouter(
+            debugLogDiagnostics: kDebugMode,
+            routes: $appRoutes,
+            errorBuilder: (context, state) => const NotFoundNavigationView(),
+            redirect: (BuildContext context, GoRouterState state) {
+              return null;
+            },
+          ),
           debugShowCheckedModeBanner: false,
           localizationsDelegates: AppLocalizations.localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
@@ -53,9 +63,6 @@ class _MyAppViewState extends State<MyAppView> {
               )
               .getTheme(),
           scaffoldMessengerKey: GlobalKeyConstants.scaffoldMessengerKey,
-          navigatorKey: GlobalKeyConstants.navigatorKey,
-          onGenerateRoute: ConfigRouter.instance.generateRoute,
-          initialRoute: _myAppViewModel.getInitialRoute(),
           builder: (context, Widget? child) {
             return buildNetworkCubit(child);
           },

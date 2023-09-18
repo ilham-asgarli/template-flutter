@@ -22,13 +22,13 @@ class HaveNo extends StatelessWidget {
           FaIcon(
             iconData,
             size: 100,
-            color: context.colorScheme.background,
+            color: context.colorScheme.secondary,
           ),
           context.dynamicVerticalSpace(0.05),
           Text(
             description,
             style: TextStyle(
-              color: context.colorScheme.background,
+              color: context.colorScheme.secondary,
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),

@@ -1,34 +1,22 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../presentation/features/main/views/main_view.dart';
-import '../../../../presentation/features/not-found-navigation/views/not_found_navigation_view.dart';
-import '../../constants/router/router_constants.dart';
-import 'interfaces/router_interface.dart';
 
-class ConfigRouter extends RouterInterface {
-  static final ConfigRouter instance = ConfigRouter._init();
+part 'config_router.g.dart';
 
-  ConfigRouter._init();
-
+@TypedGoRoute<MainViewRoute>(
+  path: '/',
+  routes: [
+    /*TypedGoRoute<SongRoute>(
+      path: 'song/:id',
+    ),*/
+  ],
+)
+@immutable
+class MainViewRoute extends GoRouteData {
   @override
-  Route<dynamic> generateRoute(RouteSettings settings) {
-    final Widget widget;
-
-    switch (settings.name) {
-      case RouterConstants.home:
-        widget = const MainView();
-        break;
-      default:
-        //throw NavigateException<SettingsDynamicModel>(args.arguments);
-        return normalNavigate(
-          const NotFoundNavigationView(),
-          const RouteSettings(name: RouterConstants.notFound),
-        );
-    }
-
-    return normalNavigate(
-      widget,
-      settings,
-    );
+  Widget build(BuildContext context, GoRouterState state) {
+    return const MainView();
   }
 }
