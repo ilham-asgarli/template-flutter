@@ -2,11 +2,12 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../presentation/features/main/views/main_view.dart';
+import '../../constants/router/router_constants.dart';
 
 part 'config_router.g.dart';
 
 @TypedGoRoute<MainViewRoute>(
-  path: '/',
+  path: RouterConstants.home,
   routes: [
     /*TypedGoRoute<SongRoute>(
       path: 'song/:id',
