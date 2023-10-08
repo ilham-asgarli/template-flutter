@@ -12,7 +12,7 @@ void main() {
       } else {
         print(value.stdout);
         print(value.stderr);
-        print('Git push failed.');
+        print('Git reset failed.');
       }
     });
 

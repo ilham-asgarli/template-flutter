@@ -12,7 +12,7 @@ void main() {
       } else {
         print(value.stdout);
         print(value.stderr);
-        print('Git push failed.');
+        print('Git init failed.');
       }
     });
 
@@ -23,18 +23,18 @@ void main() {
       } else {
         print(value.stdout);
         print(value.stderr);
-        print('Git push failed.');
+        print('Git branch failed.');
       }
     });
 
     Process.run('git', ['remote', 'add', 'origin', origin]).then((value) {
       if (value.exitCode == 0) {
         print(value.stdout);
-        print('Git remote successful!');
+        print('Git remote origin successful!');
       } else {
         print(value.stdout);
         print(value.stderr);
-        print('Git push failed.');
+        print('Git remote origin failed.');
       }
     });
 
@@ -45,7 +45,7 @@ void main() {
       } else {
         print(value.stdout);
         print(value.stderr);
-        print('Git push failed.');
+        print('Git git-push start failed.');
       }
     });
   }

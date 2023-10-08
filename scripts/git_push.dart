@@ -15,7 +15,7 @@ void main() async {
     } else {
       print(value.stdout);
       print(value.stderr);
-      print('Git push failed.');
+      print('Git add failed.');
     }
   });
 
@@ -26,7 +26,7 @@ void main() async {
     } else {
       print(value.stdout);
       print(value.stderr);
-      print('Git push failed.');
+      print('Git commit failed.');
     }
   });
 
