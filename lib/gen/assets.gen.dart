@@ -42,15 +42,16 @@ class $AssetsFontGen {
 class $AssetsImageGen {
   const $AssetsImageGen();
 
-  /// File path: assets/image/.gitkeep
-  String get gitkeep => 'assets/image/.gitkeep';
+  /// File path: assets/image/ic_appstore.png
+  AssetGenImage get icAppstore =>
+      const AssetGenImage('assets/image/ic_appstore.png');
 
   /// File path: assets/image/ic_playstore.png
   AssetGenImage get icPlaystore =>
       const AssetGenImage('assets/image/ic_playstore.png');
 
   /// List of all assets
-  List<dynamic> get values => [gitkeep, icPlaystore];
+  List<AssetGenImage> get values => [icAppstore, icPlaystore];
 }
 
 class $AssetsJsonGen {

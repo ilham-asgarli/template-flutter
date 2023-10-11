@@ -17,8 +17,8 @@ class MainTheme extends ThemeInterface {
     return ThemeData(
       brightness:
           themeMode == ThemeMode.light ? Brightness.light : Brightness.dark,
-      colorSchemeSeed: Colors.blue,
       visualDensity: VisualDensity.adaptivePlatformDensity,
+      colorSchemeSeed: Colors.blue,
     );
   }
 
