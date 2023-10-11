@@ -9,24 +9,20 @@ part 'network_state.dart';
 class NetworkCubit extends Cubit<NetworkState> {
   StreamSubscription? _subscription;
 
+  final Connectivity connectivity = Connectivity();
+
   NetworkCubit() : super(NetworkInitial()) {
-    startCheckConnectivityAndChangeState();
+    subscribeToConnectivity();
   }
 
-  void startCheckConnectivityAndChangeState() async {
-    await firstCheckConnectivityAndChangeState();
-    subscribeToConnectivityResultAndChangeState();
-  }
-
-  Future<void> firstCheckConnectivityAndChangeState() async {
-    ConnectivityResult result = await Connectivity().checkConnectivity();
+  Future<void> checkConnectivity() async {
+    ConnectivityResult result = await connectivity.checkConnectivity();
     changeStateByConnectivityResult(result);
   }
 
-  void subscribeToConnectivityResultAndChangeState() {
-    _subscription = Connectivity()
-        .onConnectivityChanged
-        .listen((ConnectivityResult result) {
+  void subscribeToConnectivity() {
+    _subscription =
+        connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
       changeStateByConnectivityResult(result);
     });
   }
@@ -39,16 +35,10 @@ class NetworkCubit extends Cubit<NetworkState> {
       case ConnectivityResult.mobile:
       case ConnectivityResult.vpn:
       case ConnectivityResult.other:
-        emit(
-          ConnectionSuccess(
-            connectivityResult: result,
-          ),
-        );
+        emit(ConnectionSuccess(connectivityResult: result));
         break;
       case ConnectivityResult.none:
-        emit(
-          ConnectionFailure(),
-        );
+        emit(ConnectionFailure());
     }
   }
 

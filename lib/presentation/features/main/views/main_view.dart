@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/extensions/num_extension.dart';
+import '../../../../utils/logic/state/cubit/network/network_cubit.dart';
 import '../../../../utils/logic/state/cubit/theme/theme_cubit.dart';
 
 class MainView extends StatelessWidget {
@@ -17,7 +17,7 @@ class MainView extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                context.localization.noInternet,
+                context.watch<NetworkCubit>().state.toString(),
               ),
               10.verticalSpace,
               ElevatedButton(

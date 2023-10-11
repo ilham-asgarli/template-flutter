@@ -37,6 +37,7 @@ Widget app() {
         create: (_) => ThemeCubit(),
       ),
       BlocProvider(
+        lazy: false,
         create: (_) => NetworkCubit(),
       ),
     ],
