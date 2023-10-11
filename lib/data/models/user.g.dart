@@ -869,14 +869,15 @@ extension UserQueryProperty on QueryBuilder<User, User, QQueryProperty> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
+_$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       json['id'] as String,
       json['email'] as String,
       json['password'] as String,
       const DateTimeConverter().fromJson(json['created_at'] as String),
     );
 
-Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
+Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'email': instance.email,
       'password': instance.password,

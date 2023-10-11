@@ -6,30 +6,22 @@ part of 'theme_cubit.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ThemeState _$$_ThemeStateFromJson(Map<String, dynamic> json) =>
-    _$_ThemeState(
-      appTheme: $enumDecodeNullable(_$AppThemeEnumMap, json['appTheme']),
+_$ThemeStateImpl _$$ThemeStateImplFromJson(Map<String, dynamic> json) =>
+    _$ThemeStateImpl(
+      appTheme: $enumDecodeNullable(_$AppThemeEnumMap, json['appTheme']) ??
+          AppTheme.main,
       themeMode: $enumDecodeNullable(_$ThemeModeEnumMap, json['themeMode']) ??
           ThemeMode.system,
     );
 
-Map<String, dynamic> _$$_ThemeStateToJson(_$_ThemeState instance) {
-  final val = <String, dynamic>{};
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('appTheme', _$AppThemeEnumMap[instance.appTheme]);
-  val['themeMode'] = _$ThemeModeEnumMap[instance.themeMode]!;
-  return val;
-}
+Map<String, dynamic> _$$ThemeStateImplToJson(_$ThemeStateImpl instance) =>
+    <String, dynamic>{
+      'appTheme': _$AppThemeEnumMap[instance.appTheme]!,
+      'themeMode': _$ThemeModeEnumMap[instance.themeMode]!,
+    };
 
 const _$AppThemeEnumMap = {
-  AppTheme.light: 'light',
-  AppTheme.dark: 'dark',
+  AppTheme.main: 'main',
 };
 
 const _$ThemeModeEnumMap = {

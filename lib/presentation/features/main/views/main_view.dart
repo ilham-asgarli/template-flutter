@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../core/extensions/num_extension.dart';
 import '../../../../utils/logic/state/cubit/theme/theme_cubit.dart';
-import '../../../../utils/ui/constants/enums/app_theme_enum.dart';
 
 class MainView extends StatelessWidget {
   const MainView({Key? key}) : super(key: key);
@@ -23,14 +22,7 @@ class MainView extends StatelessWidget {
               10.verticalSpace,
               ElevatedButton(
                 onPressed: () {
-                  var theme =
-                      switch (context.read<ThemeCubit>().state.appTheme) {
-                    AppTheme.light => null,
-                    AppTheme.dark => AppTheme.light,
-                    null => AppTheme.dark,
-                  };
-
-                  BlocProvider.of<ThemeCubit>(context).changeTheme(theme);
+                  //BlocProvider.of<ThemeCubit>(context).changeTheme(theme);
                 },
                 child:
                     Text(context.watch<ThemeCubit>().state.appTheme.toString()),

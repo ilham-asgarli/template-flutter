@@ -6,7 +6,6 @@ import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
 import '../../../../core/base/views/base_app_lifecycle_view.dart';
-import '../../../../core/base/views/base_brightness_change_view.dart';
 import '../../../../core/constants/app/global_key_constants.dart';
 import '../../../../core/extensions/context_extension.dart';
 import '../../../../l10n/gen/app_localizations.dart';
@@ -39,34 +38,30 @@ class _MyAppViewState extends State<MyAppView> {
 
   Widget buildApp() {
     return BaseAppLifeCycleView(
-      child: BaseBrightnessChangeView(
-        onChange: () {
-          BlocProvider.of<ThemeCubit>(context).changeTheme(null);
-        },
-        child: MaterialApp.router(
-          routerConfig: GoRouter(
-            debugLogDiagnostics: kDebugMode,
-            routes: $appRoutes,
-            errorBuilder: (context, state) => const NotFoundNavigationView(),
-            redirect: (BuildContext context, GoRouterState state) {
-              return null;
-            },
-          ),
-          debugShowCheckedModeBanner: false,
-          localizationsDelegates: AppLocalizations.localizationsDelegates,
-          supportedLocales: AppLocalizations.supportedLocales,
-          locale: kDebugMode ? const Locale("tr", "TR") : null,
-          theme: ThemeHelper.instance
-              .getCustomTheme(
-                context.watch<ThemeCubit>().state.appTheme,
-                context.watch<ThemeCubit>().state.themeMode,
-              )
-              .getTheme(),
-          scaffoldMessengerKey: GlobalKeyConstants.scaffoldMessengerKey,
-          builder: (context, Widget? child) {
-            return buildNetworkCubit(child);
+      child: MaterialApp.router(
+        routerConfig: GoRouter(
+          debugLogDiagnostics: kDebugMode,
+          routes: $appRoutes,
+          errorBuilder: (context, state) => const NotFoundNavigationView(),
+          redirect: (BuildContext context, GoRouterState state) {
+            return null;
           },
         ),
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: kDebugMode ? const Locale("tr", "TR") : null,
+        theme: ThemeHelper.instance
+            .getCustomTheme(context.watch<ThemeCubit>().state.appTheme)
+            .getTheme(ThemeMode.light),
+        darkTheme: ThemeHelper.instance
+            .getCustomTheme(context.watch<ThemeCubit>().state.appTheme)
+            .getTheme(ThemeMode.dark),
+        themeMode: context.watch<ThemeCubit>().state.themeMode,
+        scaffoldMessengerKey: GlobalKeyConstants.scaffoldMessengerKey,
+        builder: (context, Widget? child) {
+          return buildNetworkCubit(child);
+        },
       ),
     );
   }

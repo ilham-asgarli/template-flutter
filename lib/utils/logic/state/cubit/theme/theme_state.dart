@@ -7,7 +7,7 @@ class ThemeState with _$ThemeState {
     includeIfNull: false,
   )
   const factory ThemeState({
-    AppTheme? appTheme,
+    @Default(AppTheme.main) AppTheme appTheme,
     @Default(ThemeMode.system) ThemeMode themeMode,
   }) = _ThemeState;
 

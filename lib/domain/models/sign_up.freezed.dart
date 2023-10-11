@@ -66,19 +66,21 @@ class _$SignUpCopyWithImpl<$Res, $Val extends SignUp>
 }
 
 /// @nodoc
-abstract class _$$_SignUpCopyWith<$Res> implements $SignUpCopyWith<$Res> {
-  factory _$$_SignUpCopyWith(_$_SignUp value, $Res Function(_$_SignUp) then) =
-      __$$_SignUpCopyWithImpl<$Res>;
+abstract class _$$SignUpImplCopyWith<$Res> implements $SignUpCopyWith<$Res> {
+  factory _$$SignUpImplCopyWith(
+          _$SignUpImpl value, $Res Function(_$SignUpImpl) then) =
+      __$$SignUpImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String email, String password});
 }
 
 /// @nodoc
-class __$$_SignUpCopyWithImpl<$Res>
-    extends _$SignUpCopyWithImpl<$Res, _$_SignUp>
-    implements _$$_SignUpCopyWith<$Res> {
-  __$$_SignUpCopyWithImpl(_$_SignUp _value, $Res Function(_$_SignUp) _then)
+class __$$SignUpImplCopyWithImpl<$Res>
+    extends _$SignUpCopyWithImpl<$Res, _$SignUpImpl>
+    implements _$$SignUpImplCopyWith<$Res> {
+  __$$SignUpImplCopyWithImpl(
+      _$SignUpImpl _value, $Res Function(_$SignUpImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -87,7 +89,7 @@ class __$$_SignUpCopyWithImpl<$Res>
     Object? email = null,
     Object? password = null,
   }) {
-    return _then(_$_SignUp(
+    return _then(_$SignUpImpl(
       null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -105,11 +107,11 @@ class __$$_SignUpCopyWithImpl<$Res>
 @JsonSerializable(
     fieldRename: FieldRename.snake, explicitToJson: true, includeIfNull: false)
 @DateTimeConverter()
-class _$_SignUp implements _SignUp {
-  const _$_SignUp(this.email, this.password);
+class _$SignUpImpl implements _SignUp {
+  const _$SignUpImpl(this.email, this.password);
 
-  factory _$_SignUp.fromJson(Map<String, dynamic> json) =>
-      _$$_SignUpFromJson(json);
+  factory _$SignUpImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SignUpImplFromJson(json);
 
   @override
   final String email;
@@ -125,7 +127,7 @@ class _$_SignUp implements _SignUp {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_SignUp &&
+            other is _$SignUpImpl &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password));
@@ -138,21 +140,22 @@ class _$_SignUp implements _SignUp {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_SignUpCopyWith<_$_SignUp> get copyWith =>
-      __$$_SignUpCopyWithImpl<_$_SignUp>(this, _$identity);
+  _$$SignUpImplCopyWith<_$SignUpImpl> get copyWith =>
+      __$$SignUpImplCopyWithImpl<_$SignUpImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SignUpToJson(
+    return _$$SignUpImplToJson(
       this,
     );
   }
 }
 
 abstract class _SignUp implements SignUp {
-  const factory _SignUp(final String email, final String password) = _$_SignUp;
+  const factory _SignUp(final String email, final String password) =
+      _$SignUpImpl;
 
-  factory _SignUp.fromJson(Map<String, dynamic> json) = _$_SignUp.fromJson;
+  factory _SignUp.fromJson(Map<String, dynamic> json) = _$SignUpImpl.fromJson;
 
   @override
   String get email;
@@ -160,6 +163,6 @@ abstract class _SignUp implements SignUp {
   String get password;
   @override
   @JsonKey(ignore: true)
-  _$$_SignUpCopyWith<_$_SignUp> get copyWith =>
+  _$$SignUpImplCopyWith<_$SignUpImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

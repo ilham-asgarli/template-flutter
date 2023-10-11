@@ -13,14 +13,12 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
   ThemeCubit() : super(const ThemeState()) {
     ThemeHelper.instance.setSystemUIOverlayStyleWithAppTheme(
       state.appTheme,
-      state.themeMode,
     );
   }
 
-  changeTheme(AppTheme? appTheme) {
+  changeTheme(AppTheme appTheme) {
     ThemeHelper.instance.setSystemUIOverlayStyleWithAppTheme(
       appTheme,
-      state.themeMode,
     );
 
     emit(state.copyWith(
@@ -29,11 +27,6 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
   }
 
   changeThemeMode(ThemeMode themeMode) {
-    ThemeHelper.instance.setSystemUIOverlayStyleWithAppTheme(
-      state.appTheme,
-      themeMode,
-    );
-
     emit(state.copyWith(
       themeMode: themeMode,
     ));
