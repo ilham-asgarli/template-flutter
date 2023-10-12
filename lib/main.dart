@@ -42,7 +42,7 @@ Widget app() {
       ),
     ],
     child: DevicePreview(
-      enabled: false, //!kReleaseMode
+      enabled: false, //kDebugMode
       builder: (context) => const MyAppView(),
     ),
   );
