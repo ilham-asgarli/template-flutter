@@ -10,7 +10,7 @@ import '../../../../core/constants/app/global_key_constants.dart';
 import '../../../../l10n/gen/app_localizations.dart';
 import '../../../../utils/logic/config/router/config_router.dart';
 import '../../../../utils/logic/helpers/theme/theme_helper.dart';
-import '../../../../utils/logic/state/cubit/theme/theme_cubit.dart';
+import '../../main/state/cubit/theme/theme_cubit.dart';
 import '../../not-found-navigation/views/not_found_navigation_view.dart';
 import '../view-models/my_app_view_model.dart';
 
@@ -45,6 +45,7 @@ class _MyAppViewState extends State<MyAppView> {
         routerConfig: GoRouter(
           debugLogDiagnostics: kDebugMode,
           routes: $appRoutes,
+          navigatorKey: GlobalKeyConstants.navigatorKey,
           errorBuilder: (context, state) => const NotFoundNavigationView(),
           redirect: (BuildContext context, GoRouterState state) {
             return null;

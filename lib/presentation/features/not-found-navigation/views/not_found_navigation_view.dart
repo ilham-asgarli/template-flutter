@@ -13,7 +13,7 @@ class NotFoundNavigationView extends StatelessWidget {
       child: Scaffold(
         body: Center(
           child: HaveNo(
-            description: context.localization.notFoundNavigation,
+            description: context.l10n.notFoundNavigation,
             iconData: FontAwesomeIcons.ban,
           ),
         ),

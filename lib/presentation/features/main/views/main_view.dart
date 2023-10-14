@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/extensions/num_extension.dart';
-import '../../../../utils/logic/state/cubit/network/network_cubit.dart';
-import '../../../../utils/logic/state/cubit/theme/theme_cubit.dart';
+import '../state/cubit/network/network_cubit.dart';
+import '../state/cubit/theme/theme_cubit.dart';
 
 class MainView extends StatelessWidget {
   const MainView({Key? key}) : super(key: key);

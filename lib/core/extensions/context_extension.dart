@@ -110,5 +110,5 @@ extension SpaceExtension on BuildContext {
 }
 
 extension Localization on BuildContext {
-  AppLocalizations get localization => AppLocalizations.of(this)!;
+  AppLocalizations get l10n => AppLocalizations.of(this)!;
 }

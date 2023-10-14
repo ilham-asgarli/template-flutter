@@ -7,9 +7,9 @@ import 'package:hive_flutter/adapters.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'presentation/features/main/state/cubit/network/network_cubit.dart';
+import 'presentation/features/main/state/cubit/theme/theme_cubit.dart';
 import 'presentation/features/my-app/views/my_app_view.dart';
-import 'utils/logic/state/cubit/network/network_cubit.dart';
-import 'utils/logic/state/cubit/theme/theme_cubit.dart';
 
 void main() async {
   await init();
