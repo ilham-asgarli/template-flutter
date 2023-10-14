@@ -10,8 +10,8 @@ import '../../../../core/constants/app/global_key_constants.dart';
 import '../../../../l10n/gen/app_localizations.dart';
 import '../../../../utils/logic/config/router/config_router.dart';
 import '../../../../utils/logic/helpers/theme/theme_helper.dart';
-import '../../main/state/cubit/theme/theme_cubit.dart';
 import '../../not-found-navigation/views/not_found_navigation_view.dart';
+import '../state/cubit/theme/theme_cubit.dart';
 import '../view-models/my_app_view_model.dart';
 
 class MyAppView extends StatefulWidget {
