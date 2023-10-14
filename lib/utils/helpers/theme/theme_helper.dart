@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 
-import '../../../ui/config/theme/implementations/main/main_theme.dart';
-import '../../../ui/config/theme/interfaces/theme_interface.dart';
-import '../../../ui/constants/enums/app_theme_enum.dart';
+import '../../config/theme/implementations/main/main_theme.dart';
+import '../../config/theme/interfaces/theme_interface.dart';
+import '../../constants/enums/app_theme_enum.dart';
 
 class ThemeHelper {
   static ThemeHelper get instance {

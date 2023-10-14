@@ -2,7 +2,7 @@ import 'package:fnv/fnv.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:isar/isar.dart';
 
-import '../../utils/logic/helpers/json-serializable/date_time_converter.dart';
+import '../../utils/helpers/json-serializable/date_time_converter.dart';
 
 part 'user.freezed.dart';
 part 'user.g.dart';

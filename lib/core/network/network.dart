@@ -3,21 +3,21 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 
-import '../../base/models/base_error.dart';
-import '../../base/models/base_http.dart';
-import '../../base/models/base_response.dart';
-import '../../base/models/base_success.dart';
-import '../../constants/enums/http_request_enum.dart';
-import '../../exceptions/network/http_exception.dart';
+import '../base/models/base_error.dart';
+import '../base/models/base_http.dart';
+import '../base/models/base_response.dart';
+import '../base/models/base_success.dart';
+import '../constants/enums/http_request_enum.dart';
+import '../exceptions/network/http_exception.dart';
 
-part 'core_operations.dart';
+part 'network_operations.dart';
 
-class CoreHttp {
-  static final CoreHttp _instance = CoreHttp._init();
+class Network {
+  static final Network _instance = Network._init();
 
-  static CoreHttp get instance => _instance;
+  static Network get instance => _instance;
 
-  CoreHttp._init();
+  Network._init();
 
   Future<BaseResponse<R>> send<R, T>(
     String url, {

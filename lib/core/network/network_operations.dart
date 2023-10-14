@@ -1,6 +1,6 @@
-part of 'core_http.dart';
+part of 'network.dart';
 
-extension _CoreHttpOperations on CoreHttp {
+extension _NetworkOperations on Network {
   _sendRequest(
     String url, {
     required HttpTypes type,

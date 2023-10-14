@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/app/global_key_constants.dart';
-import '../interfaces/router_interface.dart';
+import '../constants/app/global_key_constants.dart';
+import 'router_interface.dart';
 
 class RouterService implements RouterInterface {
   static final RouterService instance = RouterService._init();

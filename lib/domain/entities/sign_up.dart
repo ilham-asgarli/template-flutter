@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../utils/logic/helpers/json-serializable/date_time_converter.dart';
+import '../../utils/helpers/json-serializable/date_time_converter.dart';
 
 part 'sign_up.freezed.dart';
 part 'sign_up.g.dart';
