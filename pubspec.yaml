@@ -19,10 +19,6 @@ dependencies:
 
   cupertino_icons: ^1.0.6
 
-  derry: ^1.5.0
-
-  flutter_native_splash: ^2.3.3
-
   flutter_web_plugins:
     sdk: flutter
 
@@ -30,26 +26,42 @@ dependencies:
     sdk: flutter
   intl: any
 
-  go_router: ^11.1.3
+  derry: ^1.5.0
+
+  flutter_native_splash: ^2.3.3
+
+  # logging
+  logger: ^2.0.2+1
+
+  # routing
+  go_router: ^11.1.4
 
   # responsive
   device_preview: ^1.1.0
   sizer: ^2.0.15
   responsive_framework: ^1.1.1
 
+  # model generator
   freezed: ^2.4.1
   freezed_annotation: ^2.4.1
   json_annotation: ^4.8.1
 
+  # asset generator
   flutter_gen: ^5.3.2
 
+  # dependency injection
+  get_it: ^7.6.4
+  injectable: ^2.3.2
+
+  # state management
   bloc: ^8.1.2
   flutter_bloc: ^8.1.3
   hydrated_bloc: ^9.1.2
 
+  # cache
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-
+  shared_preferences: ^2.2.2
   isar: *isar_version
   isar_flutter_libs: *isar_version
 
@@ -61,14 +73,13 @@ dependencies:
 
   fnv: ^1.0.1
 
-  equatable: ^2.0.5
+  connectivity_plus: ^5.0.1
   path_provider: ^2.1.1
-  shared_preferences: ^2.2.2
-  logger: ^2.0.2+1
+  equatable: ^2.0.5
   cached_network_image: ^3.3.0
   animations: ^2.0.8
   auto_size_text: ^3.0.0
-  font_awesome_flutter: ^10.5.0
+  font_awesome_flutter: ^10.6.0
   shimmer: ^3.0.0
   carousel_slider: ^4.2.1
   flutter_keyboard_visibility: ^5.4.1
@@ -76,7 +87,6 @@ dependencies:
   fl_chart: ^0.64.0
   lazy_load_scrollview: ^1.3.0
   centered_singlechildscrollview: ^0.2.0
-  connectivity_plus: ^5.0.0
   hexcolor: ^3.0.1
   rive: ^0.11.17
   flare_flutter: ^3.0.2
@@ -95,6 +105,7 @@ dev_dependencies:
   isar_generator: *isar_version
   json_serializable: ^6.7.1
   go_router_builder: ^2.3.3
+  injectable_generator: ^2.4.1
 
 # dependency_overrides:
 
