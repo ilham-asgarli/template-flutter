@@ -106,8 +106,7 @@ class __$$ThemeStateImplCopyWithImpl<$Res>
 }
 
 /// @nodoc
-
-@JsonSerializable(explicitToJson: true, includeIfNull: false)
+@JsonSerializable()
 class _$ThemeStateImpl implements _ThemeState {
   const _$ThemeStateImpl(
       {this.appTheme = AppTheme.main, this.themeMode = ThemeMode.system});

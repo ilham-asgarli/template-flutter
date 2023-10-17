@@ -15,9 +15,14 @@ gen:
     (scripts):
     - $build_runner --delete-conflicting-outputs
 splash:
-  (description): Create splash screen
-  (scripts):
-    - dart run flutter_native_splash:create --path=flutter_native_splash.yaml
+  create:
+    (description): Create splash screen
+    (scripts):
+      - dart run flutter_native_splash:create --path=flutter_native_splash.yaml
+  remove:
+    (description): Remove splash screen
+    (scripts):
+      - dart run flutter_native_splash:remove
 icon:
   (description): Create icon
   (scripts):

@@ -3,6 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../../../../../../utils/constants/enums/app_theme_enum.dart';
+import '../../../../../../utils/di/injectable.dart';
 import '../../../../../../utils/helpers/theme/theme_helper.dart';
 
 part 'theme_cubit.freezed.dart';
@@ -11,13 +12,13 @@ part 'theme_state.dart';
 
 class ThemeCubit extends HydratedCubit<ThemeState> {
   ThemeCubit() : super(const ThemeState()) {
-    ThemeHelper.instance.setSystemUIOverlayStyleWithAppTheme(
+    getIt<ThemeHelper>().setSystemUIOverlayStyleWithAppTheme(
       state.appTheme,
     );
   }
 
-  changeTheme(AppTheme appTheme) {
-    ThemeHelper.instance.setSystemUIOverlayStyleWithAppTheme(
+  void changeTheme(AppTheme appTheme) {
+    getIt<ThemeHelper>().setSystemUIOverlayStyleWithAppTheme(
       appTheme,
     );
 
@@ -26,7 +27,7 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
     ));
   }
 
-  changeThemeMode(ThemeMode themeMode) {
+  void changeThemeMode(ThemeMode themeMode) {
     emit(state.copyWith(
       themeMode: themeMode,
     ));

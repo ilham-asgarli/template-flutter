@@ -8,4 +8,11 @@ final getIt = GetIt.instance;
 @InjectableInit(
   preferRelativeImports: true,
 )
-void configureDependencies() => getIt.init();
+Future<void> configureDependencies({
+  String? environment,
+  EnvironmentFilter? environmentFilter,
+}) async =>
+    await getIt.init(
+      environment: environment,
+      environmentFilter: environmentFilter,
+    );

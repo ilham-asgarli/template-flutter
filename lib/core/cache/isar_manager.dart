@@ -1,30 +1,28 @@
+import 'dart:io';
+
+import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
-import 'package:path_provider/path_provider.dart';
 
+import '../../utils/constants/di/path_provider_constants.dart';
+import '../../utils/di/injectable.dart';
+
+@LazySingleton()
 class IsarManager {
-  static IsarManager get instance {
-    _instance ??= IsarManager._init();
-    return _instance!;
-  }
+  Directory applicationDocumentsDirectory = getIt<Directory>(
+      instanceName: PathProviderConstants.applicationDocumentsDirectory);
 
-  static IsarManager? _instance;
-  IsarManager._init();
+  Future<Isar> open({
+    CollectionSchema<dynamic>? schema,
+    List<CollectionSchema<dynamic>>? schemas,
+  }) async {
+    List<CollectionSchema<dynamic>> allSchemas = schemas ?? [];
+    if (schema != null) {
+      allSchemas.add(schema);
+    }
 
-  Future<Isar> openSchema(CollectionSchema<dynamic> schema) async {
-    final dir = await getApplicationDocumentsDirectory();
     final isar = await Isar.open(
-      [schema],
-      directory: dir.path,
-    );
-
-    return isar;
-  }
-
-  Future<Isar> openSchemas(List<CollectionSchema<dynamic>> schemas) async {
-    final dir = await getApplicationDocumentsDirectory();
-    final isar = await Isar.open(
-      schemas,
-      directory: dir.path,
+      allSchemas,
+      directory: applicationDocumentsDirectory.path,
     );
 
     return isar;

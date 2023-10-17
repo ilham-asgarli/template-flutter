@@ -2,3 +2,40 @@ global_options:
   freezed:freezed:
     runs_before:
       - isar_generator:isar_generator
+targets:
+  $default:
+    builders:
+      json_serializable:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**_model.dart
+            - lib/**_entity.dart
+            - lib/**_bloc.dart
+            - lib/**_cubit.dart
+        options:
+          explicit_to_json: true
+          include_if_null: false
+          field_rename: snake
+      freezed|freezed:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**_model.dart
+            - lib/**_entity.dart
+            - lib/**_bloc.dart
+            - lib/**_cubit.dart
+      isar_generator:isar_generator:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**_model.dart
+      injectable_generator:injectable_builder:
+        enabled: true
+        generate_for:
+          include:
+            - lib/**.dart
+        options:
+          #auto_register: true
+          #class_name_pattern: "Service$|Repository$|ViewModel$"
+          #file_name_pattern: "_service$|_repository$|_view_model$"
