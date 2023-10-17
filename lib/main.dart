@@ -9,13 +9,13 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import 'core/extensions/string_extension.dart';
 import 'presentation/features/my-app/state/cubit/network/network_cubit.dart';
 import 'presentation/features/my-app/state/cubit/theme/theme_cubit.dart';
 import 'presentation/features/my-app/views/my_app_view.dart';
 import 'utils/constants/di/path_provider_constants.dart';
 import 'utils/constants/env/env_constants.dart';
 import 'utils/di/injectable.dart';
+import 'utils/extensions/string_extension.dart';
 import 'utils/helpers/http/my_http_overrides.dart';
 import 'utils/helpers/universal/universal_helper.dart'
     if (dart.library.io) 'utils/helpers/universal/universal_for_mobile.dart'

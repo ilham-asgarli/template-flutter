@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../core/extensions/context_extension.dart';
 import '../../../../presentation/widgets/have_no.dart';
+import '../../../../utils/extensions/context_extension.dart';
 
 class NotFoundNavigationView extends StatelessWidget {
   const NotFoundNavigationView({Key? key}) : super(key: key);

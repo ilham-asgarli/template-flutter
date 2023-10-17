@@ -2,12 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
-import '../../../../core/errors/network/api_error.dart';
-import '../../../../core/errors/network/not_found_error.dart';
-import '../../../../core/extensions/num_extension.dart';
-import '../../../../domain/repositories/security/security_repository.dart';
+import '../../../../domain/usecases/security/get_user_use_case.dart';
 import '../../../../utils/constants/enums/app_theme_enum.dart';
 import '../../../../utils/di/injectable.dart';
+import '../../../../utils/extensions/num_extension.dart';
 import '../../my-app/state/cubit/network/network_cubit.dart';
 import '../../my-app/state/cubit/theme/theme_cubit.dart';
 
@@ -56,15 +54,14 @@ class MainView extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  try {
-                    var v = await getIt<SecurityRepository>().getUser("1");
+                  var response = await getIt<GetUserUseCase>()(
+                      const GetUserUseCaseParams(id: "1"));
 
-                    getIt<Logger>().i(v);
-                  } on NotFoundError catch (e) {
-                    getIt<Logger>().e(e.message);
-                  } on ApiError catch (e) {
-                    getIt<Logger>().e(e);
-                  }
+                  response.fold((l) {
+                    getIt<Logger>().e(l.message);
+                  }, (r) {
+                    getIt<Logger>().i(r);
+                  });
                 },
                 child: const Text("Get Users"),
               ),

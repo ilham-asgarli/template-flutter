@@ -5,9 +5,9 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../core/constants/app/global_key_constants.dart';
 import '../../../../l10n/gen/app_localizations.dart';
 import '../../../../utils/config/router/config_router.dart';
+import '../../../../utils/constants/app/app_constants.dart';
 import '../../../../utils/helpers/theme/theme_helper.dart';
 import '../../not-found-navigation/views/not_found_navigation_view.dart';
 import '../state/cubit/theme/theme_cubit.dart';
@@ -37,7 +37,7 @@ class MyAppView extends StatelessWidget {
       routerConfig: GoRouter(
         debugLogDiagnostics: kDebugMode,
         routes: $appRoutes,
-        navigatorKey: GlobalKeyConstants.navigatorKey,
+        navigatorKey: AppConstants.navigatorKey,
         errorBuilder: (context, state) => const NotFoundNavigationView(),
         redirect: (BuildContext context, GoRouterState state) {
           return null;
@@ -54,7 +54,7 @@ class MyAppView extends StatelessWidget {
           .getCustomTheme(context.watch<ThemeCubit>().state.appTheme)
           .getTheme(ThemeMode.dark),
       themeMode: context.watch<ThemeCubit>().state.themeMode,
-      scaffoldMessengerKey: GlobalKeyConstants.scaffoldMessengerKey,
+      scaffoldMessengerKey: AppConstants.scaffoldMessengerKey,
     );
   }
 }

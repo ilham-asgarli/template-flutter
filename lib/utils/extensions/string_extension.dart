@@ -6,20 +6,13 @@ extension StringConcat on String {
   String concatIfNotEmpty(String s) => isNotEmpty ? this + s : "";
 }
 
-extension ImagePath on String {
-  String get toSVG => 'assets/images/svg/$this.svg';
-
-  String get toPNG => 'assets/images/$this.png';
-
-  String get toJPEG => 'assets/images/$this.jpeg';
-
-  String get toJPG => 'assets/images/$this.jpg';
-}
-
 extension EnvPath on String {
   String get toEnv => kDebugMode ? toEnvDevelopment : toEnvProduction;
+
   String get toEnvDevelopment => '$this.env.development';
+
   String get toEnvProduction => '$this.env.production';
+
   String get toEnvExample => '$this.env.example';
 }
 
@@ -44,23 +37,6 @@ extension Enum on String {
     return values.firstWhere(
       (type) => type.toString() == this,
     );
-  }
-}
-
-extension Split on String {
-  List<String> splitToThree(
-    final String regex,
-  ) {
-    int startIndex = indexOf(regex);
-    int endIndex = startIndex + regex.length;
-
-    return startIndex != -1
-        ? [
-            substring(0, startIndex),
-            regex, // = substring(startIndex, endIndex)
-            substring(endIndex),
-          ]
-        : ["", "", ""];
   }
 }
 

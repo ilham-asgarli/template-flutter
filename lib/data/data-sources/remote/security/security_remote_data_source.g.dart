@@ -13,7 +13,7 @@ class _SecurityRemoteDataSource implements SecurityRemoteDataSource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://example.com/';
+    baseUrl ??= 'https://example.com/security/';
   }
 
   final Dio _dio;

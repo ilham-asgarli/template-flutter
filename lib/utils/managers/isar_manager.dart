@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 
-import '../../utils/constants/di/path_provider_constants.dart';
-import '../../utils/di/injectable.dart';
+import '../constants/di/path_provider_constants.dart';
+import '../di/injectable.dart';
 
 @LazySingleton()
 class IsarManager {

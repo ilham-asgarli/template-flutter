@@ -6,7 +6,7 @@ import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../core/interceptors/error_interceptor.dart';
+import '../../data/utils/interceptors/error_interceptor.dart';
 import '../constants/di/path_provider_constants.dart';
 
 @module

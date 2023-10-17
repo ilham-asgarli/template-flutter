@@ -16,17 +16,18 @@ import 'package:injectable/injectable.dart' as _i2;
 import 'package:logger/logger.dart' as _i7;
 import 'package:shared_preferences/shared_preferences.dart' as _i13;
 
-import '../../core/cache/isar_manager.dart' as _i6;
 import '../../data/data-sources/remote/security/security_remote_data_source.dart'
     as _i10;
 import '../../data/repositories/security/security_repository_impl.dart' as _i12;
 import '../../domain/repositories/security/security_repository.dart' as _i11;
+import '../../domain/usecases/security/get_user_use_case.dart' as _i15;
 import '../../presentation/features/my-app/view-models/my_app_view_model.dart'
     as _i9;
 import '../config/theme/exapmle_theme.dart' as _i5;
 import '../config/theme/main_theme.dart' as _i8;
 import '../helpers/theme/theme_helper.dart' as _i14;
-import 'register_module.dart' as _i15;
+import '../managers/isar_manager.dart' as _i6;
+import 'register_module.dart' as _i16;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -75,8 +76,10 @@ extension GetItInjectableX on _i1.GetIt {
       preResolve: true,
     );
     gh.singleton<_i14.ThemeHelper>(_i14.ThemeHelper());
+    gh.lazySingleton<_i15.GetUserUseCase>(() =>
+        _i15.GetUserUseCase(securityRepository: gh<_i11.SecurityRepository>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i15.RegisterModule {}
+class _$RegisterModule extends _i16.RegisterModule {}
