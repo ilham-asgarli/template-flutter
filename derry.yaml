@@ -27,7 +27,7 @@ icon:
   (description): Create icon
   (scripts):
     - dart run flutter_launcher_icons:main -f flutter_launcher_icons.yaml
-locale:
+l10n:
   (description): Generate locales
   (scripts):
     - flutter gen-l10n

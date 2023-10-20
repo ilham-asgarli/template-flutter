@@ -115,7 +115,7 @@ dev_dependencies:
 # dependency_overrides:
 
 flutter_gen:
-  output: lib/gen/
+  output: lib/presentation/utils/gen/
   line_length: 80
   integrations:
     flutter_svg: true

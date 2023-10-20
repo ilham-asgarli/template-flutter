@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../utils/extensions/context_extension.dart';
+import '../utils/extensions/context_extension.dart';
 
 class HaveNo extends StatelessWidget {
   final IconData iconData;

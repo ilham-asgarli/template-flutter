@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
 import '../../../../domain/usecases/security/get_user_use_case.dart';
-import '../../../../utils/constants/enums/app_theme_enum.dart';
 import '../../../../utils/di/injectable.dart';
-import '../../../../utils/extensions/num_extension.dart';
+import '../../../utils/constants/enums/app_theme_enum.dart';
+import '../../../utils/extensions/num_extension.dart';
 import '../../my-app/state/cubit/network/network_cubit.dart';
 import '../../my-app/state/cubit/theme/theme_cubit.dart';
 
@@ -34,8 +34,9 @@ class MainView extends StatelessWidget {
 
                   BlocProvider.of<ThemeCubit>(context).changeTheme(theme);
                 },
-                child:
-                    Text(context.watch<ThemeCubit>().state.appTheme.toString()),
+                child: Text(
+                  context.watch<ThemeCubit>().state.appTheme.toString(),
+                ),
               ),
               10.verticalSpace,
               ElevatedButton(
@@ -50,12 +51,14 @@ class MainView extends StatelessWidget {
                   BlocProvider.of<ThemeCubit>(context).changeThemeMode(mode);
                 },
                 child: Text(
-                    context.watch<ThemeCubit>().state.themeMode.toString()),
+                  context.watch<ThemeCubit>().state.themeMode.toString(),
+                ),
               ),
               ElevatedButton(
                 onPressed: () async {
                   var response = await getIt<GetUserUseCase>()(
-                      const GetUserUseCaseParams(id: "1"));
+                    const GetUserUseCaseParams(id: "1"),
+                  );
 
                   response.fold((l) {
                     getIt<Logger>().e(l.message);
@@ -63,7 +66,7 @@ class MainView extends StatelessWidget {
                     getIt<Logger>().i(r);
                   });
                 },
-                child: const Text("Get Users"),
+                child: const Text("Get User"),
               ),
               10.verticalSpace,
             ],

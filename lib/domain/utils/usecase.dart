@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
-import '../../data/utils/errors/network/api_error.dart';
+import '../../data/utils/exceptions/data.exception.dart';
 
 abstract class UseCase<T, Params> {
   const UseCase();
 
-  Future<Either<ApiError, T>> call(Params params);
+  Future<Either<DataException, T>> call(Params params);
 }

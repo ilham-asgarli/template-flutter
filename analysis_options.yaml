@@ -32,6 +32,9 @@ linter:
     # Additional information about this file can be found at
     # https://dart.dev/guides/language/analysis-options
     prefer_relative_imports: true
+    prefer_const_constructors: true
+    prefer_const_declarations: true
+    avoid_redundant_argument_values: true
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

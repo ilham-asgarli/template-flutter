@@ -19,7 +19,11 @@ abstract class RegisterModule {
       );
 
   @singleton
-  Dio get dio => Dio()..interceptors.add(ErrorInterceptor());
+  Dio get dio => Dio()
+    ..interceptors.addAll([
+      ErrorInterceptor(),
+      LogInterceptor(),
+    ]);
 
   @preResolve
   @lazySingleton
@@ -32,18 +36,15 @@ abstract class RegisterModule {
       getApplicationDocumentsDirectory();
 
   @Named(PathProviderConstants.temporaryDirectory)
-  @preResolve
   @lazySingleton
   Future<Directory> get temporaryDirectory => getTemporaryDirectory();
 
   @Named(PathProviderConstants.applicationCacheDirectory)
-  @preResolve
   @lazySingleton
   Future<Directory> get applicationCacheDirectory =>
       getApplicationCacheDirectory();
 
   @Named(PathProviderConstants.applicationSupportDirectory)
-  @preResolve
   @lazySingleton
   Future<Directory> get applicationSupportDirectory =>
       getApplicationSupportDirectory();

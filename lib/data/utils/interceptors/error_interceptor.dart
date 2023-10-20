@@ -1,46 +1,50 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
 
-import '../errors/network/bad_request_error.dart';
-import '../errors/network/client_error.dart';
-import '../errors/network/conflict_error.dart';
-import '../errors/network/custom_error.dart';
-import '../errors/network/forbidden_error.dart';
-import '../errors/network/internal_error.dart';
-import '../errors/network/not_found_error.dart';
-import '../errors/network/server_error.dart';
-import '../errors/network/socket_error.dart';
-import '../errors/network/unauthorized_error.dart';
+import '../exceptions/network/bad_request.exception.dart';
+import '../exceptions/network/client.exception.dart';
+import '../exceptions/network/conflict.exception.dart';
+import '../exceptions/network/custom.exception.dart';
+import '../exceptions/network/forbidden.exception.dart';
+import '../exceptions/network/internal.exception.dart';
+import '../exceptions/network/not_found.exception.dart';
+import '../exceptions/network/server.exception.dart';
+import '../exceptions/network/socket.exception.dart' as s_e;
+import '../exceptions/network/timeout.exception.dart' as t_e;
+import '../exceptions/network/unauthorized.exception.dart';
 
 class ErrorInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
     if (err.error is SocketException) {
-      throw SocketError();
+      throw s_e.SocketException(message: err.message);
+    } else if (err.error is TimeoutException) {
+      throw t_e.TimeoutException(message: err.message);
     }
 
     if (err.response?.statusCode != null) {
       switch (err.response!.statusCode!) {
         case 400:
-          throw BadRequestError();
+          throw BadRequestException(message: err.message);
         case 401:
-          throw UnauthorizedError();
+          throw UnauthorizedException(message: err.message);
         case 403:
-          throw ForbiddenError();
+          throw ForbiddenException(message: err.message);
         case 404:
-          throw NotFoundError();
+          throw NotFoundException(message: err.message);
         case 409:
-          throw ConflictError();
+          throw ConflictException(message: err.message);
         case >= 400 && < 500:
-          throw ClientError();
+          throw ClientException(message: err.message);
         case 500:
-          throw InternalError();
+          throw InternalException(message: err.message);
         case >= 500:
-          throw ServerError();
+          throw ServerException(message: err.message);
       }
     }
 
-    throw CustomError(message: err.message ?? "Custom Error");
+    throw CustomException(message: err.message);
   }
 }

@@ -5,10 +5,10 @@ import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../../../l10n/gen/app_localizations.dart';
-import '../../../../utils/config/router/config_router.dart';
-import '../../../../utils/constants/app/app_constants.dart';
-import '../../../../utils/helpers/theme/theme_helper.dart';
+import '../../../utils/config/router/config_router.dart';
+import '../../../utils/constants/app/app_constants.dart';
+import '../../../utils/helpers/theme/theme_helper.dart';
+import '../../../utils/l10n/gen/app_localizations.dart';
 import '../../not-found-navigation/views/not_found_navigation_view.dart';
 import '../state/cubit/theme/theme_cubit.dart';
 import '../view-models/my_app_view_model.dart';
