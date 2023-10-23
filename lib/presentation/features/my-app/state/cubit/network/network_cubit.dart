@@ -12,15 +12,15 @@ class NetworkCubit extends Cubit<NetworkState> {
   final Connectivity connectivity = Connectivity();
 
   NetworkCubit() : super(NetworkInitial()) {
-    subscribeToConnectivity();
+    subscribeToInternetStatus();
   }
 
-  Future<void> checkConnectivity() async {
+  Future<void> checkInternet() async {
     ConnectivityResult result = await connectivity.checkConnectivity();
     changeStateByConnectivityResult(result);
   }
 
-  void subscribeToConnectivity() {
+  void subscribeToInternetStatus() {
     _subscription =
         connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
       changeStateByConnectivityResult(result);
