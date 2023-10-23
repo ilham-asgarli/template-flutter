@@ -1,11 +1,11 @@
 import 'dart:io';
 
-void main() {
+void main() async {
   stdout.write('Enter origin: ');
   var origin = stdin.readLineSync();
 
   if (origin != null && origin.isNotEmpty) {
-    Process.run('git', ['init']).then((value) {
+    await Process.run('git', ['init']).then((value) {
       if (value.exitCode == 0) {
         print(value.stdout);
         print('Git init successful!');
@@ -16,7 +16,7 @@ void main() {
       }
     });
 
-    Process.run('git', ['branch', '-M', 'main']).then((value) {
+    await Process.run('git', ['branch', '-M', 'main']).then((value) {
       if (value.exitCode == 0) {
         print(value.stdout);
         print('Git branch successful!');
@@ -27,7 +27,7 @@ void main() {
       }
     });
 
-    Process.run('git', ['remote', 'add', 'origin', origin]).then((value) {
+    await Process.run('git', ['remote', 'add', 'origin', origin]).then((value) {
       if (value.exitCode == 0) {
         print(value.stdout);
         print('Git remote origin successful!');
@@ -38,7 +38,7 @@ void main() {
       }
     });
 
-    Process.run('dart', ['scripts/git_push.dart']).then((value) {
+    await Process.run('dart', ['scripts/git_push.dart']).then((value) {
       if (value.exitCode == 0) {
         print(value.stdout);
         print('Git git-push start successful!');
