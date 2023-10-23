@@ -16,9 +16,9 @@ class MyAppView extends StatelessWidget {
   final MyAppViewModel myAppViewModel;
 
   const MyAppView({
-    Key? key,
+    super.key,
     required this.myAppViewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

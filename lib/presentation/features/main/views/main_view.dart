@@ -12,9 +12,9 @@ class MainView extends StatelessWidget {
   final MainViewModel mainViewModel;
 
   const MainView({
-    Key? key,
+    super.key,
     required this.mainViewModel,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

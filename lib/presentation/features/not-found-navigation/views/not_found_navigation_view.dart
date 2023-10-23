@@ -5,7 +5,7 @@ import '../../../../presentation/widgets/have_no.dart';
 import '../../../utils/extensions/context_extension.dart';
 
 class NotFoundNavigationView extends StatelessWidget {
-  const NotFoundNavigationView({Key? key}) : super(key: key);
+  const NotFoundNavigationView({super.key});
 
   @override
   Widget build(BuildContext context) {
