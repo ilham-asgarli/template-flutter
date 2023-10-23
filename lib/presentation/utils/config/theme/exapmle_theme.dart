@@ -17,7 +17,7 @@ class ExampleTheme extends ThemeInterface {
       brightness:
           themeMode == ThemeMode.light ? Brightness.light : Brightness.dark,
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      colorSchemeSeed: Colors.red,
+      colorSchemeSeed: AppColors.red,
       textTheme: TextTheme(
         bodyMedium: AppTypography.bodyMedium.copyWith(
           fontSize: 10,
@@ -25,7 +25,7 @@ class ExampleTheme extends ThemeInterface {
       ),
       extensions: [
         const CustomColorExtension(
-          primary: AppColors.seashell,
+          primary: AppColors.red,
         ),
         CustomTextThemeExtension(
           example: AppTypography.example.copyWith(
@@ -39,8 +39,8 @@ class ExampleTheme extends ThemeInterface {
   @override
   SystemUiOverlayStyle systemUiOverlayStyle() {
     return const SystemUiOverlayStyle(
-      statusBarColor: Colors.red,
-      systemNavigationBarColor: Colors.red,
+      statusBarColor: AppColors.red,
+      systemNavigationBarColor: AppColors.red,
     );
   }
 }

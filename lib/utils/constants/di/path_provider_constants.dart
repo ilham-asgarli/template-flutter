@@ -1,14 +1,11 @@
 class PathProviderConstants {
-  static const String applicationDocumentsDirectory =
-      "applicationDocumentsDirectory";
-  static const String temporaryDirectory = "temporaryDirectory";
-  static const String applicationCacheDirectory = "applicationCacheDirectory";
-  static const String applicationSupportDirectory =
-      "applicationSupportDirectory";
-  static const String libraryDirectory = "libraryDirectory";
-  static const String externalCacheDirectories = "externalStorageDirectories";
-  static const String externalStorageDirectories =
-      "applicationDocumentsDirectory";
-  static const String downloadsDirectory = "downloadsDirectory";
-  static const String externalStorageDirectory = "externalStorageDirectory";
+  static const String applicationDocuments = "applicationDocuments";
+  static const String temporary = "temporary";
+  static const String applicationCache = "applicationCache";
+  static const String applicationSupport = "applicationSupport";
+  static const String library = "library";
+  static const String externalCaches = "externalCaches";
+  static const String externalStorages = "externalStorages";
+  static const String downloads = "downloads";
+  static const String externalStorage = "externalStorage";
 }

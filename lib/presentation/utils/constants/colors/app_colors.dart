@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
+  // blue
+  static const blue = Colors.blue;
+
   // Red
   static const red = Colors.red;
   static const imperialRed = Color(0xFFE54B4B);

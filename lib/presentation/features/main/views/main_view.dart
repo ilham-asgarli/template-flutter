@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:logger/logger.dart';
 
-import '../../../../domain/usecases/security/get_user_use_case.dart';
-import '../../../../utils/di/injectable.dart';
-import '../../../utils/constants/enums/app_theme_enum.dart';
 import '../../../utils/extensions/context_extension.dart';
 import '../../../utils/extensions/num_extension.dart';
 import '../../../utils/extensions/theme_extension.dart';
-import '../../my-app/state/cubit/network/network_cubit.dart';
+import '../../my-app/state/bloc/network/network_bloc.dart';
 import '../../my-app/state/cubit/theme/theme_cubit.dart';
+import '../view-models/main_view_model.dart';
 
 class MainView extends StatelessWidget {
-  const MainView({Key? key}) : super(key: key);
+  final MainViewModel mainViewModel;
+
+  const MainView({
+    Key? key,
+    required this.mainViewModel,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,56 +36,37 @@ class MainView extends StatelessWidget {
                   textAlign: TextAlign.center,
                 ),
                 10.verticalSpace,
-                Text(
-                  context.watch<NetworkCubit>().state.toString(),
-                  textAlign: TextAlign.center,
+                BlocBuilder<NetworkBloc, NetworkState>(
+                  builder: (context, state) {
+                    return Text(
+                      state.connecting
+                          ? "Connecting to Internet"
+                          : state.connected
+                              ? "Connected to Internet"
+                              : "Failed to connect to Internet",
+                      textAlign: TextAlign.center,
+                    );
+                  },
                 ),
                 10.verticalSpace,
                 ElevatedButton(
-                  onPressed: () async {
-                    var theme =
-                        switch (context.read<ThemeCubit>().state.appTheme) {
-                      AppTheme.main => AppTheme.example,
-                      AppTheme.example => AppTheme.main,
-                    };
-
-                    BlocProvider.of<ThemeCubit>(context).changeTheme(theme);
-                  },
+                  onPressed: mainViewModel.changeTheme,
                   child: Text(
                     context.watch<ThemeCubit>().state.appTheme.toString(),
                   ),
                 ),
                 10.verticalSpace,
                 ElevatedButton(
-                  onPressed: () {
-                    var mode =
-                        switch (context.read<ThemeCubit>().state.themeMode) {
-                      ThemeMode.system => ThemeMode.light,
-                      ThemeMode.light => ThemeMode.dark,
-                      ThemeMode.dark => ThemeMode.system,
-                    };
-
-                    BlocProvider.of<ThemeCubit>(context).changeThemeMode(mode);
-                  },
+                  onPressed: mainViewModel.changeThemeMode,
                   child: Text(
                     context.watch<ThemeCubit>().state.themeMode.toString(),
                   ),
                 ),
+                10.verticalSpace,
                 ElevatedButton(
-                  onPressed: () async {
-                    var response = await getIt<GetUserUseCase>()(
-                      const GetUserUseCaseParams(id: "1"),
-                    );
-
-                    response.fold((l) {
-                      getIt<Logger>().e(l.message);
-                    }, (r) {
-                      getIt<Logger>().i(r);
-                    });
-                  },
+                  onPressed: mainViewModel.getUser,
                   child: const Text("Get User"),
                 ),
-                10.verticalSpace,
               ],
             ),
           ),

@@ -10,7 +10,7 @@ class IsarManager {
   final Directory applicationDocumentsDirectory;
 
   const IsarManager({
-    @Named(PathProviderConstants.applicationDocumentsDirectory)
+    @Named(PathProviderConstants.applicationDocuments)
     required this.applicationDocumentsDirectory,
   });
 
