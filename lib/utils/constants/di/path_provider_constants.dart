@@ -1,4 +1,4 @@
-class PathProviderConstants {
+abstract class PathProviderConstants {
   static const String applicationDocuments = "applicationDocuments";
   static const String temporary = "temporary";
   static const String applicationCache = "applicationCache";

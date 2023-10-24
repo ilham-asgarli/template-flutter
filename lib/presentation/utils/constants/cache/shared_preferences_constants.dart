@@ -1,1 +1,1 @@
-class SharedPreferencesConstants {}
+abstract class SharedPreferencesConstants {}

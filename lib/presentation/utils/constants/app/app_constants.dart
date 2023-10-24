@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppConstants {
+abstract class AppConstants {
   static GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
       GlobalKey<ScaffoldMessengerState>();
   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

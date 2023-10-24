@@ -1,3 +1,3 @@
-class EnvConstants {
+abstract class EnvConstants {
   static const fileName = '';
 }

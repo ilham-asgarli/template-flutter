@@ -1,3 +1,1 @@
-class ApiConstants {
-
-}
+abstract class ApiConstants {}
