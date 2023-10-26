@@ -8,7 +8,8 @@ import '../../extensions/custom_color_extension.dart';
 import '../../extensions/custom_text_theme_extension.dart';
 import 'theme_interface.dart';
 
-@LazySingleton()
+@named
+@LazySingleton(as: ThemeInterface)
 class MainTheme extends ThemeInterface {
   @override
   ThemeData getTheme(themeMode) {

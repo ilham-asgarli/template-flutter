@@ -20,11 +20,11 @@ class ThemeHelper {
   ThemeInterface getCustomTheme(AppTheme appTheme) {
     switch (appTheme) {
       case AppTheme.main:
-        return getIt<MainTheme>();
+        return getIt<ThemeInterface>(instanceName: (MainTheme).toString());
       case AppTheme.example:
-        return getIt<ExampleTheme>();
+        return getIt<ThemeInterface>(instanceName: (ExampleTheme).toString());
       default:
-        return getIt<MainTheme>();
+        return getIt<ThemeInterface>(instanceName: (MainTheme).toString());
     }
   }
 

@@ -50,8 +50,17 @@ class $AssetsImageGen {
   AssetGenImage get icPlaystore =>
       const AssetGenImage('assets/image/ic_playstore.png');
 
+  /// File path: assets/image/ic_splash.png
+  AssetGenImage get icSplash =>
+      const AssetGenImage('assets/image/ic_splash.png');
+
+  /// File path: assets/image/ic_splash_dark.png
+  AssetGenImage get icSplashDark =>
+      const AssetGenImage('assets/image/ic_splash_dark.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [icAppstore, icPlaystore];
+  List<AssetGenImage> get values =>
+      [icAppstore, icPlaystore, icSplash, icSplashDark];
 }
 
 class $AssetsJsonGen {
