@@ -51,6 +51,12 @@ class MyAppView extends StatelessWidget {
                     .getTheme(ThemeMode.dark),
                 themeMode: context.watch<ThemeCubit>().state.themeMode,
                 scaffoldMessengerKey: AppConstants.scaffoldMessengerKey,
+                builder: (context, child) {
+                  try {
+                    getIt.registerLazySingleton(() => context);
+                  } catch (e) {}
+                  return child!;
+                },
               );
             },
           ),

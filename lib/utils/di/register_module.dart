@@ -4,9 +4,14 @@ import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/utils/interceptors/error_interceptor.dart';
+import '../../presentation/utils/l10n/gen/app_localizations.dart';
+import 'injectable.dart';
 
 @module
 abstract class RegisterModule {
+  @lazySingleton
+  AppLocalizations get l10n => AppLocalizations.of(getIt())!;
+
   @lazySingleton
   Logger get logger => Logger(
         printer: PrettyPrinter(
