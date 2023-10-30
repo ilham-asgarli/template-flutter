@@ -141,7 +141,7 @@ macos/Runner/GoogleService-Info.plist
 
 # Environment
 *.env*
-!*.env.example
+!assets/env/.env.example
 
 # Generated
 *.g.dart

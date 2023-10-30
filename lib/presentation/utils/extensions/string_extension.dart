@@ -9,9 +9,9 @@ extension StringConcat on String {
 extension EnvPath on String {
   String get toEnv => kDebugMode ? toEnvDevelopment : toEnvProduction;
 
-  String get toEnvDevelopment => '$this.env.development';
+  String get toEnvDevelopment => '$this.env.dev';
 
-  String get toEnvProduction => '$this.env.production';
+  String get toEnvProduction => '$this.env.prod';
 
   String get toEnvExample => '$this.env.example';
 }
