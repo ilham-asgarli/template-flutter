@@ -26,14 +26,12 @@ void main() async {
 Future<void> init() async {
   HttpOverrides.global = MyHttpOverrides();
 
-  //String env = await rootBundle.loadString(EnvConstants.fileName.toEnv);
   await Future.wait([
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]),
     configureDependencies(),
     universal.get().init(),
-    //if (env.isNotEmpty) dotenv.load(fileName: EnvConstants.fileName.toEnv),
   ]);
   final Directory storage = kIsWeb
       ? HydratedStorage.webStorageDirectory
