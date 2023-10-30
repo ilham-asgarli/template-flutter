@@ -25,7 +25,6 @@ void main() async {
 
 Future<void> init() async {
   HttpOverrides.global = MyHttpOverrides();
-
   await Future.wait([
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
