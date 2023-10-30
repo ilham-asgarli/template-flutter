@@ -1,19 +1,7 @@
-import 'package:flutter/foundation.dart';
-
 extension StringConcat on String {
   String concat(String s) => this + s;
 
   String concatIfNotEmpty(String s) => isNotEmpty ? this + s : "";
-}
-
-extension EnvPath on String {
-  String get toEnv => kDebugMode ? toEnvDevelopment : toEnvProduction;
-
-  String get toEnvDevelopment => '$this.env.dev';
-
-  String get toEnvProduction => '$this.env.prod';
-
-  String get toEnvExample => '$this.env.example';
 }
 
 extension StringCasing on String {
