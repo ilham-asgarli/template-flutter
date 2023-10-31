@@ -5,10 +5,10 @@ class BaseBrightnessChangeView extends StatefulWidget {
   final Function()? onChange;
 
   const BaseBrightnessChangeView({
-    Key? key,
+    super.key,
     required this.child,
     this.onChange,
-  }) : super(key: key);
+  });
 
   @override
   State<BaseBrightnessChangeView> createState() =>

@@ -9,14 +9,14 @@ class BaseAppLifeCycleView extends StatefulWidget {
   final Function()? onHidden;
 
   const BaseAppLifeCycleView({
-    Key? key,
+    super.key,
     required this.child,
     this.onResume,
     this.onPause,
     this.onInactive,
     this.onDetach,
     this.onHidden,
-  }) : super(key: key);
+  });
 
   @override
   State<BaseAppLifeCycleView> createState() => _BaseAppLifeCycleViewState();

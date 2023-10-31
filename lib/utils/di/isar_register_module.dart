@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
-import 'package:template/utils/constants/di/isar_constants.dart';
+import '../constants/di/isar_constants.dart';
 
 import '../../data/models/user_model.dart';
 import '../../presentation/utils/managers/isar_manager.dart';

@@ -33,7 +33,7 @@ class GetUserUseCase extends UseCase<UserModel, GetUserUseCaseParams> {
       return right(response);
     } on NotFoundException catch (e) {
       return left(NotFoundException(message: e.message));
-    } on SocketException catch (e) {
+    } on SocketException {
       try {
         var response = await securityLocalRepository.getUser(id: params.id);
         return right(response);
