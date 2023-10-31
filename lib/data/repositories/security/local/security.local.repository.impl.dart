@@ -9,7 +9,7 @@ import '../../../utils/exceptions/local/not_found.exception.dart';
 class SecurityLocalRepositoryImpl implements SecurityLocalRepository {
   final SecurityLocalDataSource securityLocalDataSource;
 
-  SecurityLocalRepositoryImpl({
+  const SecurityLocalRepositoryImpl({
     required this.securityLocalDataSource,
   });
 

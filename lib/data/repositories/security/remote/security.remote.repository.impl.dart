@@ -10,7 +10,7 @@ import '../../../utils/exceptions/network/custom.exception.dart';
 class SecurityRemoteRepositoryImpl implements SecurityRemoteRepository {
   final SecurityRemoteDataSource securityRemoteDataSource;
 
-  SecurityRemoteRepositoryImpl({
+  const SecurityRemoteRepositoryImpl({
     required this.securityRemoteDataSource,
   });
 

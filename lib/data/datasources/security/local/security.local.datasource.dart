@@ -8,7 +8,7 @@ import '../../../models/user_model.dart';
 class SecurityLocalDataSource {
   final Isar isar;
 
-  SecurityLocalDataSource({
+  const SecurityLocalDataSource({
     @Named(IsarConstants.users) required this.isar,
   });
 
