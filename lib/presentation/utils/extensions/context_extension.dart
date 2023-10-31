@@ -26,6 +26,10 @@ extension MediaQueryExtension on BuildContext {
 
   double get bottomInset => viewInsets.bottom;
 
+  double get verticalInset => topPadding + bottomInset;
+
+  double get safeHeight => height - verticalInset;
+
   double get lowValue => height * 0.01;
 
   double get normalValue => height * 0.02;
