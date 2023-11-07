@@ -1,7 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../data/models/user_model.dart';
 import '../../../data/utils/exceptions/data.exception.dart';
 import '../../../data/utils/exceptions/local.exception.dart';
 import '../../../data/utils/exceptions/local/custom.exception.dart';
@@ -10,12 +9,13 @@ import '../../../data/utils/exceptions/network.exception.dart';
 import '../../../data/utils/exceptions/network/custom.exception.dart';
 import '../../../data/utils/exceptions/network/not_found.exception.dart';
 import '../../../data/utils/exceptions/network/socket.exception.dart';
+import '../../entities/user_entity.dart';
 import '../../repositories/security/local/security.local.repository.dart';
 import '../../repositories/security/remote/security.remote.repository.dart';
 import '../../utils/usecase.dart';
 
 @LazySingleton()
-class GetUserUseCase extends UseCase<UserModel, GetUserUseCaseParams> {
+class GetUserUseCase extends UseCase<UserEntity, GetUserUseCaseParams> {
   final SecurityRemoteRepository securityRemoteRepository;
   final SecurityLocalRepository securityLocalRepository;
 
@@ -25,7 +25,7 @@ class GetUserUseCase extends UseCase<UserModel, GetUserUseCaseParams> {
   });
 
   @override
-  Future<Either<DataException, UserModel>> call(
+  Future<Either<DataException, UserEntity>> call(
     GetUserUseCaseParams params,
   ) async {
     try {

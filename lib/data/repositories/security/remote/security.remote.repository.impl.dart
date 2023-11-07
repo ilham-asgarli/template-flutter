@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../domain/entities/user_entity.dart';
 import '../../../../domain/repositories/security/remote/security.remote.repository.dart';
 import '../../../datasources/security/remote/security_remote_data_source.dart';
 import '../../../models/user_model.dart';
@@ -15,10 +16,13 @@ class SecurityRemoteRepositoryImpl implements SecurityRemoteRepository {
   });
 
   @override
-  Future<UserModel> getUser({required String id}) async {
+  Future<UserEntity> getUser({required String id}) async {
     try {
       UserModel userModel = await securityRemoteDataSource.getUser(id);
-      return userModel;
+      return UserEntity(
+        email: userModel.email,
+        password: userModel.password,
+      );
     } on DioException catch (e) {
       throw e.error!;
     } catch (e) {

@@ -1,5 +1,6 @@
 import 'package:injectable/injectable.dart';
 
+import '../../../../domain/entities/user_entity.dart';
 import '../../../../domain/repositories/security/local/security.local.repository.dart';
 import '../../../datasources/security/local/security.local.datasource.dart';
 import '../../../models/user_model.dart';
@@ -14,11 +15,14 @@ class SecurityLocalRepositoryImpl implements SecurityLocalRepository {
   });
 
   @override
-  Future<UserModel> getUser({required String id}) async {
+  Future<UserEntity> getUser({required String id}) async {
     UserModel? userModel = await securityLocalDataSource.getUser(id);
 
     if (userModel != null) {
-      return userModel;
+      return UserEntity(
+        email: userModel.email,
+        password: userModel.password,
+      );
     } else {
       throw NotFoundLocalException();
     }

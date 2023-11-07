@@ -9,10 +9,8 @@ part 'user_entity.g.dart';
 class UserEntity with _$UserEntity {
   @DateTimeConverter()
   const factory UserEntity({
-    required String id,
     required String email,
     required String password,
-    required DateTime createdAt,
   }) = _UserEntity;
 
   factory UserEntity.fromJson(Map<String, Object?> json) =>

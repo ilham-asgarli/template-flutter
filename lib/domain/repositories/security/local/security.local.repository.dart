@@ -1,5 +1,5 @@
-import '../../../../data/models/user_model.dart';
+import '../../../entities/user_entity.dart';
 
 abstract class SecurityLocalRepository {
-  Future<UserModel> getUser({required String id});
+  Future<UserEntity> getUser({required String id});
 }
