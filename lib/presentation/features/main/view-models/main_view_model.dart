@@ -7,7 +7,7 @@ import '../../../../utils/di/injectable.dart';
 import '../../../utils/constants/enums/app_theme_enum.dart';
 import '../../my-app/state/cubit/theme/theme_cubit.dart';
 
-@LazySingleton()
+@injectable
 class MainViewModel {
   void changeTheme() {
     var theme = switch (getIt<ThemeCubit>().state.appTheme) {

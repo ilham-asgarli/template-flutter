@@ -9,7 +9,7 @@ import '../../../utils/constants/app/app_constants.dart';
 import '../../../utils/helpers/theme/theme_helper.dart';
 import '../../not-found-navigation/views/not_found_navigation_view.dart';
 
-@LazySingleton()
+@injectable
 class MyAppViewModel {
   final ThemeHelper themeHelper = getIt();
 
