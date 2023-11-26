@@ -113,6 +113,12 @@ extension SpaceExtension on BuildContext {
       );
 }
 
+extension TextExtension on BuildContext {
+  double textScaleFactor({double baseWidth = 450}) {
+    return width / baseWidth;
+  }
+}
+
 extension Localization on BuildContext {
   AppLocalizations get l10n => AppLocalizations.of(this)!;
 }
