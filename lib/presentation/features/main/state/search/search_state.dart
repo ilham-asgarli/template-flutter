@@ -5,6 +5,10 @@ abstract class SearchState {
   const SearchState();
 }
 
+class NotSearch extends SearchState {
+  const NotSearch();
+}
+
 class Loading extends SearchState {
   const Loading();
 }

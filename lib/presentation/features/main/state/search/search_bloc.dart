@@ -6,12 +6,16 @@ part 'search_event.dart';
 part 'search_state.dart';
 
 class SearchBloc extends Bloc<SearchEvent, SearchState> {
-  SearchBloc() : super(const Loading()) {
+  SearchBloc() : super(const NotSearch()) {
     on<Search>(
       onSearch,
       transformer: droppable(),
     );
   }
 
-  void onSearch(Search event, Emitter<SearchState> emit) {}
+  void onSearch(Search event, Emitter<SearchState> emit) {
+    emit(const Loading());
+
+    // TODO: Load data and change state.
+  }
 }
