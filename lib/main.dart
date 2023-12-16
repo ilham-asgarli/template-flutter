@@ -20,7 +20,7 @@ void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await init();
-  runApp(MyAppView(myAppViewModel: getIt()));
+  runApp(MyAppView(viewModel: getIt()));
   FlutterNativeSplash.remove();
 }
 

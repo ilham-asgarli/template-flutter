@@ -13,11 +13,11 @@ import '../state/cubit/theme/theme_cubit.dart';
 import '../view-models/my_app_view_model.dart';
 
 class MyAppView extends StatelessWidget {
-  final MyAppViewModel myAppViewModel;
+  final MyAppViewModel viewModel;
 
   const MyAppView({
     super.key,
-    required this.myAppViewModel,
+    required this.viewModel,
   });
 
   @override
@@ -36,15 +36,15 @@ class MyAppView extends StatelessWidget {
         enabled: false, //kDebugMode
         builder: (context) => KeyboardVisibilityProvider(
           child: MaterialApp.router(
-            routerConfig: myAppViewModel.goRouter,
+            routerConfig: viewModel.goRouter,
             debugShowCheckedModeBanner: false,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
             locale: kDebugMode ? const Locale("tr", "TR") : null,
-            theme: myAppViewModel.themeHelper
+            theme: viewModel.themeHelper
                 .getCustomTheme(context.watch<ThemeCubit>().state.appTheme)
                 .getTheme(ThemeMode.light),
-            darkTheme: myAppViewModel.themeHelper
+            darkTheme: viewModel.themeHelper
                 .getCustomTheme(context.watch<ThemeCubit>().state.appTheme)
                 .getTheme(ThemeMode.dark),
             themeMode: context.watch<ThemeCubit>().state.themeMode,

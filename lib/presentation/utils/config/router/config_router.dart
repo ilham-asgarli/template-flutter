@@ -20,7 +20,7 @@ class MainViewRoute extends GoRouteData {
   @override
   Widget build(BuildContext context, GoRouterState state) {
     return MainView(
-      mainViewModel: getIt(),
+      viewModel: getIt(),
     );
   }
 }

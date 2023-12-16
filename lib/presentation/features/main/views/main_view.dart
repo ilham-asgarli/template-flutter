@@ -9,11 +9,11 @@ import '../../my-app/state/cubit/theme/theme_cubit.dart';
 import '../view-models/main_view_model.dart';
 
 class MainView extends StatelessWidget {
-  final MainViewModel mainViewModel;
+  final MainViewModel viewModel;
 
   const MainView({
     super.key,
-    required this.mainViewModel,
+    required this.viewModel,
   });
 
   @override
@@ -50,21 +50,21 @@ class MainView extends StatelessWidget {
                 ),
                 10.verticalSpace,
                 ElevatedButton(
-                  onPressed: mainViewModel.changeTheme,
+                  onPressed: viewModel.changeTheme,
                   child: Text(
                     context.watch<ThemeCubit>().state.appTheme.toString(),
                   ),
                 ),
                 10.verticalSpace,
                 ElevatedButton(
-                  onPressed: mainViewModel.changeThemeMode,
+                  onPressed: viewModel.changeThemeMode,
                   child: Text(
                     context.watch<ThemeCubit>().state.themeMode.toString(),
                   ),
                 ),
                 10.verticalSpace,
                 ElevatedButton(
-                  onPressed: mainViewModel.getUser,
+                  onPressed: viewModel.getUser,
                   child: const Text("Get User"),
                 ),
               ],
