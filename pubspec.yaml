@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.1.4 <4.0.0'
+  sdk: '>=3.2.3 <4.0.0'
 
 scripts: derry.yaml
 
@@ -94,7 +94,7 @@ dependencies:
   rive: ^0.12.4
   flare_flutter: ^3.0.2
   flutter_svg: ^2.0.9
-  lottie: ^2.7.0
+  lottie: ^3.0.0
 
   mockito: ^5.4.4
 
