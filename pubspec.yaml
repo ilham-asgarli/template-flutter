@@ -49,7 +49,7 @@ dependencies:
   flutter_gen: ^5.4.0
 
   # dependency injection
-  get_it: ^7.6.6
+  get_it: ^7.6.7
   injectable: ^2.3.2
 
   # state management
@@ -65,7 +65,7 @@ dependencies:
   isar: *isar_version
   isar_flutter_libs: *isar_version
 
-  http: ^1.1.2
+  http: ^1.2.0
   dio: ^5.4.0
   retrofit: ^4.0.3
 
