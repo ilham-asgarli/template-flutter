@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 
-import '../../../models/user_model.dart';
+import '../../../models/user.model.dart';
 
 @LazySingleton()
 class SecurityLocalDataSource {

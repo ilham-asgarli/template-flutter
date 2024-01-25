@@ -1,9 +1,9 @@
 import 'package:injectable/injectable.dart';
 
-import '../../../../domain/entities/user_entity.dart';
+import '../../../../domain/entities/user.entity.dart';
 import '../../../../domain/repositories/security/local/security.local.repository.dart';
 import '../../../datasources/security/local/security.local.datasource.dart';
-import '../../../models/user_model.dart';
+import '../../../models/user.model.dart';
 import '../../../utils/exceptions/local/not_found.exception.dart';
 
 @LazySingleton(as: SecurityLocalRepository)

@@ -5,7 +5,7 @@ import 'package:isar/isar.dart';
 import 'package:logger/logger.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../data/models/user_model.dart';
+import '../../data/models/user.model.dart';
 import '../../data/utils/interceptors/error_interceptor.dart';
 import '../../presentation/utils/l10n/gen/app_localizations.dart';
 import '../../presentation/utils/managers/isar_manager.dart';

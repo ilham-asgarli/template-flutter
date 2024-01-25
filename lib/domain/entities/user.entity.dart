@@ -2,8 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../utils/helpers/json-serializable/date_time_converter.dart';
 
-part 'user_entity.freezed.dart';
-part 'user_entity.g.dart';
+part 'user.entity.freezed.dart';
+part 'user.entity.g.dart';
 
 @Freezed(copyWith: false, equal: false)
 class UserEntity with _$UserEntity {

@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../domain/entities/user_entity.dart';
+import '../../../../domain/entities/user.entity.dart';
 import '../../../../domain/repositories/security/remote/security.remote.repository.dart';
-import '../../../datasources/security/remote/security_remote_data_source.dart';
-import '../../../models/user_model.dart';
+import '../../../datasources/security/remote/security.remote.datasource.dart';
+import '../../../models/user.model.dart';
 import '../../../utils/exceptions/network/custom.exception.dart';
 
 @LazySingleton(as: SecurityRemoteRepository)

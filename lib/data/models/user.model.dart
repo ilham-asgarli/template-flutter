@@ -4,8 +4,8 @@ import 'package:isar/isar.dart';
 
 import '../../utils/helpers/json-serializable/date_time_converter.dart';
 
-part 'user_model.freezed.dart';
-part 'user_model.g.dart';
+part 'user.model.freezed.dart';
+part 'user.model.g.dart';
 
 @Freezed()
 @Collection(ignore: {'copyWith'})

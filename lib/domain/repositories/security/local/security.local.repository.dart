@@ -1,4 +1,4 @@
-import '../../../entities/user_entity.dart';
+import '../../../entities/user.entity.dart';
 
 abstract class SecurityLocalRepository {
   Future<UserEntity> getUser({required String id});

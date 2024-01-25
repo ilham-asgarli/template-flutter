@@ -9,7 +9,7 @@ import '../../../data/utils/exceptions/network.exception.dart';
 import '../../../data/utils/exceptions/network/custom.exception.dart';
 import '../../../data/utils/exceptions/network/not_found.exception.dart';
 import '../../../data/utils/exceptions/network/socket.exception.dart';
-import '../../entities/user_entity.dart';
+import '../../entities/user.entity.dart';
 import '../../repositories/security/local/security.local.repository.dart';
 import '../../repositories/security/remote/security.remote.repository.dart';
 import '../../utils/usecase.dart';

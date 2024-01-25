@@ -9,8 +9,8 @@ targets:
         enabled: true
         generate_for:
           include:
-            - lib/**_model.dart
-            - lib/**_entity.dart
+            - lib/**.model.dart
+            - lib/**.entity.dart
             - lib/**_bloc.dart
             - lib/**_cubit.dart
         options:
@@ -21,15 +21,15 @@ targets:
         enabled: true
         generate_for:
           include:
-            - lib/**_model.dart
-            - lib/**_entity.dart
+            - lib/**.model.dart
+            - lib/**.entity.dart
             - lib/**_bloc.dart
             - lib/**_cubit.dart
       isar_generator:isar_generator:
         enabled: true
         generate_for:
           include:
-            - lib/**_model.dart
+            - lib/**.model.dart
       injectable_generator:injectable_builder:
         enabled: true
         generate_for:
