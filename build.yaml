@@ -11,6 +11,7 @@ targets:
           include:
             - lib/**.model.dart
             - lib/**.entity.dart
+            - lib/**.usecase.dart
             - lib/**_bloc.dart
             - lib/**_cubit.dart
         options:
@@ -23,6 +24,7 @@ targets:
           include:
             - lib/**.model.dart
             - lib/**.entity.dart
+            - lib/**.usecase.dart
             - lib/**_bloc.dart
             - lib/**_cubit.dart
       isar_generator:isar_generator:
