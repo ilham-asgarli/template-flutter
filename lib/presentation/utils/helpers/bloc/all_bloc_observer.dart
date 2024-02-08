@@ -3,7 +3,7 @@ import 'package:logger/logger.dart';
 
 import '../../../../utils/di/injectable.dart';
 
-class MyBlocObserver extends BlocObserver {
+class AllBlocObserver extends BlocObserver {
   @override
   void onCreate(BlocBase<dynamic> bloc) {
     getIt<Logger>().d("Create: ${bloc.runtimeType}");
@@ -27,14 +27,14 @@ class MyBlocObserver extends BlocObserver {
   void onTransition(
       Bloc<dynamic, dynamic> bloc, Transition<dynamic, dynamic> transition) {
     getIt<Logger>().d(
-        "Bloc: ${bloc.runtimeType}\nTransition: { currentState: ${transition.currentState.runtimeType}, event: ${transition.event.runtimeType}, nextState: ${transition.nextState.runtimeType} }");
+        "Bloc: ${bloc.runtimeType}\nTransition: { currentState: ${transition.currentState}, event: ${transition.event.runtimeType}, nextState: ${transition.nextState} }");
     super.onTransition(bloc, transition);
   }
 
   @override
   void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
     getIt<Logger>().d(
-        "Bloc: ${bloc.runtimeType}\nChange: { currentState: ${change.currentState.runtimeType}, nextState: ${change.nextState.runtimeType} }");
+        "Bloc: ${bloc.runtimeType}\nChange: { currentState: ${change.currentState}, nextState: ${change.nextState} }");
     super.onChange(bloc, change);
   }
 
