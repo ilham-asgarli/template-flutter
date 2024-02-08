@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../utils/constants/enums/app_enum.dart';
 import '../../../utils/extensions/context_extension.dart';
 import '../../../utils/extensions/num_extension.dart';
 import '../../../utils/extensions/theme_extension.dart';
@@ -39,11 +40,13 @@ class MainView extends StatelessWidget {
                 BlocBuilder<NetworkBloc, NetworkState>(
                   builder: (context, state) {
                     return Text(
-                      state.connecting
+                      state.state == BlocState.loading
                           ? "Connecting to Internet"
-                          : state.connected
+                          : state.state == BlocState.success
                               ? "Connected to Internet"
-                              : "Failed to connect to Internet",
+                              : state.state == BlocState.error
+                                  ? "Failed to connect to Internet"
+                                  : "",
                       textAlign: TextAlign.center,
                     );
                   },

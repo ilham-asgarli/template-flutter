@@ -2,9 +2,13 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 
+import '../../../../../utils/constants/enums/app_enum.dart';
+
+part 'network_bloc.freezed.dart';
+part 'network_bloc.g.dart';
 part 'network_event.dart';
 part 'network_state.dart';
 
@@ -13,7 +17,7 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
   late final StreamSubscription _subscription;
   final Connectivity _connectivity = Connectivity();
 
-  NetworkBloc() : super(const NetworkInitial()) {
+  NetworkBloc() : super(const NetworkState()) {
     on<Connect>(onConnect);
     on<FinishConnect>(onFinishConnect);
 
@@ -46,14 +50,17 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
   }
 
   void onConnect(Connect event, Emitter<NetworkState> emit) {
-    emit(const Connecting());
+    emit(state.copyWith(state: BlocState.loading));
   }
 
   void onFinishConnect(FinishConnect event, Emitter<NetworkState> emit) {
     if (event.connectivityResult == ConnectivityResult.none) {
-      emit(const ConnectionFailure());
+      emit(state.copyWith(state: BlocState.error));
     } else {
-      emit(ConnectionSuccess(connectivityResult: event.connectivityResult));
+      emit(state.copyWith(
+        data: event.connectivityResult,
+        state: BlocState.success,
+      ));
     }
   }
 
