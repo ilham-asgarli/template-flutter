@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:logger/logger.dart';
 
-import '../../../../domain/usecases/security/get_user.usecase.dart';
+import '../../../../domain/usecases/user/get_user.usecase.dart';
 import '../../../../utils/di/injectable.dart';
 import '../../../utils/constants/enums/app_theme_enum.dart';
 import '../../my-app/state/cubit/theme/theme_cubit.dart';

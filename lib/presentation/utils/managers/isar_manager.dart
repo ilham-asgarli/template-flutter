@@ -15,16 +15,16 @@ class IsarManager {
   });
 
   Isar open({
-    CollectionSchema<dynamic>? schema,
-    List<CollectionSchema<dynamic>>? schemas,
+    IsarGeneratedSchema? schema,
+    List<IsarGeneratedSchema>? schemas,
   }) {
-    List<CollectionSchema<dynamic>> allSchemas = schemas ?? [];
+    List<IsarGeneratedSchema> allSchemas = schemas ?? [];
     if (schema != null) {
       allSchemas.add(schema);
     }
 
-    final isar = Isar.openSync(
-      allSchemas,
+    final isar = Isar.open(
+      schemas: allSchemas,
       directory: applicationDocumentsDirectory.path,
     );
 

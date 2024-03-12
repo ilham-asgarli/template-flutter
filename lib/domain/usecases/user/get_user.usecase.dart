@@ -9,15 +9,15 @@ import '../../../data/utils/exceptions/network.exception.dart';
 import '../../../data/utils/exceptions/network/custom.exception.dart';
 import '../../../data/utils/exceptions/network/not_found.exception.dart';
 import '../../../data/utils/exceptions/network/socket.exception.dart';
-import '../../entities/user.entity.dart';
-import '../../repositories/security/local/security.local.repository.dart';
-import '../../repositories/security/remote/security.remote.repository.dart';
+import '../../entities/user/user.entity.dart';
+import '../../repositories/auth/local/auth.local.repository.dart';
+import '../../repositories/auth/remote/auth.remote.repository.dart';
 import '../../utils/usecase.dart';
 
 @LazySingleton()
 class GetUserUseCase extends UseCase<UserEntity, GetUserUseCaseParams> {
-  final SecurityRemoteRepository securityRemoteRepository;
-  final SecurityLocalRepository securityLocalRepository;
+  final AuthRemoteRepository securityRemoteRepository;
+  final AuthLocalRepository securityLocalRepository;
 
   const GetUserUseCase({
     required this.securityRemoteRepository,

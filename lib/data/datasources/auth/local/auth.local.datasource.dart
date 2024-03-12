@@ -1,19 +1,18 @@
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 
-import '../../../models/user.model.dart';
+import '../../../models/user/user.model.dart';
 
 @LazySingleton()
-class SecurityLocalDataSource {
+class AuthLocalDataSource {
   final Isar isar;
 
-  const SecurityLocalDataSource({
+  const AuthLocalDataSource({
     required this.isar,
   });
 
   Future<UserModel?> getUser(String id) async {
-    UserModel? userModel =
-        await isar.userModels.filter().idEqualTo(id).findFirst();
+    UserModel? userModel = isar.userModels.where().idEqualTo(id).findFirst();
     return userModel;
   }
 }

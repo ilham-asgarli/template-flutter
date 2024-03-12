@@ -2,16 +2,16 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 
-import '../../../models/user.model.dart';
+import '../../../models/user/user.model.dart';
 import '../../../utils/constants/api/api_url_constants.dart';
 
-part 'security.remote.datasource.g.dart';
+part 'auth.remote.datasource.g.dart';
 
 @LazySingleton()
-@RestApi(baseUrl: ApiUrlConstants.securityBase)
-abstract class SecurityRemoteDataSource {
+@RestApi(baseUrl: ApiUrlConstants.authBase)
+abstract class AuthRemoteDataSource {
   @factoryMethod
-  factory SecurityRemoteDataSource(Dio dio) = _SecurityRemoteDataSource;
+  factory AuthRemoteDataSource(Dio dio) = _AuthRemoteDataSource;
 
   @GET(ApiUrlConstants.user)
   Future<UserModel> getUser(@Path('id') String id);

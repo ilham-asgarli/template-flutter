@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../utils/helpers/json-serializable/date_time_converter.dart';
+import '../../../utils/helpers/json-serializable/date_time_converter.dart';
 
 part 'user.entity.freezed.dart';
 part 'user.entity.g.dart';
