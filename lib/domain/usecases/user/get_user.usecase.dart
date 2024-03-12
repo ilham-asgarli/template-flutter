@@ -3,11 +3,6 @@ import 'package:injectable/injectable.dart';
 
 import '../../../data/utils/exceptions/data.exception.dart';
 import '../../../data/utils/exceptions/local.exception.dart';
-import '../../../data/utils/exceptions/local/custom.exception.dart';
-import '../../../data/utils/exceptions/local/not_found.exception.dart';
-import '../../../data/utils/exceptions/network.exception.dart';
-import '../../../data/utils/exceptions/network/custom.exception.dart';
-import '../../../data/utils/exceptions/network/not_found.exception.dart';
 import '../../../data/utils/exceptions/network/socket.exception.dart';
 import '../../entities/user/user.entity.dart';
 import '../../repositories/user/local/user.local.repository.dart';
@@ -31,19 +26,15 @@ class GetUserUseCase extends UseCase<UserEntity, GetUserUseCaseParams> {
     try {
       var response = await userRemoteRepository.getUser(id: params.id);
       return right(response);
-    } on NotFoundException catch (e) {
-      return left(NotFoundException(message: e.message));
     } on SocketException {
       try {
         var response = await userLocalRepository.getUser(id: params.id);
         return right(response);
-      } on NotFoundLocalException catch (e) {
-        return left(NotFoundLocalException(message: e.message));
       } on LocalException catch (e) {
-        return left(CustomLocalException(message: e.message));
+        return left(e);
       }
-    } on NetworkException catch (e) {
-      return left(CustomException(message: e.message));
+    } on DataException catch (e) {
+      return left(e);
     }
   }
 }

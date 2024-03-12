@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 import 'package:isar/isar.dart';
 import 'package:logger/logger.dart';
@@ -30,15 +31,26 @@ abstract class RegisterModule {
       );
 
   @lazySingleton
-  Dio get dio => Dio()
-    ..interceptors.addAll([
-      ErrorInterceptor(),
-      LogInterceptor(),
-    ]);
+  Dio get dio => Dio(
+        BaseOptions(
+          connectTimeout: const Duration(seconds: 60),
+          receiveTimeout: const Duration(seconds: 60),
+        ),
+      )..interceptors.addAll([
+          ErrorInterceptor(),
+          if (kDebugMode)
+            LogInterceptor(
+              requestBody: true,
+              responseBody: true,
+            ),
+        ]);
 
   @preResolve
   @lazySingleton
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
+
+  @lazySingleton
+  FlutterSecureStorage get storage => const FlutterSecureStorage();
 
   @lazySingleton
   Isar get isar => getIt<IsarManager>().open(

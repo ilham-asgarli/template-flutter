@@ -8,7 +8,7 @@ import '../../../utils/constants/api/api_url_constants.dart';
 part 'user.remote.datasource.g.dart';
 
 @LazySingleton()
-@RestApi(baseUrl: ApiUrlConstants.authBase)
+@RestApi(baseUrl: ApiUrlConstants.base)
 abstract class UserRemoteDataSource {
   @factoryMethod
   factory UserRemoteDataSource(Dio dio) = _UserRemoteDataSource;

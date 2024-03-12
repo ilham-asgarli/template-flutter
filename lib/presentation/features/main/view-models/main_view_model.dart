@@ -34,7 +34,7 @@ class MainViewModel {
     );
 
     response.fold((l) {
-      getIt<Logger>().e(l.message);
+      getIt<Logger>().e("${l.runtimeType}: ${l.message}");
     }, (r) {
       getIt<Logger>().i(r);
     });
