@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../data/utils/exceptions/data.exception.dart';
+import '../../../data/utils/exceptions/data.exception.dart';
 
 abstract class UseCase<T, Params> {
   const UseCase();

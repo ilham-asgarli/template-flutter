@@ -7,7 +7,7 @@ import '../../../data/utils/exceptions/network/socket.exception.dart';
 import '../../entities/user/user.entity.dart';
 import '../../repositories/user/local/user.local.repository.dart';
 import '../../repositories/user/remote/user.remote.repository.dart';
-import '../../utils/usecase.dart';
+import '../../utils/base/usecase.dart';
 
 @LazySingleton()
 class GetUserUseCase extends UseCase<UserEntity, GetUserUseCaseParams> {
