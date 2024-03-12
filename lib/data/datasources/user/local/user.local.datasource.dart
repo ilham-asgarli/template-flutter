@@ -4,10 +4,10 @@ import 'package:isar/isar.dart';
 import '../../../models/user/user.model.dart';
 
 @LazySingleton()
-class AuthLocalDataSource {
+class UserLocalDataSource {
   final Isar isar;
 
-  const AuthLocalDataSource({
+  const UserLocalDataSource({
     required this.isar,
   });
 

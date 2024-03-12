@@ -10,18 +10,18 @@ import '../../../data/utils/exceptions/network/custom.exception.dart';
 import '../../../data/utils/exceptions/network/not_found.exception.dart';
 import '../../../data/utils/exceptions/network/socket.exception.dart';
 import '../../entities/user/user.entity.dart';
-import '../../repositories/auth/local/auth.local.repository.dart';
-import '../../repositories/auth/remote/auth.remote.repository.dart';
+import '../../repositories/user/local/user.local.repository.dart';
+import '../../repositories/user/remote/user.remote.repository.dart';
 import '../../utils/usecase.dart';
 
 @LazySingleton()
 class GetUserUseCase extends UseCase<UserEntity, GetUserUseCaseParams> {
-  final AuthRemoteRepository securityRemoteRepository;
-  final AuthLocalRepository securityLocalRepository;
+  final UserRemoteRepository userRemoteRepository;
+  final UserLocalRepository userLocalRepository;
 
   const GetUserUseCase({
-    required this.securityRemoteRepository,
-    required this.securityLocalRepository,
+    required this.userRemoteRepository,
+    required this.userLocalRepository,
   });
 
   @override
@@ -29,13 +29,13 @@ class GetUserUseCase extends UseCase<UserEntity, GetUserUseCaseParams> {
     GetUserUseCaseParams params,
   ) async {
     try {
-      var response = await securityRemoteRepository.getUser(id: params.id);
+      var response = await userRemoteRepository.getUser(id: params.id);
       return right(response);
     } on NotFoundException catch (e) {
       return left(NotFoundException(message: e.message));
     } on SocketException {
       try {
-        var response = await securityLocalRepository.getUser(id: params.id);
+        var response = await userLocalRepository.getUser(id: params.id);
         return right(response);
       } on NotFoundLocalException catch (e) {
         return left(NotFoundLocalException(message: e.message));

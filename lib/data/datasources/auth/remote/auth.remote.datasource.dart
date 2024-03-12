@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/http.dart';
 
-import '../../../models/user/user.model.dart';
 import '../../../utils/constants/api/api_url_constants.dart';
 
 part 'auth.remote.datasource.g.dart';
@@ -12,7 +11,4 @@ part 'auth.remote.datasource.g.dart';
 abstract class AuthRemoteDataSource {
   @factoryMethod
   factory AuthRemoteDataSource(Dio dio) = _AuthRemoteDataSource;
-
-  @GET(ApiUrlConstants.user)
-  Future<UserModel> getUser(@Path('id') String id);
 }

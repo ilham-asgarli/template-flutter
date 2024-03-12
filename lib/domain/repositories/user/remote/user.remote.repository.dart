@@ -1,5 +1,5 @@
 import '../../../entities/user/user.entity.dart';
 
-abstract class AuthLocalRepository {
+abstract class UserRemoteRepository {
   Future<UserEntity> getUser({required String id});
 }
