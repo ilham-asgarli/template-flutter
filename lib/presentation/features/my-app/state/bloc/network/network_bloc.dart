@@ -27,26 +27,10 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
   void listen() {
     add(const Connect());
     _subscription = _connectivity.onConnectivityChanged.listen((
-      ConnectivityResult result,
+      List<ConnectivityResult> result,
     ) {
-      changeStateByConnectivityResult(result);
+      add(FinishConnect(connectivityResult: result));
     });
-  }
-
-  void changeStateByConnectivityResult(ConnectivityResult result) {
-    switch (result) {
-      case ConnectivityResult.bluetooth:
-      case ConnectivityResult.wifi:
-      case ConnectivityResult.ethernet:
-      case ConnectivityResult.mobile:
-      case ConnectivityResult.vpn:
-      case ConnectivityResult.other:
-        add(FinishConnect(connectivityResult: result));
-        break;
-      case ConnectivityResult.none:
-        add(FinishConnect(connectivityResult: result));
-        break;
-    }
   }
 
   void onConnect(Connect event, Emitter<NetworkState> emit) {
@@ -54,7 +38,7 @@ class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
   }
 
   void onFinishConnect(FinishConnect event, Emitter<NetworkState> emit) {
-    if (event.connectivityResult == ConnectivityResult.none) {
+    if (event.connectivityResult.contains(ConnectivityResult.none)) {
       emit(state.copyWith(state: BlocState.error));
     } else {
       emit(state.copyWith(

@@ -10,7 +10,7 @@ class Connect extends NetworkEvent {
 }
 
 class FinishConnect extends NetworkEvent {
-  final ConnectivityResult connectivityResult;
+  final List<ConnectivityResult> connectivityResult;
 
   const FinishConnect({
     required this.connectivityResult,
