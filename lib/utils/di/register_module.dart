@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -33,6 +35,9 @@ abstract class RegisterModule {
   @lazySingleton
   Dio get dio => Dio(
         BaseOptions(
+          headers: {
+            HttpHeaders.contentTypeHeader: ContentType.json.value,
+          },
           connectTimeout: const Duration(seconds: 60),
           receiveTimeout: const Duration(seconds: 60),
         ),
@@ -50,7 +55,11 @@ abstract class RegisterModule {
   Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 
   @lazySingleton
-  FlutterSecureStorage get storage => const FlutterSecureStorage();
+  FlutterSecureStorage get storage => const FlutterSecureStorage(
+        aOptions: AndroidOptions(
+          encryptedSharedPreferences: true,
+        ),
+      );
 
   @lazySingleton
   Isar get isar => getIt<IsarManager>().open(
