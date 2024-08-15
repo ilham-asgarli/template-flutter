@@ -14,5 +14,5 @@ abstract class UserRemoteDataSource {
   factory UserRemoteDataSource(Dio dio) = _UserRemoteDataSource;
 
   @GET(ApiUrlConstants.user)
-  Future<UserModel> getUser(@Path('id') String id);
+  Future<UserModel> getUser(@Path('id') int id);
 }

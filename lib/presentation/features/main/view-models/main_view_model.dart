@@ -30,7 +30,7 @@ class MainViewModel {
 
   void getUser() async {
     var response = await getIt<GetUserUseCase>()(
-      const GetUserUseCaseParams(id: "1"),
+      const GetUserUseCaseParams(id: 1),
     );
 
     response.fold((l) {

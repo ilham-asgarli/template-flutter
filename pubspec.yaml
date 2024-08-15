@@ -9,8 +9,6 @@ environment:
 
 scripts: derry.yaml
 
-isar_version: &isar_version ^4.0.0-dev.14
-
 # flutter pub outdated
 # flutter pub upgrade
 dependencies:
@@ -28,73 +26,66 @@ dependencies:
 
   derry: ^1.5.0
 
-  flutter_native_splash: ^2.4.0
+  flutter_native_splash: ^2.4.1
 
   # logging
-  logger: ^2.3.0
+  logger: ^2.4.0
 
   # routing
-  go_router: ^14.1.0
+  go_router: ^14.2.3
 
   # responsive
-  device_preview: ^1.1.0
+  device_preview: ^1.2.0
   responsive_framework: ^1.4.0
 
   # model generator
-  freezed: ^2.5.2
-  freezed_annotation: ^2.4.1
+  freezed: ^2.5.7
+  freezed_annotation: ^2.4.4
   json_annotation: ^4.9.0
 
   # asset generator
-  flutter_gen: ^5.4.0
+  flutter_gen: ^5.6.0
 
   # dependency injection
   get_it: ^7.7.0
-  injectable: ^2.4.1
+  injectable: ^2.4.4
 
   # state management
   bloc: ^8.1.4
-  flutter_bloc: ^8.1.5
+  flutter_bloc: ^8.1.6
   bloc_concurrency: ^0.2.5
   hydrated_bloc: ^9.1.5
 
   # cache
-  # hive: ^2.2.3
-  # hive_flutter: ^1.1.0
-  shared_preferences: ^2.2.3
-  flutter_secure_storage: ^9.1.1
-  isar: *isar_version
-  isar_flutter_libs: *isar_version
+  shared_preferences: ^2.3.1
+  flutter_secure_storage: ^9.2.2
+  sqflite: ^2.3.3+1
 
-  # http: ^1.2.1
-  dio: ^5.4.3+1
-  retrofit: ^4.1.0
+  dio: ^5.6.0
+  retrofit: ^4.2.0
 
   dartz: ^0.10.1
 
-  # flutter_dotenv: ^5.1.0
   envied: ^0.5.4+1
 
-  # fnv: ^1.0.1
-
-  rxdart: ^0.27.7
-  connectivity_plus: ^6.0.3
-  path_provider: ^2.1.3
+  rxdart: ^0.28.0
+  connectivity_plus: ^6.0.5
+  path_provider: ^2.1.4
   equatable: ^2.0.5
-  cached_network_image: ^3.3.1
+  cached_network_image: ^3.4.1
   animations: ^2.0.11
   auto_size_text: ^3.0.0
   font_awesome_flutter: ^10.7.0
   shimmer: ^3.0.0
-  carousel_slider: ^4.2.1
+  carousel_slider: ^5.0.0
   flutter_keyboard_visibility: ^6.0.0
-  smooth_page_indicator: ^1.1.0
+  smooth_page_indicator: ^1.2.0+3
   fl_chart: ^0.68.0
   lazy_load_scrollview: ^1.3.0
   rive: ^0.13.4
   flare_flutter: ^3.0.2
   flutter_svg: ^2.0.10+1
-  lottie: ^3.1.1
+  lottie: ^3.1.2
 
   mockito: ^5.4.4
 
@@ -103,14 +94,14 @@ dev_dependencies:
     sdk: flutter
 
   flutter_lints: ^4.0.0
-  build_runner: ^2.4.9
-  flutter_gen_runner: ^5.4.0
+  build_runner: ^2.4.12
+  flutter_gen_runner: ^5.6.0
   flutter_launcher_icons: ^0.13.1
   hive_generator: ^2.0.1
   json_serializable: ^6.8.0
-  go_router_builder: ^2.6.2
-  injectable_generator: ^2.6.1
-  retrofit_generator: ^8.1.0
+  go_router_builder: ^2.7.1
+  injectable_generator: ^2.6.2
+  retrofit_generator: ^8.2.0
   envied_generator: ^0.5.4+1
 
 # dependency_overrides:

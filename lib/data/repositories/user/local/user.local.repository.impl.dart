@@ -15,7 +15,7 @@ class UserLocalRepositoryImpl implements UserLocalRepository {
   });
 
   @override
-  Future<UserEntity> getUser({required String id}) async {
+  Future<UserEntity> getUser({required int id}) async {
     UserModel? model = await userLocalDataSource.getUser(id);
 
     if (model != null) {

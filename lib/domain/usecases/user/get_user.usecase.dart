@@ -40,7 +40,7 @@ class GetUserUseCase extends UseCase<UserEntity, GetUserUseCaseParams> {
 }
 
 class GetUserUseCaseParams {
-  final String id;
+  final int id;
 
   const GetUserUseCaseParams({
     required this.id,

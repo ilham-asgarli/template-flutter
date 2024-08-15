@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../utils/helpers/json-serializable/date_time_converter.dart';
-import '../../utils/constants/enums/api_enum.dart';
+import '../../utils/enums/api_enum.dart';
 
 part 'base.model.freezed.dart';
 part 'base.model.g.dart';

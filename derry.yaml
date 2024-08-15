@@ -1,3 +1,6 @@
+info:
+  (scripts):
+    - dart scripts/info.dart
 build_runner:
   (description): Generate
   (scripts):
@@ -6,6 +9,10 @@ build_runner:
 pregen:
     - flutter pub get
 gen:
+  only:
+    (description): Generate only
+    (scripts):
+      - dart run scripts/gen_only.dart
   new:
     (description): Generate
     (scripts):

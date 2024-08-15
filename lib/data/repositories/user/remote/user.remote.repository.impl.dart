@@ -16,7 +16,7 @@ class UserRemoteRepositoryImpl implements UserRemoteRepository {
   });
 
   @override
-  Future<UserEntity> getUser({required String id}) async {
+  Future<UserEntity> getUser({required int id}) async {
     try {
       UserModel model = await userRemoteDataSource.getUser(id);
       return UserEntity.fromModel(model);
