@@ -32,11 +32,11 @@ dependencies:
   logger: ^2.4.0
 
   # routing
-  go_router: ^14.2.3
+  go_router: ^14.2.7
 
   # responsive
   device_preview: ^1.2.0
-  responsive_framework: ^1.4.0
+  responsive_framework: ^1.5.1
 
   # model generator
   freezed: ^2.5.7
@@ -44,7 +44,7 @@ dependencies:
   json_annotation: ^4.9.0
 
   # asset generator
-  flutter_gen: ^5.6.0
+  flutter_gen: ^5.7.0
 
   # dependency injection
   get_it: ^7.7.0
@@ -55,14 +55,17 @@ dependencies:
   flutter_bloc: ^8.1.6
   bloc_concurrency: ^0.2.5
   hydrated_bloc: ^9.1.5
+  # riverpod: ^2.5.1
+  # riverpod_annotation: ^2.3.5
 
   # cache
-  shared_preferences: ^2.3.1
+  shared_preferences: ^2.3.2
   flutter_secure_storage: ^9.2.2
   sqflite: ^2.3.3+1
 
-  dio: ^5.6.0
-  retrofit: ^4.2.0
+  dio: ^5.7.0
+  retrofit: ^4.3.0
+  dart_jsonwebtoken: ^2.14.0
 
   dartz: ^0.10.1
 
@@ -80,9 +83,9 @@ dependencies:
   carousel_slider: ^5.0.0
   flutter_keyboard_visibility: ^6.0.0
   smooth_page_indicator: ^1.2.0+3
-  fl_chart: ^0.68.0
+  fl_chart: ^0.69.0
   lazy_load_scrollview: ^1.3.0
-  rive: ^0.13.4
+  rive: ^0.13.13
   flare_flutter: ^3.0.2
   flutter_svg: ^2.0.10+1
   lottie: ^3.1.2
@@ -95,14 +98,15 @@ dev_dependencies:
 
   flutter_lints: ^4.0.0
   build_runner: ^2.4.12
-  flutter_gen_runner: ^5.6.0
+  flutter_gen_runner: ^5.7.0
   flutter_launcher_icons: ^0.13.1
   hive_generator: ^2.0.1
   json_serializable: ^6.8.0
   go_router_builder: ^2.7.1
   injectable_generator: ^2.6.2
-  retrofit_generator: ^8.2.0
+  retrofit_generator: ^9.0.0
   envied_generator: ^0.5.4+1
+  # riverpod_generator: ^2.4.3
 
 # dependency_overrides:
 

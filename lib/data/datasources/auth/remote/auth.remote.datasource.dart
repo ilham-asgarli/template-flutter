@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:retrofit/http.dart';
+import 'package:retrofit/retrofit.dart';
 
 import '../../../models/auth/token.model.dart';
 import '../../../models/base/base.model.dart';
@@ -15,7 +15,5 @@ abstract class AuthRemoteDataSource {
   factory AuthRemoteDataSource(Dio dio) = _AuthRemoteDataSource;
 
   @POST(ApiUrlConstants.refreshToken)
-  Future<BaseModel<TokenModel>> refreshToken(
-    @Body() String refreshToken,
-  );
+  Future<BaseModel<TokenModel>> refreshToken();
 }

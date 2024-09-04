@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
 import '../exceptions/network/bad_request.exception.dart';
 import '../exceptions/network/client.exception.dart';
@@ -15,6 +16,7 @@ import '../exceptions/network/socket.exception.dart' as s_e;
 import '../exceptions/network/timeout.exception.dart' as t_e;
 import '../exceptions/network/unauthorized.exception.dart';
 
+@lazySingleton
 class ErrorInterceptor extends Interceptor {
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {

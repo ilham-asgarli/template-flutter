@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
-import '../../../../utils/di/injectable.dart';
-import '../../../utils/constants/app/app_constants.dart';
-import '../../../utils/extensions/context_extension.dart';
-import '../../../utils/l10n/gen/app_localizations.dart';
-import '../state/bloc/network/network_bloc.dart';
-import '../state/cubit/theme/theme_cubit.dart';
+import '../../utils/di/injectable.dart';
+import '../utils/constants/app/app_constants.dart';
+import '../utils/extensions/context_extension.dart';
+import '../utils/l10n/gen/app_localizations.dart';
 import '../view-models/my_app_view_model.dart';
+import '../view-models/network/network_bloc.dart';
+import '../view-models/theme/theme_cubit.dart';
 
 class MyAppView extends StatelessWidget {
   final MyAppViewModel viewModel;

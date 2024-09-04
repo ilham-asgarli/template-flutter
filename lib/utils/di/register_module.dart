@@ -42,7 +42,7 @@ abstract class RegisterModule {
           receiveTimeout: const Duration(seconds: 60),
         ),
       )..interceptors.addAll([
-          ErrorInterceptor(),
+          getIt<ErrorInterceptor>(),
           if (kDebugMode)
             LogInterceptor(
               requestBody: true,

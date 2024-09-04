@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../utils/constants/enums/app_enum.dart';
-import '../../../utils/extensions/context_extension.dart';
-import '../../../utils/extensions/num_extension.dart';
-import '../../../utils/extensions/theme_extension.dart';
-import '../../my-app/state/bloc/network/network_bloc.dart';
-import '../../my-app/state/cubit/theme/theme_cubit.dart';
+import '../../utils/di/injectable.dart';
+import '../utils/constants/enums/app_enum.dart';
+import '../utils/extensions/context_extension.dart';
+import '../utils/extensions/num_extension.dart';
+import '../utils/extensions/theme_extension.dart';
 import '../view-models/main_view_model.dart';
+import '../view-models/network/network_bloc.dart';
+import '../view-models/theme/theme_cubit.dart';
 
 class MainView extends StatelessWidget {
   final MainViewModel viewModel;
@@ -53,14 +54,14 @@ class MainView extends StatelessWidget {
                 ),
                 10.verticalSpace,
                 ElevatedButton(
-                  onPressed: viewModel.changeTheme,
+                  onPressed: getIt<ThemeCubit>().toggleTheme,
                   child: Text(
                     context.watch<ThemeCubit>().state.appTheme.toString(),
                   ),
                 ),
                 10.verticalSpace,
                 ElevatedButton(
-                  onPressed: viewModel.changeThemeMode,
+                  onPressed: getIt<ThemeCubit>().toggleThemeMode,
                   child: Text(
                     context.watch<ThemeCubit>().state.themeMode.toString(),
                   ),
