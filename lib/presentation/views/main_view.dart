@@ -6,9 +6,9 @@ import '../utils/constants/enums/app_enum.dart';
 import '../utils/extensions/context_extension.dart';
 import '../utils/extensions/num_extension.dart';
 import '../utils/extensions/theme_extension.dart';
-import '../view-models/main_view_model.dart';
-import '../view-models/network/network_bloc.dart';
-import '../view-models/theme/theme_cubit.dart';
+import '../viewmodels/main_view_model.dart';
+import '../viewmodels/network/network_bloc.dart';
+import '../viewmodels/theme/theme_cubit.dart';
 
 class MainView extends StatelessWidget {
   final MainViewModel viewModel;
