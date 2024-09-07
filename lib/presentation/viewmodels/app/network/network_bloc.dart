@@ -5,7 +5,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../utils/constants/enums/app_enum.dart';
+import '../../../utils/constants/enums/app_enum.dart';
 
 part 'network_bloc.freezed.dart';
 part 'network_bloc.g.dart';

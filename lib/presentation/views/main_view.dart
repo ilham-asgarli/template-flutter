@@ -6,12 +6,12 @@ import '../utils/constants/enums/app_enum.dart';
 import '../utils/extensions/context_extension.dart';
 import '../utils/extensions/num_extension.dart';
 import '../utils/extensions/theme_extension.dart';
-import '../viewmodels/main_view_model.dart';
-import '../viewmodels/network/network_bloc.dart';
-import '../viewmodels/theme/theme_cubit.dart';
+import '../viewmodels/app/network/network_bloc.dart';
+import '../viewmodels/app/theme/theme_cubit.dart';
+import '../viewmodels/ephemeral/main/main_view_cubit.dart';
 
 class MainView extends StatelessWidget {
-  final MainViewModel viewModel;
+  final MainViewCubit viewModel;
 
   const MainView({
     super.key,

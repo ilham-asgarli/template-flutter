@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../utils/di/injectable.dart';
-import '../../../viewmodels/route/route_cubit.dart';
+import '../../../viewmodels/app/route/route_cubit.dart';
 import '../../../views/main_view.dart';
 import '../../../views/not_found_navigation_view.dart';
 import '../../constants/app/app_constants.dart';

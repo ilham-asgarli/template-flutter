@@ -3,9 +3,9 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../utils/di/injectable.dart';
-import '../../utils/constants/enums/app_theme_enum.dart';
-import '../../utils/helpers/theme/theme_helper.dart';
+import '../../../../utils/di/injectable.dart';
+import '../../../utils/constants/enums/app_theme_enum.dart';
+import '../../../utils/helpers/theme/theme_helper.dart';
 
 part 'theme_cubit.freezed.dart';
 part 'theme_cubit.g.dart';

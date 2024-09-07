@@ -2,9 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../utils/constants/router/router_constants.dart';
+import '../../../utils/constants/router/router_constants.dart';
 
-@LazySingleton()
+@lazySingleton
 class RouteCubit extends Cubit<List<RouteSettings>> {
   RouteCubit() : super([const RouteSettings(name: RouterConstants.home)]);
 

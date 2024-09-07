@@ -11,13 +11,13 @@ import '../utils/constants/app/app_constants.dart';
 import '../utils/extensions/context_extension.dart';
 import '../utils/helpers/theme/theme_helper.dart';
 import '../utils/l10n/gen/app_localizations.dart';
-import '../viewmodels/my_app_view_model.dart';
-import '../viewmodels/network/network_bloc.dart';
-import '../viewmodels/route/route_cubit.dart';
-import '../viewmodels/theme/theme_cubit.dart';
+import '../viewmodels/app/network/network_bloc.dart';
+import '../viewmodels/app/route/route_cubit.dart';
+import '../viewmodels/app/theme/theme_cubit.dart';
+import '../viewmodels/ephemeral/my-app/my_app_view_cubit.dart';
 
 class MyAppView extends StatelessWidget {
-  final MyAppViewModel viewModel;
+  final MyAppViewCubit viewModel;
   final ThemeHelper themeHelper;
 
   const MyAppView({
