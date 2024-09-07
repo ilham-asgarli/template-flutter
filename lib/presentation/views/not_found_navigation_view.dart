@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../utils/extensions/context_extension.dart';
-import '../widgets/have_no.dart';
+import '../widgets/app/have_no.dart';
 
 class NotFoundNavigationView extends StatelessWidget {
   const NotFoundNavigationView({super.key});
