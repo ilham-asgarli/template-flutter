@@ -1,11 +1,23 @@
 info:
   (scripts):
     - dart scripts/info.dart
-build_runner:
-  (description): Generate
-  (scripts):
-    - dart run build_runner build
-# pregen is for flutter_gen and it will run before gen command. If don't run pub get, build will gives error.
+br:
+  build:
+    (description): Generate
+    (scripts):
+      - dart run build_runner build
+  watch:
+    (description): Watch
+    (scripts):
+      - dart run build_runner watch
+  clean:
+    (description): Clean
+    (scripts):
+      - dart run build_runner clean
+  clean_build:
+    (description): Clean build
+    (scripts):
+      - $br:build --delete-conflicting-outputs
 pregen:
     - flutter pub get
 gen:
@@ -16,11 +28,12 @@ gen:
   new:
     (description): Generate
     (scripts):
-      - $build_runner
+      - $br:build
   clean:
     (description): Clean generate
     (scripts):
-    - $build_runner --delete-conflicting-outputs
+    - $br:clean
+    - $br:clean_build
 splash:
   create:
     (description): Create splash screen
