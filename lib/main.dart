@@ -38,8 +38,9 @@ Future<void> init() async {
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
         ? HydratedStorageDirectory.web
-        : HydratedStorageDirectory(
-            getIt(instanceName: PathProviderConstants.applicationDocuments)),
+        : HydratedStorageDirectory(getIt<Directory>(
+                instanceName: PathProviderConstants.applicationDocuments)
+            .path),
   );
   Bloc.observer = AllBlocObserver();
   getIt<Dio>().interceptors.insert(
