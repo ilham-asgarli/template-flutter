@@ -35,10 +35,12 @@ Future<void> init() async {
     configureDependencies(),
     universal.get().init(),
   ]);
-  final Directory storage = kIsWeb
-      ? HydratedStorage.webStorageDirectory
-      : getIt(instanceName: PathProviderConstants.applicationDocuments);
-  HydratedBloc.storage = await HydratedStorage.build(storageDirectory: storage);
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorageDirectory.web
+        : HydratedStorageDirectory(
+            getIt(instanceName: PathProviderConstants.applicationDocuments)),
+  );
   Bloc.observer = AllBlocObserver();
   getIt<Dio>().interceptors.insert(
       0,
