@@ -114,8 +114,8 @@ flutter_gen:
   output: lib/utils/gen/
   line_length: 80
   integrations:
+    image: true
     flutter_svg: true
-    flare_flutter: true
     rive: true
     lottie: true
   colors:
