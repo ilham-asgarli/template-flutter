@@ -13,7 +13,7 @@ targets:
         options:
           explicit_to_json: true
           include_if_null: false
-          #field_rename: snake
+          # field_rename: snake
       freezed|freezed:
         enabled: true
         generate_for:
@@ -23,12 +23,12 @@ targets:
             - lib/**_bloc.dart
             - lib/**_cubit.dart
             - lib/**.usecase.dart
-      injectable_generator:injectable_builder:
-        enabled: true
-        generate_for:
-          include:
-            - lib/**.dart
-        options:
-        #auto_register: true
-        #class_name_pattern: "Service$|Repository$|ViewModel$"
-        #file_name_pattern: "_service$|_repository$|_view_model$"
+      # injectable_generator:injectable_builder:
+        # enabled: true
+        # generate_for:
+          # include:
+            # - lib/**.dart
+        # options:
+        # auto_register: true
+        # class_name_pattern: "Service$|Repository$|ViewModel$"
+        # file_name_pattern: "_service$|_repository$|_view_model$"

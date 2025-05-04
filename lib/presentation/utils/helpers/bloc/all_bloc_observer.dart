@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:logger/logger.dart';
 
-import '../../../../utils/di/injectable.dart';
+import '../../../../utils/di/app_di.dart';
 
 class AllBlocObserver extends BlocObserver {
   @override

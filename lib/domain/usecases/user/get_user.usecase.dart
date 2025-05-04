@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:injectable/injectable.dart';
 
 import '../../../data/utils/exceptions/data.exception.dart';
 import '../../../data/utils/exceptions/local.exception.dart';
@@ -9,7 +8,6 @@ import '../../repositories/user/local/user.local.repository.dart';
 import '../../repositories/user/remote/user.remote.repository.dart';
 import '../../utils/base/usecase.dart';
 
-@LazySingleton()
 class GetUserUseCase extends UseCase<UserEntity, GetUserUseCaseParams> {
   final UserRemoteRepository userRemoteRepository;
   final UserLocalRepository userLocalRepository;

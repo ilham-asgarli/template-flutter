@@ -7,7 +7,7 @@ part 'user.entity.freezed.dart';
 part 'user.entity.g.dart';
 
 @Freezed(copyWith: false, equal: false)
-class UserEntity with _$UserEntity {
+abstract class UserEntity with _$UserEntity {
   @DateTimeConverter()
   const factory UserEntity({
     required String email,

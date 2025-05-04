@@ -6,7 +6,7 @@ part 'token.model.freezed.dart';
 part 'token.model.g.dart';
 
 @Freezed()
-class TokenModel with _$TokenModel {
+abstract class TokenModel with _$TokenModel {
   const TokenModel._();
 
   @DateTimeConverter()

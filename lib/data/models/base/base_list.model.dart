@@ -7,7 +7,7 @@ part 'base_list.model.freezed.dart';
 part 'base_list.model.g.dart';
 
 @Freezed(genericArgumentFactories: true)
-class BaseListModel<T> with _$BaseListModel<T> {
+abstract class BaseListModel<T> with _$BaseListModel<T> {
   const BaseListModel._();
 
   @DateTimeConverter()
@@ -24,7 +24,7 @@ class BaseListModel<T> with _$BaseListModel<T> {
   ) =>
       _$BaseListModelFromJson<T>(json, fromJsonT);
 
-  @override
+  /*@override
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
-      super.toJson((p0) => p0);
+      super.toJson((p0) => p0);*/
 }

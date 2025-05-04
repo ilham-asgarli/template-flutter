@@ -1,4 +1,4 @@
 abstract class RouterConstants {
   static const notFound = "/404";
-  static const home = "/";
+  static const main = "/";
 }

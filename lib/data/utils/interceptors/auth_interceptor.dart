@@ -4,31 +4,31 @@ import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:injectable/injectable.dart';
 
+import '../../../domain/entities/auth/token.entity.dart';
+import '../../../domain/repositories/auth/remote/auth.remote.repository.dart';
+import '../../../presentation/features/auth/viewmodels/auth_cubit.dart';
 import '../../../presentation/utils/constants/cache/flutter_secure_storage_constants.dart';
-import '../../datasources/auth/remote/auth.remote.datasource.dart';
-import '../../models/auth/token.model.dart';
-import '../../models/base/base.model.dart';
 import '../constants/api/api_url_constants.dart';
 
 class RevokeTokenException extends DioException {
   RevokeTokenException({required super.requestOptions});
 }
 
-@lazySingleton
 class AuthInterceptor extends QueuedInterceptor {
   final Dio dio;
   final FlutterSecureStorage secureStorage;
   final bool shouldClearBeforeReset;
   late final Dio retryClient;
-  final AuthRemoteDataSource authRemoteDataSource;
+  final AuthRemoteRepository authRemoteRepository;
+  final AuthCubit authCubit;
 
   AuthInterceptor({
     required this.dio,
     required this.secureStorage,
     this.shouldClearBeforeReset = true,
-    required this.authRemoteDataSource,
+    required this.authRemoteRepository,
+    required this.authCubit,
   }) {
     retryClient = Dio();
     retryClient.options = BaseOptions(baseUrl: dio.options.baseUrl);
@@ -40,7 +40,7 @@ class AuthInterceptor extends QueuedInterceptor {
     RequestInterceptorHandler handler,
   ) async {
     try {
-      final tokenModel = await _getTokenModel();
+      final tokenModel = await _getTokenEntity();
 
       if (tokenModel == null) {
         return handler.next(options);
@@ -59,12 +59,12 @@ class AuthInterceptor extends QueuedInterceptor {
           );
         }
 
-        final newTokenModel = await _refresh(
+        final newTokenEntity = await _refresh(
           options: options,
           tokenModel: tokenModel,
         );
 
-        if (newTokenModel == null) {
+        if (newTokenEntity == null) {
           return handler.reject(
             RevokeTokenException(requestOptions: options),
             true,
@@ -88,7 +88,7 @@ class AuthInterceptor extends QueuedInterceptor {
     ErrorInterceptorHandler handler,
   ) async {
     if (err is RevokeTokenException) {
-      // TODO: Sign out
+      await authCubit.logout();
       return handler.reject(err);
     }
 
@@ -97,7 +97,7 @@ class AuthInterceptor extends QueuedInterceptor {
     }
 
     final isAccessValid = await _isAccessTokenValid;
-    final tokenModel = await _getTokenModel();
+    final tokenModel = await _getTokenEntity();
 
     if (tokenModel == null) {
       return handler.reject(err);
@@ -113,7 +113,7 @@ class AuthInterceptor extends QueuedInterceptor {
         return handler.resolve(previousRequest);
       }
     } on RevokeTokenException {
-      // TODO: Sign out
+      await authCubit.logout();
       return handler.reject(err);
     } on DioException catch (err) {
       return handler.next(err);
@@ -126,17 +126,17 @@ class AuthInterceptor extends QueuedInterceptor {
   Future<String?> get _refreshToken =>
       secureStorage.read(key: FlutterSecureStorageConstants.refreshToken);
 
-  Future<TokenModel?> _getTokenModel() async {
+  Future<TokenEntity?> _getTokenEntity() async {
     final accessToken = await _accessToken;
     final refreshToken = await _refreshToken;
 
     if (accessToken != null && refreshToken != null) {
-      return TokenModel(accessToken: accessToken, refreshToken: refreshToken);
+      return TokenEntity(accessToken: accessToken, refreshToken: refreshToken);
     }
     return null;
   }
 
-  Future<void> _saveTokenModel(TokenModel tokenModel) async {
+  Future<void> _saveTokenEntity(TokenEntity tokenModel) async {
     await secureStorage.write(
       key: FlutterSecureStorageConstants.accessToken,
       value: tokenModel.accessToken,
@@ -147,13 +147,13 @@ class AuthInterceptor extends QueuedInterceptor {
     );
   }
 
-  Future<void> _clearTokenModel() async {
+  Future<void> _clearTokenEntity() async {
     await secureStorage.delete(key: FlutterSecureStorageConstants.accessToken);
     await secureStorage.delete(key: FlutterSecureStorageConstants.refreshToken);
   }
 
   Future<Map<String, dynamic>> _buildHeaders(options) async {
-    final tokenModel = await _getTokenModel();
+    final tokenModel = await _getTokenEntity();
     String? token;
 
     if (options.path == ApiUrlConstants.refreshToken) {
@@ -172,7 +172,7 @@ class AuthInterceptor extends QueuedInterceptor {
   }
 
   Future<bool> get _isAccessTokenValid async {
-    final tokenModel = await _getTokenModel();
+    final tokenModel = await _getTokenEntity();
 
     if (tokenModel == null) {
       return false;
@@ -196,25 +196,25 @@ class AuthInterceptor extends QueuedInterceptor {
       (response?.statusCode == 401) &&
       response?.requestOptions.path != ApiUrlConstants.refreshToken;
 
-  Future<TokenModel?> _refresh({
+  Future<TokenEntity?> _refresh({
     required RequestOptions options,
-    required TokenModel? tokenModel,
+    required TokenEntity? tokenModel,
   }) async {
     if (tokenModel == null) {
       throw RevokeTokenException(requestOptions: options);
     }
 
     try {
-      BaseModel<TokenModel> model = await authRemoteDataSource.refreshToken();
+      TokenEntity model = await authRemoteRepository.refreshToken();
 
       if (shouldClearBeforeReset) {
-        await _clearTokenModel();
+        await _clearTokenEntity();
       }
 
-      await _saveTokenModel(model.data!);
-      return model.data;
+      await _saveTokenEntity(model);
+      return model;
     } catch (_) {
-      await _clearTokenModel();
+      await _clearTokenEntity();
       throw RevokeTokenException(requestOptions: options);
     }
   }

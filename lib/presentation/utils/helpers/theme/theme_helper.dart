@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:injectable/injectable.dart';
 
-import '../../../../utils/di/injectable.dart';
+import '../../../../utils/di/app_di.dart';
 import '../../config/theme/exapmle_theme.dart';
 import '../../config/theme/main_theme.dart';
 import '../../config/theme/theme_interface.dart';
 import '../../constants/enums/app_theme_enum.dart';
 
-@Singleton()
 class ThemeHelper {
   ThemeMode getSystemThemeMode() {
     Brightness brightness =
@@ -23,8 +21,6 @@ class ThemeHelper {
         return getIt<ThemeInterface>(instanceName: (MainTheme).toString());
       case AppTheme.example:
         return getIt<ThemeInterface>(instanceName: (ExampleTheme).toString());
-      default:
-        return getIt<ThemeInterface>(instanceName: (MainTheme).toString());
     }
   }
 

@@ -6,7 +6,7 @@ part 'detailed_pagination.model.freezed.dart';
 part 'detailed_pagination.model.g.dart';
 
 @Freezed(genericArgumentFactories: true)
-class DetailedPaginationModel<T> with _$DetailedPaginationModel<T> {
+abstract class DetailedPaginationModel<T> with _$DetailedPaginationModel<T> {
   const DetailedPaginationModel._();
 
   @DateTimeConverter()
@@ -24,7 +24,7 @@ class DetailedPaginationModel<T> with _$DetailedPaginationModel<T> {
   ) =>
       _$DetailedPaginationModelFromJson<T>(json, fromJsonT);
 
-  @override
+  /*@override
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
-      super.toJson((p0) => p0);
+      super.toJson((p0) => p0);*/
 }
