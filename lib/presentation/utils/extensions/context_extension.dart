@@ -3,12 +3,15 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import '../constants/enums/app_enum.dart';
-import '../l10n/gen/app_localizations.dart';
+import '../gen/app_localizations.dart';
 
 extension ContextExtension on BuildContext {
   MediaQueryData get mediaQuery => MediaQuery.of(this);
+
   Size get screenSize => MediaQuery.sizeOf(this);
+
   EdgeInsets get padding => MediaQuery.paddingOf(this);
+
   EdgeInsets get viewInsets => MediaQuery.viewInsetsOf(this);
 }
 
@@ -120,5 +123,5 @@ extension TextExtension on BuildContext {
 }
 
 extension Localization on BuildContext {
-  AppLocalizations get l10n => AppLocalizations.of(this)!;
+  AppLocalizations get l10n => AppLocalizations.of(this);
 }

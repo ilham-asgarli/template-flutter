@@ -1,47 +1,65 @@
-import 'package:bloc/bloc.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import '../../../utils/constants/cache/flutter_secure_storage_constants.dart';
+import '../../../../data/utils/interceptors/auth_interceptor.dart';
+import '../../../../domain/usecases/auth/login.usecase.dart';
+import '../../../../domain/usecases/auth/register.usecase.dart';
+import '../../../../utils/di/app_di.dart';
 import '../../../utils/constants/enums/app_enum.dart';
 
-part 'auth_cubit.freezed.dart';
-part 'auth_cubit.g.dart';
 part 'auth_state.dart';
 
-class AuthCubit extends Cubit<AuthState> {
+class AuthCubit extends HydratedCubit<AuthState> {
   final FlutterSecureStorage secureStorage;
+  final LoginUseCase loginUseCase;
+  final RegisterUseCase registerUseCase;
 
   AuthCubit({
     required this.secureStorage,
+    required this.loginUseCase,
+    required this.registerUseCase,
   }) : super(const AuthState());
 
-  Future<void> login() async {
+  Future<void> login(LoginUseCaseParams loginUseCaseParams) async {
     emit(state.copyWith(authState: BlocState.loading));
-    // TODO: Implement login logic
-    await secureStorage.write(
-        key: FlutterSecureStorageConstants.accessToken, value: 'access_token');
-    await secureStorage.write(
-        key: FlutterSecureStorageConstants.refreshToken,
-        value: 'refresh_token');
-    emit(state.copyWith(authState: BlocState.success));
+    var response = await loginUseCase(loginUseCaseParams);
+
+    response.fold((l) {
+      emit(state.copyWith(authState: BlocState.error));
+    }, (r) async {
+      await getIt<AuthInterceptor>().saveTokenEntity(r);
+      FirebaseCrashlytics.instance.setUserIdentifier(r.accessToken);
+      emit(state.copyWith(authState: BlocState.success));
+    });
   }
 
-  Future<void> register() async {
+  Future<void> register(RegisterUseCaseParams registerUseCaseParams) async {
     emit(state.copyWith(authState: BlocState.loading));
-    // TODO: Implement register logic
-    await secureStorage.write(
-        key: FlutterSecureStorageConstants.accessToken, value: 'access_token');
-    await secureStorage.write(
-        key: FlutterSecureStorageConstants.refreshToken,
-        value: 'refresh_token');
-    emit(state.copyWith(authState: BlocState.success));
+    var response = await registerUseCase(registerUseCaseParams);
+
+    response.fold((l) {
+      emit(state.copyWith(authState: BlocState.error));
+    }, (r) async {
+      await getIt<AuthInterceptor>().saveTokenEntity(r);
+      FirebaseCrashlytics.instance.setUserIdentifier(r.accessToken);
+      emit(state.copyWith(authState: BlocState.success));
+    });
   }
 
   Future<void> logout() async {
     emit(state.copyWith(authState: BlocState.loading));
-    await secureStorage.delete(key: FlutterSecureStorageConstants.accessToken);
-    await secureStorage.delete(key: FlutterSecureStorageConstants.refreshToken);
+    await getIt<AuthInterceptor>().clearTokenEntity();
     emit(state.copyWith(authState: BlocState.initial));
+  }
+
+  @override
+  AuthState? fromJson(Map<String, dynamic> json) {
+    return AuthState.fromJson(json);
+  }
+
+  @override
+  Map<String, dynamic>? toJson(AuthState state) {
+    return state.toJson();
   }
 }

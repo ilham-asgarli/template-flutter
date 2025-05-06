@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 
-import '../../../models/user/user.model.dart';
+import '../../../models/user.model.dart';
 import '../../../utils/constants/db/db_constants.dart';
 import '../../../utils/exceptions/local/not_found.exception.dart';
 

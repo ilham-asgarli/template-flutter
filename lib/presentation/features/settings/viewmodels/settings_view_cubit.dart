@@ -4,10 +4,10 @@ import 'package:logger/logger.dart';
 import '../../../../domain/usecases/user/get_user.usecase.dart';
 import '../../../../utils/di/app_di.dart';
 
-part 'main_view_state.dart';
+part 'settings_view_state.dart';
 
-class MainViewCubit extends Cubit<MainViewState> {
-  MainViewCubit() : super(const MainViewState());
+class SettingsViewCubit extends Cubit<SettingsViewState> {
+  SettingsViewCubit() : super(const SettingsViewState());
 
   void getUser() async {
     var response = await getIt<GetUserUseCase>()(

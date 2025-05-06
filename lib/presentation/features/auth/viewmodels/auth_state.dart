@@ -1,11 +1,32 @@
 part of 'auth_cubit.dart';
 
-@Freezed()
-abstract class AuthState with _$AuthState {
-  const factory AuthState({
-    @Default(BlocState.initial) BlocState authState,
-  }) = _AuthState;
+class AuthState {
+  final BlocState authState;
 
-  factory AuthState.fromJson(Map<String, Object?> json) =>
-      _$AuthStateFromJson(json);
+  const AuthState({
+    this.authState = BlocState.initial,
+  });
+
+  AuthState copyWith({
+    BlocState? authState,
+  }) {
+    return AuthState(
+      authState: authState ?? this.authState,
+    );
+  }
+
+  factory AuthState.fromJson(Map<String, dynamic> json) {
+    return AuthState(
+      authState: BlocState.values.firstWhere(
+        (e) => e.name == json['authState'],
+        orElse: () => BlocState.initial,
+      ),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'authState': authState.name,
+    };
+  }
 }

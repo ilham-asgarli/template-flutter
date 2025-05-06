@@ -1,6 +1,15 @@
+# dart pub global activate derry
+
+start:
+  (description): Start the app
+  (scripts):
+    - $br:build
+    - $l10n
+
 info:
   (scripts):
     - dart scripts/info.dart
+
 br:
   build:
     (description): Generate
@@ -18,6 +27,7 @@ br:
     (description): Clean build
     (scripts):
       - $br:build --delete-conflicting-outputs
+
 pregen:
     - flutter pub get
 gen:
@@ -34,6 +44,7 @@ gen:
     (scripts):
     - $br:clean
     - $br:clean_build
+
 splash:
   create:
     (description): Create splash screen
@@ -43,19 +54,23 @@ splash:
     (description): Remove splash screen
     (scripts):
       - dart run flutter_native_splash:remove
+
 icon:
   (description): Create icon
   (scripts):
     - dart run flutter_launcher_icons:main -f flutter_launcher_icons.yaml
+
 l10n:
   (description): Generate locales
   (scripts):
     - flutter gen-l10n
+
 pub:
   major:
     (description): Upgrade packages to latest versions
     (scripts):
       - flutter pub upgrade --major-versions
+
 git:
   init:
     (description): Initialize git and push to Github
@@ -73,3 +88,16 @@ git:
     (description): Reset to commit reference
     (scripts):
       - dart scripts/git_reset.dart
+
+# https://firebase.google.com/docs/flutter/setup?platform=android
+firebase:
+  login:
+    (description): Login to Firebase
+    (scripts):
+      - firebase login
+  config:
+    (description): Activate and configure Firebase
+    (scripts):
+      - dart pub global activate flutterfire_cli
+      - npm install -g firebase-tools -f
+      - flutterfire configure

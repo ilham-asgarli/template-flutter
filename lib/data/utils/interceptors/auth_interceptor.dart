@@ -5,7 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-import '../../../domain/entities/auth/token.entity.dart';
+import '../../../domain/entities/token.entity.dart';
 import '../../../domain/repositories/auth/remote/auth.remote.repository.dart';
 import '../../../presentation/features/auth/viewmodels/auth_cubit.dart';
 import '../../../presentation/utils/constants/cache/flutter_secure_storage_constants.dart';
@@ -136,7 +136,7 @@ class AuthInterceptor extends QueuedInterceptor {
     return null;
   }
 
-  Future<void> _saveTokenEntity(TokenEntity tokenModel) async {
+  Future<void> saveTokenEntity(TokenEntity tokenModel) async {
     await secureStorage.write(
       key: FlutterSecureStorageConstants.accessToken,
       value: tokenModel.accessToken,
@@ -147,7 +147,7 @@ class AuthInterceptor extends QueuedInterceptor {
     );
   }
 
-  Future<void> _clearTokenEntity() async {
+  Future<void> clearTokenEntity() async {
     await secureStorage.delete(key: FlutterSecureStorageConstants.accessToken);
     await secureStorage.delete(key: FlutterSecureStorageConstants.refreshToken);
   }
@@ -208,13 +208,13 @@ class AuthInterceptor extends QueuedInterceptor {
       TokenEntity model = await authRemoteRepository.refreshToken();
 
       if (shouldClearBeforeReset) {
-        await _clearTokenEntity();
+        await clearTokenEntity();
       }
 
-      await _saveTokenEntity(model);
+      await saveTokenEntity(model);
       return model;
     } catch (_) {
-      await _clearTokenEntity();
+      await clearTokenEntity();
       throw RevokeTokenException(requestOptions: options);
     }
   }

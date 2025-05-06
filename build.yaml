@@ -1,28 +1,28 @@
 targets:
   $default:
     builders:
-      json_serializable:
-        enabled: true
-        generate_for:
-          include:
-            - lib/**.model.dart
-            - lib/**.entity.dart
-            - lib/**_bloc.dart
-            - lib/**_cubit.dart
-            - lib/**.usecase.dart
-        options:
-          explicit_to_json: true
-          include_if_null: false
+      # json_serializable:
+        # enabled: true
+        # generate_for:
+          # include:
+            # - lib/**.model.dart
+            # - lib/**.entity.dart
+            # - lib/**_bloc.dart
+            # - lib/**_cubit.dart
+            # - lib/**.usecase.dart
+        # options:
+          # explicit_to_json: true
+          # include_if_null: false
           # field_rename: snake
-      freezed|freezed:
-        enabled: true
-        generate_for:
-          include:
-            - lib/**.model.dart
-            - lib/**.entity.dart
-            - lib/**_bloc.dart
-            - lib/**_cubit.dart
-            - lib/**.usecase.dart
+      # freezed|freezed:
+        # enabled: true
+        # generate_for:
+          # include:
+            # - lib/**.model.dart
+            # - lib/**.entity.dart
+            # - lib/**_bloc.dart
+            # - lib/**_cubit.dart
+            # - lib/**.usecase.dart
       # injectable_generator:injectable_builder:
         # enabled: true
         # generate_for:

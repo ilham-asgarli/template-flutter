@@ -10,12 +10,18 @@ import 'theme_interface.dart';
 class ExampleTheme extends ThemeInterface {
   @override
   ThemeData getTheme(themeMode) {
+    final brightness =
+        themeMode == ThemeMode.light ? Brightness.light : Brightness.dark;
+    final colorScheme = ColorScheme.fromSeed(
+      brightness: brightness,
+      seedColor: AppColors.red,
+    );
+
     return ThemeData(
       useMaterial3: true,
-      brightness:
-          themeMode == ThemeMode.light ? Brightness.light : Brightness.dark,
+      brightness: brightness,
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      colorSchemeSeed: AppColors.red,
+      colorScheme: colorScheme,
       textTheme: TextTheme(
         bodyMedium: AppTypography.bodyMedium.copyWith(
           fontSize: 10,

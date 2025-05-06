@@ -1,30 +1,37 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-
-import '../../../utils/helpers/json-serializable/date_time_converter.dart';
 import '../../utils/enums/api_enum.dart';
 
-part 'base.model.freezed.dart';
-part 'base.model.g.dart';
+class BaseModel<T> {
+  final Status status;
+  final String? message;
+  final List? errors;
+  final T? data;
 
-@Freezed(genericArgumentFactories: true)
-abstract class BaseModel<T> with _$BaseModel<T> {
-  const BaseModel._();
-
-  @DateTimeConverter()
-  const factory BaseModel({
-    required Status status,
-    required String? message,
-    required List? errors,
-    required T? data,
-  }) = _BaseModel<T>;
+  const BaseModel({
+    required this.status,
+    this.message,
+    this.errors,
+    this.data,
+  });
 
   factory BaseModel.fromJson(
-    Map<String, Object?> json,
-    T Function(Object? json) fromJsonT,
-  ) =>
-      _$BaseModelFromJson<T>(json, fromJsonT);
+      Map<String, dynamic> json, T Function(Object? json) fromJsonT) {
+    return BaseModel(
+      status: Status.values.firstWhere(
+        (e) => e.name == json['status'],
+        orElse: () => Status.success,
+      ),
+      message: json['message'],
+      errors: json['errors'],
+      data: fromJsonT(json['data']),
+    );
+  }
 
-  /*@override
-  Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
-      super.toJson((p0) => p0);*/
+  Map<String, dynamic> toJson(Object? Function(T value) toJsonT) {
+    return {
+      'status': status.name,
+      'message': message,
+      'errors': errors,
+      'data': data == null ? null : toJsonT(data as T),
+    };
+  }
 }

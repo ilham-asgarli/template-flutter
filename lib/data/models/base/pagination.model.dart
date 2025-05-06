@@ -1,28 +1,34 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class PaginationModel<T> {
+  final bool more;
+  final int page;
+  final List<T> collection;
 
-import '../../../utils/helpers/json-serializable/date_time_converter.dart';
-
-part 'pagination.model.freezed.dart';
-part 'pagination.model.g.dart';
-
-@Freezed(genericArgumentFactories: true)
-abstract class PaginationModel<T> with _$PaginationModel<T> {
-  const PaginationModel._();
-
-  @DateTimeConverter()
-  const factory PaginationModel({
-    required bool more,
-    required int page,
-    required List<T> collection,
-  }) = _PaginationModel<T>;
+  const PaginationModel({
+    required this.more,
+    required this.page,
+    required this.collection,
+  });
 
   factory PaginationModel.fromJson(
-    Map<String, Object?> json,
-    T Function(Object?) fromJsonT,
-  ) =>
-      _$PaginationModelFromJson<T>(json, fromJsonT);
+    Map<String, dynamic> json,
+    T Function(Map<String, dynamic>) fromJsonT,
+  ) {
+    return PaginationModel<T>(
+      more: json['more'] as bool,
+      page: json['page'] as int,
+      collection: (json['collection'] as List<dynamic>)
+          .map((e) => fromJsonT(e as Map<String, dynamic>))
+          .toList(),
+    );
+  }
 
-  /*@override
-  Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
-      super.toJson((p0) => p0);*/
+  Map<String, dynamic> toJson(
+    T Function(T) toJsonT,
+  ) {
+    return {
+      'more': more,
+      'page': page,
+      'collection': collection.map((e) => toJsonT(e)).toList(),
+    };
+  }
 }

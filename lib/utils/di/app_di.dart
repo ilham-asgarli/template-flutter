@@ -10,7 +10,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../data/utils/di/data_di.dart';
 import '../../domain/utils/di/domain_di.dart';
 import '../../presentation/utils/di/presentation_di.dart';
-import '../../presentation/utils/l10n/gen/app_localizations.dart';
+import '../../presentation/utils/gen/app_localizations.dart';
 import '../constants/di/path_provider_constants.dart';
 import '../constants/env/env.dart';
 import '../constants/env/env.dev.dart';

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/widgets.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../../../domain/repositories/auth/remote/auth.remote.repository.dart';
@@ -79,7 +80,11 @@ void injectData() {
   getIt.registerLazySingleton<ErrorInterceptor>(() => ErrorInterceptor());
 }
 
-injectDataAfterContext(AuthCubit authCubit) {
+injectDataAfterContext({
+  required BuildContext context,
+  required AuthCubit authCubit,
+}) {
+  getIt.registerLazySingleton(() => context);
   getIt.registerLazySingleton<AuthInterceptor>(() => AuthInterceptor(
         authRemoteRepository: getIt(),
         dio: getIt(),

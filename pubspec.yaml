@@ -53,26 +53,79 @@ dependencies:
   cached_network_image: ^3.4.1
   # hive: ^2.2.3
   # hive_flutter: ^1.1.0
+  # flutter_cache_manager: ^3.4.1
 
   # network
   dio: ^5.8.0+1
   retrofit: ^4.4.2
   dart_jsonwebtoken: ^3.2.0
+  # http: ^1.3.0
 
   # model generator
-  freezed: ^3.0.6
-  freezed_annotation: ^3.0.0
-  json_annotation: ^4.9.0
+  # freezed: ^3.0.6
+  # freezed_annotation: ^3.0.0
+  # json_annotation: ^4.9.0
 
   # asset generator
   flutter_gen: ^5.10.0
 
-  # icons
+  # icon
   cupertino_icons: ^1.0.8
   font_awesome_flutter: ^10.8.0
+  # iconly: ^1.0.1
+  # flutter_feather_icons: ^2.0.0+1
 
-  # images
+  # image
   flutter_svg: ^2.1.0
+  # flutter_blurhash: ^0.9.1
+  # blurhash_dart: ^1.2.1
+
+  # Media kit for video and audio
+  # The video libraries should be selected if both video & audio support is needed.
+  # The media_kit_libs_video & media_kit_libs_audio packages should not be mixed.
+  # media_kit: ^1.2.0
+  # media_kit_video: ^1.3.0
+  # media_kit_libs_video: ^1.0.6
+  # media_kit_libs_audio: ^1.0.6
+
+  # video
+  # video_player: ^2.9.5
+  # chewie: ^1.11.3
+
+  # audio
+  # just_audio: ^0.10.2
+  # audioplayers: ^6.4.0
+  # record: ^6.0.0
+
+  # file
+  path_provider: ^2.1.5
+  # path: ^1.9.1
+  # mime: ^2.0.0
+  # cross_file: ^0.3.4+2
+  # file_selector: ^1.0.3
+  # image_picker: ^1.1.2
+  # file_picker: ^10.1.2
+  # open_file: ^3.5.10
+  # image: ^4.5.4
+  # receive_sharing_intent: ^1.8.1
+  # video_compress: ^3.1.4
+
+  # emoji
+  # emoji_picker_flutter: ^4.3.0
+  # emojis: ^0.9.9
+
+  # matrix chat
+  # matrix: ^0.39.2
+  # flutter_olm: ^2.0.0
+  # flutter_openssl_crypto: ^0.5.0
+  # sqflite_common_ffi: ^2.3.5
+  # sqlcipher_flutter_libs: ^0.6.6
+
+  # QR and barcode
+  # qr_image: ^1.0.0
+  # qr_code_scanner: ^1.0.1
+  # pretty_qr_code: ^3.4.0
+  # mobile_scanner: ^7.0.0
 
   # animations
   # animations: ^2.0.11
@@ -84,40 +137,102 @@ dependencies:
   # carousel_slider: ^5.0.0
   # auto_size_text: ^3.0.0
 
+  # firebase
+  firebase_core: ^3.13.0
+  firebase_crashlytics: ^4.3.5
+  # firebase_analytics: ^11.4.5
+  # firebase_messaging: ^15.2.5
+  # firebase_auth: ^5.5.3
+  # cloud_firestore: ^5.6.7
+  # cloud_functions: ^5.5.0
+  # firebase_storage: ^12.4.5
+
+  # purchase
+  # in_app_purchase: ^3.2.1 # https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases#0
+  # pay: ^3.2.1
+
+  # map
+  # flutter_map: ^8.1.1
+  # geolocator: ^14.0.0
+  # latlong2: ^0.9.1
+
+  # agora
+  # agora_rtc_engine: ^6.5.1
+  # agora_rtm: ^2.2.2
+
+  # notification
+  # flutter_local_notifications: ^19.1.0
+  # desktop_notifications: ^0.6.3
+
   # others
   derry: ^1.5.0
   flutter_native_splash: ^2.4.6
   dartz: ^0.10.1
   envied: ^1.1.1
   connectivity_plus: ^6.1.4
-  path_provider: ^2.1.5
   equatable: ^2.0.7
   flutter_keyboard_visibility: ^6.0.0
+  # share_plus: ^11.0.0
+  # package_info_plus: ^8.3.0
+  # device_info_plus: ^11.4.0
+  # permission_handler: ^12.0.0+1
+  # url_launcher: ^6.3.1
+  # local_auth: ^2.3.0
+  # wakelock_plus: ^1.3.2
+  # google_fonts: ^6.2.1
+  # pinput: ^5.0.1
+  # pasteboard: ^0.4.0
+  # flutter_shortcuts: ^1.3.0
+  # flutter_webrtc: ^0.13.1+hotfix.1
+  # webrtc_interface: ^1.2.2+hotfix.2
+  # badges: ^3.1.2
+  # app_links: ^6.4.0
+  # dynamic_color: ^1.7.0
+  # flutter_highlighter: ^0.1.1
+  # flutter_new_badger: ^1.1.1
   # fl_chart: ^0.71.0
   # lazy_load_scrollview: ^1.3.0
   # rxdart: ^0.28.0
-  # mockito: ^5.4.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  # integration_test:
+    # sdk: flutter
+
   flutter_lints: ^5.0.0
+
+  # code generation
   build_runner: ^2.4.15
   flutter_gen_runner: ^5.10.0
   flutter_launcher_icons: ^0.14.3
-  json_serializable: ^6.9.5
   retrofit_generator: ^9.1.9
   envied_generator: ^1.1.1
+  # json_serializable: ^6.9.5
   # injectable_generator: ^2.7.0
   # go_router_builder: ^2.7.1
   # hive_generator: ^2.0.1
   # riverpod_generator: ^2.4.3
 
+  # others
+  # flutter_flavorizr: ^2.4.0
+  # translations_cleaner: ^0.0.5
+  # import_sorter: ^4.6.0
+  # license_checker: ^1.6.0
+  # msix: ^3.16.9
+  # mockito: ^5.4.6
+
 # dependency_overrides:
 
 flutter_gen:
-  output: lib/utils/gen/
+  assets:
+    outputs:
+      directory_path_enabled: true
+    # exclude:
+      # - folder-your-want-to-exclude/**
+      # - specified-asset.jpg
+  output: lib/presentation/utils/gen/
   line_length: 80
   integrations:
     image: true
@@ -130,6 +245,8 @@ flutter_gen:
 
 flutter:
   uses-material-design: true
+
+  # https://pub.dev/packages/flutter_gen
   # generate: true
 
   assets:

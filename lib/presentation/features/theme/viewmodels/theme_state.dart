@@ -1,12 +1,41 @@
 part of 'theme_cubit.dart';
 
-@Freezed()
-abstract class ThemeState with _$ThemeState {
-  const factory ThemeState({
-    @Default(AppTheme.main) AppTheme appTheme,
-    @Default(ThemeMode.system) ThemeMode themeMode,
-  }) = _ThemeState;
+class ThemeState {
+  final AppTheme appTheme;
+  final ThemeMode themeMode;
 
-  factory ThemeState.fromJson(Map<String, Object?> json) =>
-      _$ThemeStateFromJson(json);
+  const ThemeState({
+    this.appTheme = AppTheme.main,
+    this.themeMode = ThemeMode.system,
+  });
+
+  ThemeState copyWith({
+    AppTheme? appTheme,
+    ThemeMode? themeMode,
+  }) {
+    return ThemeState(
+      appTheme: appTheme ?? this.appTheme,
+      themeMode: themeMode ?? this.themeMode,
+    );
+  }
+
+  factory ThemeState.fromJson(Map<String, dynamic> json) {
+    return ThemeState(
+      appTheme: AppTheme.values.firstWhere(
+        (e) => e.name == json['appTheme'],
+        orElse: () => AppTheme.main,
+      ),
+      themeMode: ThemeMode.values.firstWhere(
+        (e) => e.name == json['themeMode'],
+        orElse: () => ThemeMode.system,
+      ),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'appTheme': appTheme.name,
+      'themeMode': themeMode.name,
+    };
+  }
 }

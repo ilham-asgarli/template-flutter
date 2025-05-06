@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import '../../../data/utils/exceptions/data.exception.dart';
 import '../../../data/utils/exceptions/local.exception.dart';
 import '../../../data/utils/exceptions/network/socket.exception.dart';
-import '../../entities/user/user.entity.dart';
+import '../../entities/user.entity.dart';
 import '../../repositories/user/local/user.local.repository.dart';
 import '../../repositories/user/remote/user.remote.repository.dart';
 import '../../utils/base/usecase.dart';

@@ -1,13 +1,25 @@
 part of 'network_bloc.dart';
 
-@Freezed()
-abstract class NetworkState with _$NetworkState {
-  const factory NetworkState({
+class NetworkState {
+  final List<ConnectivityResult>? data;
+  final String? error;
+  final BlocState state;
+
+  const NetworkState({
+    this.data,
+    this.error,
+    this.state = BlocState.initial,
+  });
+
+  NetworkState copyWith({
     List<ConnectivityResult>? data,
     String? error,
-    @Default(BlocState.initial) BlocState state,
-  }) = _NetworkState;
-
-  factory NetworkState.fromJson(Map<String, Object?> json) =>
-      _$NetworkStateFromJson(json);
+    BlocState? state,
+  }) {
+    return NetworkState(
+      data: data ?? this.data,
+      error: error ?? this.error,
+      state: state ?? this.state,
+    );
+  }
 }

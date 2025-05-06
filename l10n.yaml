@@ -1,7 +1,10 @@
-arb-dir: lib/presentation/utils/l10n/arb
+arb-dir: lib/presentation/utils/config/l10n
 template-arb-file: app_en.arb
-output-dir: lib/presentation/utils/l10n/gen
-# output-class: TestLocalizations
+output-dir: lib/presentation/utils/gen
+# output-class: AppLocalizations
 output-localization-file: app_localizations.dart
+preferred-supported-locales: ["en", "tr"]
+nullable-getter: false
 use-escaping: true
-synthetic-package: false
+synthetic-package: false # https://pub.dev/packages/flutter_gen
+# use-deferred-loading: true

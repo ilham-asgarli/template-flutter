@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
-import '../../../../domain/entities/user/user.entity.dart';
+import '../../../../domain/entities/user.entity.dart';
 import '../../../../domain/repositories/user/remote/user.remote.repository.dart';
 import '../../../datasources/user/remote/user.remote.datasource.dart';
-import '../../../models/user/user.model.dart';
+import '../../../models/user.model.dart';
 import '../../../utils/exceptions/network/custom.exception.dart';
 
 class UserRemoteRepositoryImpl implements UserRemoteRepository {

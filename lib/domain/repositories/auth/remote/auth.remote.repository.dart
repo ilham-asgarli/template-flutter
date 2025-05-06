@@ -1,10 +1,9 @@
-import '../../../entities/auth/token.entity.dart';
-import '../../../entities/user/user.entity.dart';
+import '../../../entities/token.entity.dart';
 
 abstract class AuthRemoteRepository {
-  Future<UserEntity> login(
+  Future<TokenEntity> login(
       {required String username, required String password});
-  Future<UserEntity> register(
+  Future<TokenEntity> register(
       {required String username, required String password});
   Future<TokenEntity> refreshToken();
 }
