@@ -2,7 +2,7 @@ import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import '../../../../data/utils/interceptors/auth_interceptor.dart';
+import '../../../../data/datasources/auth/local/auth.local.datasource.dart';
 import '../../../../domain/usecases/auth/login.usecase.dart';
 import '../../../../domain/usecases/auth/register.usecase.dart';
 import '../../../../utils/di/app_di.dart';
@@ -28,8 +28,8 @@ class AuthCubit extends HydratedCubit<AuthState> {
     response.fold((l) {
       emit(state.copyWith(authState: BlocState.error));
     }, (r) async {
-      await getIt<AuthInterceptor>().saveTokenEntity(r);
-      FirebaseCrashlytics.instance.setUserIdentifier(r.accessToken);
+      await getIt<AuthLocalDataSource>().saveTokenEntity(r);
+      FirebaseCrashlytics.instance.setUserIdentifier(r.user?.id ?? '');
       emit(state.copyWith(authState: BlocState.success));
     });
   }
@@ -41,15 +41,15 @@ class AuthCubit extends HydratedCubit<AuthState> {
     response.fold((l) {
       emit(state.copyWith(authState: BlocState.error));
     }, (r) async {
-      await getIt<AuthInterceptor>().saveTokenEntity(r);
-      FirebaseCrashlytics.instance.setUserIdentifier(r.accessToken);
+      await getIt<AuthLocalDataSource>().saveTokenEntity(r);
+      FirebaseCrashlytics.instance.setUserIdentifier(r.user?.id ?? '');
       emit(state.copyWith(authState: BlocState.success));
     });
   }
 
   Future<void> logout() async {
     emit(state.copyWith(authState: BlocState.loading));
-    await getIt<AuthInterceptor>().clearTokenEntity();
+    await getIt<AuthLocalDataSource>().clearTokenEntity();
     emit(state.copyWith(authState: BlocState.initial));
   }
 

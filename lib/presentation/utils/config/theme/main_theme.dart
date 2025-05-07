@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../../constants/app/app_constants.dart';
+import '../../constants/app/presentation_constants.dart';
 import '../../constants/colors/app_colors.dart';
 import '../../constants/typography/app_typograpy.dart';
 import '../../extensions/custom_color_extension.dart';
@@ -37,7 +37,8 @@ class MainTheme extends ThemeInterface {
       ),
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppConstants.borderRadius),
+          borderRadius:
+              BorderRadius.circular(PresentationConstants.borderRadius),
         ),
         contentPadding: const EdgeInsets.all(12),
       ),

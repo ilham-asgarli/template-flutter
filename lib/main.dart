@@ -8,7 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
-import 'firebase_options.dart';
+import 'flavors.dart';
 import 'presentation/features/app/views/app_view.dart';
 import 'presentation/utils/helpers/bloc/all_bloc_observer.dart';
 import 'presentation/utils/helpers/http/my_http_overrides.dart';
@@ -28,6 +28,9 @@ void main() async {
 }
 
 Future<void> init() async {
+  F.appFlavor = Flavor.values.firstWhere(
+    (element) => element.name == appFlavor,
+  );
   inject();
   HttpOverrides.global = MyHttpOverrides();
   await Future.wait([
@@ -37,8 +40,8 @@ Future<void> init() async {
     getIt.allReady(),
     universal.get().init(),
     Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    ),
+        //options: DefaultFirebaseOptions.currentPlatform,
+        ),
   ]);
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);

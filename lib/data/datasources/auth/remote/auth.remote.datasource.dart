@@ -4,7 +4,7 @@ import 'package:retrofit/retrofit.dart';
 import '../../../models/base/base.model.dart';
 import '../../../models/token.model.dart';
 import '../../../models/user.model.dart';
-import '../../../utils/constants/api/api_url_constants.dart';
+import '../../../utils/constants/remote/api_url_constants.dart';
 
 part 'auth.remote.datasource.g.dart';
 

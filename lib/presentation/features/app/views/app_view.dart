@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
+import '../../../../flavors.dart';
 import '../../../../utils/di/app_di.dart';
 import '../../../utils/config/router/app_routes.dart';
-import '../../../utils/constants/app/app_constants.dart';
+import '../../../utils/constants/app/presentation_constants.dart';
 import '../../../utils/extensions/context_extension.dart';
 import '../../../utils/gen/app_localizations.dart';
 import '../../../utils/helpers/theme/theme_helper.dart';
@@ -59,9 +60,11 @@ class AppView extends StatelessWidget {
 
             return KeyboardVisibilityProvider(
               child: MaterialApp.router(
+                title: F.name,
                 debugShowCheckedModeBanner: false,
                 routerConfig: AppRoutes.router,
-                scaffoldMessengerKey: AppConstants.scaffoldMessengerKey,
+                scaffoldMessengerKey:
+                    PresentationConstants.scaffoldMessengerKey,
                 localizationsDelegates: AppLocalizations.localizationsDelegates,
                 supportedLocales: AppLocalizations.supportedLocales,
                 locale: kDebugMode ? const Locale("tr", "TR") : null,

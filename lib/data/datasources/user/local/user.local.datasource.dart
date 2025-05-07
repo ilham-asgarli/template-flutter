@@ -1,15 +1,14 @@
 import 'package:sqflite/sqflite.dart';
 
 import '../../../models/user.model.dart';
-import '../../../utils/constants/db/db_constants.dart';
-import '../../../utils/exceptions/local/not_found.exception.dart';
+import '../../../utils/constants/local/db_constants.dart';
 
 class UserLocalDataSource {
   final Database db;
 
   const UserLocalDataSource({required this.db});
 
-  Future<UserModel> getUser(int id) async {
+  Future<UserModel?> getUser(int id) async {
     List<Map<String, Object?>> user = await db.query(
       DbConstants.users,
       where: 'id = ?',
@@ -17,10 +16,10 @@ class UserLocalDataSource {
     );
 
     if (user.isNotEmpty) {
-      UserModel? userModel = UserModel.fromJson(user.first);
+      UserModel userModel = UserModel.fromJson(user.first);
       return userModel;
     } else {
-      throw NotFoundLocalException();
+      return null;
     }
   }
 

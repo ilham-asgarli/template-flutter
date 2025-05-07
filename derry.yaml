@@ -101,3 +101,18 @@ firebase:
       - dart pub global activate flutterfire_cli
       - npm install -g firebase-tools -f
       - flutterfire configure
+
+flavor:
+  (description): Build flavors
+  (scripts):
+    - dart run flutter_flavorizr -f
+
+run:
+  dev:
+    (description): Run app in development mode
+    (scripts):
+        - flutter run --flavor dev -t lib/main.dart
+  prod:
+    (description): Run app in production mode
+    (scripts):
+      - flutter run --flavor prod -t lib/main.dart

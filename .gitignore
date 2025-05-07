@@ -140,6 +140,12 @@ macos/firebase_app_id_file.json
 macos/Runner/GoogleService-Info.plist
 firebase.json
 
+# Flavor Firebase
+.firebase/
+google-services.json
+GoogleService-Info.plist
+firebase_app_id_file.json
+
 # Environment
 *.env*
 !assets/env/.env.example

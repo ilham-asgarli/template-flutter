@@ -216,7 +216,7 @@ dev_dependencies:
   # riverpod_generator: ^2.4.3
 
   # others
-  # flutter_flavorizr: ^2.4.0
+  flutter_flavorizr: ^2.4.0
   # translations_cleaner: ^0.0.5
   # import_sorter: ^4.6.0
   # license_checker: ^1.6.0

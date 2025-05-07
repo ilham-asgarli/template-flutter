@@ -1,0 +1,40 @@
+ide: "idea" # "vscode" or "idea"
+flavors:
+  dev:
+    app:
+      name: "Template Flutter (Dev)"
+
+    android:
+      applicationId: "com.example.dev.template_flutter"
+      firebase:
+        config: ".firebase/dev/google-services.json"
+    # ios:
+      # bundleId: "com.example.dev.template_flutter"
+    # macos:
+      # bundleId: "com.example.dev.template_flutter"
+
+  # staging:
+    # app:
+      # name: "Template Flutter (Staging)"
+
+    # android:
+      # applicationId: "com.example.staging.template_flutter"
+      # firebase:
+        # config: ".firebase/dev/google-services.json"
+      # ios:
+      # bundleId: "com.example.staging.template_flutter"
+      # macos:
+      # bundleId: "com.example.staging.template_flutter"
+
+  prod:
+    app:
+      name: "Template Flutter"
+
+    android:
+      applicationId: "com.example.template_flutter"
+      firebase:
+        config: ".firebase/prod/google-services.json"
+    # ios:
+      # bundleId: "com.example.template"
+    # macos:
+      # bundleId: "com.example.template"

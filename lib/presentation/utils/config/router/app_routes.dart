@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../../utils/constants/app/app_constants.dart';
 import '../../../features/404/views/not_found_navigation_view.dart';
 import '../../../features/app/viewmodels/main_view_cubit.dart';
 import '../../../features/app/views/main_view.dart';
@@ -15,7 +16,7 @@ import '../../constants/router/router_constants.dart';
 
 abstract class AppRoutes {
   static final router = GoRouter(
-    debugLogDiagnostics: true,
+    debugLogDiagnostics: AppConstants.enableLogging,
     initialLocation: RouterConstants.home,
     routes: [
       GoRoute(

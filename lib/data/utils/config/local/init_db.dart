@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 
-import '../../constants/db/db_constants.dart';
+import '../../constants/local/db_constants.dart';
 
 class InitDb {
   final Database db;

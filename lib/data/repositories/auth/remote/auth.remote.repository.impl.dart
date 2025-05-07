@@ -23,11 +23,12 @@ class AuthRemoteRepositoryImpl implements AuthRemoteRepository {
         username,
         password,
       );
-      if (model.data != null) {
-        return TokenEntity.fromModel(model.data!);
-      } else {
+
+      if (model.data == null) {
         throw NotFoundException();
       }
+
+      return TokenEntity.fromModel(model.data!);
     } on DioException catch (e) {
       throw e.error!;
     } catch (e) {
@@ -43,11 +44,11 @@ class AuthRemoteRepositoryImpl implements AuthRemoteRepository {
         username,
         password,
       );
-      if (model.data != null) {
-        return TokenEntity.fromModel(model.data!);
-      } else {
+
+      if (model.data == null) {
         throw NotFoundException();
       }
+      return TokenEntity.fromModel(model.data!);
     } on DioException catch (e) {
       throw e.error!;
     } catch (e) {
@@ -59,11 +60,12 @@ class AuthRemoteRepositoryImpl implements AuthRemoteRepository {
   Future<TokenEntity> refreshToken() async {
     try {
       BaseModel<TokenModel> model = await authRemoteDataSource.refreshToken();
-      if (model.data != null) {
-        return TokenEntity.fromModel(model.data!);
-      } else {
+
+      if (model.data == null) {
         throw NotFoundException();
       }
+
+      return TokenEntity.fromModel(model.data!);
     } on DioException catch (e) {
       throw e.error!;
     } catch (e) {
