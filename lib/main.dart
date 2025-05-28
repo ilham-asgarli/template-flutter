@@ -29,7 +29,7 @@ void main() async {
 }
 
 Future<void> init() async {
-  F.appFlavor = appFlavor?.asEnumOr(Flavor.values, Flavor.dev) ?? Flavor.dev;
+  F.appFlavor = appFlavor.asEnumOr<Flavor>(Flavor.values, Flavor.dev);
   inject();
   HttpOverrides.global = MyHttpOverrides();
   await Future.wait([

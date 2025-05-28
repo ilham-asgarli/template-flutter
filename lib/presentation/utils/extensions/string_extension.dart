@@ -16,13 +16,15 @@ extension StringCasing on String {
       .join(' ');
 }
 
-extension Enum on String {
+extension Enum on String? {
   T? asEnum<T>(List<T> values) {
     return values.firstWhereOrNull(
       (e) => e.toString().split('.').last == this,
     );
   }
 
+  /// Returns the first matching enum value or the default value if not found.
+  /// T is the type of the enum and should be provided as a type argument, otherwise it can give a compile-time error on orElse.
   T asEnumOr<T>(List<T> values, T defaultValue) {
     return values.firstWhere(
       (e) => e.toString().split('.').last == this,

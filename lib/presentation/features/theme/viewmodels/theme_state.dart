@@ -21,11 +21,11 @@ class ThemeState {
 
   factory ThemeState.fromJson(Map<String, dynamic> json) {
     return ThemeState(
-      appTheme: json['appTheme'].toString().asEnumOr(
+      appTheme: json['appTheme'].toString().asEnumOr<AppTheme>(
             AppTheme.values,
             AppTheme.main,
           ),
-      themeMode: json['themeMode'].toString().asEnumOr(
+      themeMode: json['themeMode'].toString().asEnumOr<ThemeMode>(
             ThemeMode.values,
             ThemeMode.system,
           ),

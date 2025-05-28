@@ -17,7 +17,7 @@ class AuthState {
 
   factory AuthState.fromJson(Map<String, dynamic> json) {
     return AuthState(
-      authState: json['authState'].toString().asEnumOr(
+      authState: json['authState'].toString().asEnumOr<BlocState>(
             BlocState.values,
             BlocState.initial,
           ),
