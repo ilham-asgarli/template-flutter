@@ -188,7 +188,7 @@ Essential features:
 
 To regenerate code after asset or config changes:
 ```sh
-deery gen clean
+derry gen clean
 ```
 
 ## Enabling Optional Packages
