@@ -1,3 +1,5 @@
+import 'iterable_extension.dart';
+
 extension StringConcat on String {
   String concat(String s) => this + s;
 
@@ -15,15 +17,16 @@ extension StringCasing on String {
 }
 
 extension Enum on String {
-  T? valueToEnum<T>(Iterable<T?> values) {
-    return values.firstWhere(
-      (type) => type.toString().split(".").last == this,
+  T? asEnum<T>(List<T> values) {
+    return values.firstWhereOrNull(
+      (e) => e.toString().split('.').last == this,
     );
   }
 
-  T? toEnum<T>(Iterable<T?> values) {
+  T asEnumOr<T>(List<T> values, T defaultValue) {
     return values.firstWhere(
-      (type) => type.toString() == this,
+      (e) => e.toString().split('.').last == this,
+      orElse: () => defaultValue,
     );
   }
 }

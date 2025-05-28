@@ -7,6 +7,7 @@ import '../../../../domain/usecases/auth/login.usecase.dart';
 import '../../../../domain/usecases/auth/register.usecase.dart';
 import '../../../../utils/di/app_di.dart';
 import '../../../utils/constants/enums/app_enum.dart';
+import '../../../utils/extensions/string_extension.dart';
 
 part 'auth_state.dart';
 

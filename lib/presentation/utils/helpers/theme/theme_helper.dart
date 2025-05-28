@@ -24,8 +24,10 @@ class ThemeHelper {
     }
   }
 
-  void setSystemUIOverlayStyleWithAppTheme(AppTheme appTheme) {
-    setSystemUIOverlayStyle(getCustomTheme(appTheme).systemUiOverlayStyle());
+  void setSystemUIOverlayStyleWithAppTheme(
+      AppTheme appTheme, ThemeMode themeMode) {
+    setSystemUIOverlayStyle(
+        getCustomTheme(appTheme).systemUiOverlayStyle(themeMode));
   }
 
   void setSystemUIOverlayStyle(SystemUiOverlayStyle systemUiOverlayStyle) {

@@ -6,5 +6,5 @@ output-localization-file: app_localizations.dart
 preferred-supported-locales: ["en", "tr"]
 nullable-getter: false
 use-escaping: true
-synthetic-package: false # https://pub.dev/packages/flutter_gen
+synthetic-package: false
 # use-deferred-loading: true

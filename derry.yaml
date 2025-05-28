@@ -3,8 +3,9 @@
 start:
   (description): Start the app
   (scripts):
-    - $br:build
+    - gen:clean
     - $l10n
+    - $flavor
 
 info:
   (scripts):

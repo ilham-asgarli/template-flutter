@@ -17,10 +17,10 @@ class AuthState {
 
   factory AuthState.fromJson(Map<String, dynamic> json) {
     return AuthState(
-      authState: BlocState.values.firstWhere(
-        (e) => e.name == json['authState'],
-        orElse: () => BlocState.initial,
-      ),
+      authState: json['authState'].toString().asEnumOr(
+            BlocState.values,
+            BlocState.initial,
+          ),
     );
   }
 

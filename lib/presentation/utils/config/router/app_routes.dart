@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../utils/constants/app/app_constants.dart';
-import '../../../features/404/views/not_found_navigation_view.dart';
 import '../../../features/app/viewmodels/main_view_cubit.dart';
 import '../../../features/app/views/main_view.dart';
+import '../../../features/app/views/not_found_navigation_view.dart';
 import '../../../features/auth/viewmodels/auth_cubit.dart';
 import '../../../features/auth/viewmodels/login_view_cubit.dart';
 import '../../../features/auth/views/login_view.dart';

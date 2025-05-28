@@ -21,14 +21,14 @@ class ThemeState {
 
   factory ThemeState.fromJson(Map<String, dynamic> json) {
     return ThemeState(
-      appTheme: AppTheme.values.firstWhere(
-        (e) => e.name == json['appTheme'],
-        orElse: () => AppTheme.main,
-      ),
-      themeMode: ThemeMode.values.firstWhere(
-        (e) => e.name == json['themeMode'],
-        orElse: () => ThemeMode.system,
-      ),
+      appTheme: json['appTheme'].toString().asEnumOr(
+            AppTheme.values,
+            AppTheme.main,
+          ),
+      themeMode: json['themeMode'].toString().asEnumOr(
+            ThemeMode.values,
+            ThemeMode.system,
+          ),
     );
   }
 

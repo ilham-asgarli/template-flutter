@@ -10,6 +10,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import 'flavors.dart';
 import 'presentation/features/app/views/app_view.dart';
+import 'presentation/utils/extensions/string_extension.dart';
 import 'presentation/utils/helpers/bloc/all_bloc_observer.dart';
 import 'presentation/utils/helpers/http/my_http_overrides.dart';
 import 'presentation/utils/helpers/universal/universal_helper.dart'
@@ -28,9 +29,7 @@ void main() async {
 }
 
 Future<void> init() async {
-  F.appFlavor = Flavor.values.firstWhere(
-    (element) => element.name == appFlavor,
-  );
+  F.appFlavor = appFlavor?.asEnumOr(Flavor.values, Flavor.dev) ?? Flavor.dev;
   inject();
   HttpOverrides.global = MyHttpOverrides();
   await Future.wait([

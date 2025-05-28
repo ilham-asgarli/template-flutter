@@ -27,7 +27,7 @@ dependencies:
   logger: ^2.5.0
 
   # routing
-  go_router: ^15.1.1
+  go_router: ^15.1.2
 
   # responsive
   # device_preview: ^1.2.0
@@ -138,14 +138,16 @@ dependencies:
   # auto_size_text: ^3.0.0
 
   # firebase
-  firebase_core: ^3.13.0
-  firebase_crashlytics: ^4.3.5
+  firebase_core: ^3.13.1
+  firebase_crashlytics: ^4.3.6
   # firebase_analytics: ^11.4.5
   # firebase_messaging: ^15.2.5
   # firebase_auth: ^5.5.3
   # cloud_firestore: ^5.6.7
   # cloud_functions: ^5.5.0
   # firebase_storage: ^12.4.5
+  # firebase_database: ^11.3.6
+  # firebase_ai: ^2.0.0
 
   # purchase
   # in_app_purchase: ^3.2.1 # https://codelabs.developers.google.com/codelabs/flutter-in-app-purchases#0
@@ -201,13 +203,13 @@ dev_dependencies:
   # integration_test:
     # sdk: flutter
 
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
   # code generation
   build_runner: ^2.4.15
   flutter_gen_runner: ^5.10.0
   flutter_launcher_icons: ^0.14.3
-  retrofit_generator: ^9.1.9
+  retrofit_generator: ^9.2.0
   envied_generator: ^1.1.1
   # json_serializable: ^6.9.5
   # injectable_generator: ^2.7.0
@@ -216,7 +218,7 @@ dev_dependencies:
   # riverpod_generator: ^2.4.3
 
   # others
-  flutter_flavorizr: ^2.4.0
+  flutter_flavorizr: ^2.4.1
   # translations_cleaner: ^0.0.5
   # import_sorter: ^4.6.0
   # license_checker: ^1.6.0
@@ -247,7 +249,7 @@ flutter:
   uses-material-design: true
 
   # https://pub.dev/packages/flutter_gen
-  # generate: true
+  generate: true
 
   assets:
     - assets/animation/

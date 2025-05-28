@@ -3,6 +3,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import '../../../../utils/di/app_di.dart';
 import '../../../utils/constants/enums/app_theme_enum.dart';
+import '../../../utils/extensions/string_extension.dart';
 import '../../../utils/helpers/theme/theme_helper.dart';
 
 part 'theme_state.dart';
@@ -11,12 +12,14 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
   ThemeCubit() : super(const ThemeState()) {
     getIt<ThemeHelper>().setSystemUIOverlayStyleWithAppTheme(
       state.appTheme,
+      state.themeMode,
     );
   }
 
   void changeTheme(AppTheme appTheme) {
     getIt<ThemeHelper>().setSystemUIOverlayStyleWithAppTheme(
       appTheme,
+      state.themeMode,
     );
 
     emit(state.copyWith(

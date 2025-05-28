@@ -41,7 +41,7 @@ class ExampleTheme extends ThemeInterface {
   }
 
   @override
-  SystemUiOverlayStyle systemUiOverlayStyle() {
+  SystemUiOverlayStyle systemUiOverlayStyle(ThemeMode themeMode) {
     return const SystemUiOverlayStyle(
       statusBarColor: AppColors.red,
       systemNavigationBarColor: AppColors.red,

@@ -8,8 +8,10 @@ flavors:
       applicationId: "com.example.dev.template_flutter"
       firebase:
         config: ".firebase/dev/google-services.json"
-    # ios:
-      # bundleId: "com.example.dev.template_flutter"
+    ios:
+      bundleId: "com.example.dev.template_flutter"
+      firebase:
+        config: ".firebase/dev/GoogleService-Info.plist"
     # macos:
       # bundleId: "com.example.dev.template_flutter"
 
@@ -20,10 +22,12 @@ flavors:
     # android:
       # applicationId: "com.example.staging.template_flutter"
       # firebase:
-        # config: ".firebase/dev/google-services.json"
-      # ios:
+        # config: ".firebase/staging/google-services.json"
+    # ios:
       # bundleId: "com.example.staging.template_flutter"
-      # macos:
+      # firebase:
+        # config: ".firebase/staging/GoogleService-Info.plist"
+    # macos:
       # bundleId: "com.example.staging.template_flutter"
 
   prod:
@@ -34,7 +38,9 @@ flavors:
       applicationId: "com.example.template_flutter"
       firebase:
         config: ".firebase/prod/google-services.json"
-    # ios:
-      # bundleId: "com.example.template"
+    ios:
+      bundleId: "com.example.template"
+      firebase:
+        config: ".firebase/prod/GoogleService-Info.plist"
     # macos:
       # bundleId: "com.example.template"

@@ -62,7 +62,7 @@ class MainTheme extends ThemeInterface {
   }
 
   @override
-  SystemUiOverlayStyle systemUiOverlayStyle() {
+  SystemUiOverlayStyle systemUiOverlayStyle(ThemeMode themeMode) {
     return const SystemUiOverlayStyle(
       statusBarColor: AppColors.blue,
       systemNavigationBarColor: AppColors.blue,
