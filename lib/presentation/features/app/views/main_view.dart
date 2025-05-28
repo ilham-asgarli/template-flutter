@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../../utils/extensions/context_extension.dart';
 import '../viewmodels/main_view_cubit.dart';
 
 class MainView extends StatelessWidget {
@@ -24,18 +25,18 @@ class MainView extends StatelessWidget {
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: viewModel.calculateSelectedIndex(state.matchedLocation),
           onTap: (index) => viewModel.onTabTapped(context, index),
-          items: const [
+          items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_rounded),
-              label: 'Home',
+              icon: const Icon(Icons.home_rounded),
+              label: context.l10n.home,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.notifications_rounded),
-              label: 'Notification',
+              icon: const Icon(Icons.notifications_rounded),
+              label: context.l10n.notifications,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings_rounded),
-              label: 'Settings',
+              icon: const Icon(Icons.settings_rounded),
+              label: context.l10n.settings,
             ),
           ],
         ),

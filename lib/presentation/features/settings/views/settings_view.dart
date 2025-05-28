@@ -6,6 +6,7 @@ import '../../../utils/extensions/context_extension.dart';
 import '../../../utils/extensions/num_extension.dart';
 import '../../../utils/extensions/theme_extension.dart';
 import '../../auth/viewmodels/auth_cubit.dart';
+import '../../l10n/viewmodels/l10n_cubit.dart';
 import '../../network/viewmodels/network_bloc.dart';
 import '../../theme/viewmodels/theme_cubit.dart';
 import '../viewmodels/settings_view_cubit.dart';
@@ -76,6 +77,24 @@ class SettingsView extends StatelessWidget {
                   builder: (context, state) {
                     return Text(
                       state.themeMode.toString(),
+                    );
+                  },
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  BlocProvider.of<L10nCubit>(context).changeLocale(
+                    context.read<L10nCubit>().state.locale?.languageCode == "en"
+                        ? const Locale("tr")
+                        : const Locale("en"),
+                  );
+                },
+                child: BlocBuilder<L10nCubit, L10nState>(
+                  buildWhen: (previous, current) =>
+                      previous.locale != current.locale,
+                  builder: (context, state) {
+                    return Text(
+                      state.locale.toString(),
                     );
                   },
                 ),

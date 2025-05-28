@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -11,6 +10,7 @@ import '../../../utils/extensions/context_extension.dart';
 import '../../../utils/gen/app_localizations.dart';
 import '../../../utils/helpers/theme/theme_helper.dart';
 import '../../auth/viewmodels/auth_cubit.dart';
+import '../../l10n/viewmodels/l10n_cubit.dart';
 import '../../network/viewmodels/network_bloc.dart';
 import '../../theme/viewmodels/theme_cubit.dart';
 import '../viewmodels/app_view_cubit.dart';
@@ -26,6 +26,9 @@ class AppView extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
+        BlocProvider<L10nCubit>(
+          create: (_) => L10nCubit(),
+        ),
         BlocProvider<ThemeCubit>(
           create: (_) => ThemeCubit(),
         ),
@@ -58,36 +61,42 @@ class AppView extends StatelessWidget {
             final AppViewCubit viewModel =
                 BlocProvider.of<AppViewCubit>(context);
 
-            return KeyboardVisibilityProvider(
-              child: MaterialApp.router(
-                title: F.name,
-                debugShowCheckedModeBanner: false,
-                routerConfig: AppRoutes.router,
-                scaffoldMessengerKey:
-                    PresentationConstants.scaffoldMessengerKey,
-                localizationsDelegates: AppLocalizations.localizationsDelegates,
-                supportedLocales: AppLocalizations.supportedLocales,
-                locale: kDebugMode ? const Locale("tr", "TR") : null,
-                theme: themeHelper
-                    .getCustomTheme(state.appTheme)
-                    .getTheme(ThemeMode.light),
-                darkTheme: themeHelper
-                    .getCustomTheme(state.appTheme)
-                    .getTheme(ThemeMode.dark),
-                themeMode: state.themeMode,
-                builder: (context, child) {
-                  viewModel.injectAfterContext(context);
-                  return MediaQuery(
-                    data: context.mediaQuery.copyWith(
-                      textScaler: TextScaler.linear(
-                        context.textScaleFactor(baseWidth: 414),
-                      ),
+            return BlocBuilder<L10nCubit, L10nState>(
+                buildWhen: (previous, current) =>
+                    previous.locale != current.locale,
+                builder: (context, l10nState) {
+                  return KeyboardVisibilityProvider(
+                    child: MaterialApp.router(
+                      title: F.name,
+                      debugShowCheckedModeBanner: false,
+                      routerConfig: AppRoutes.router,
+                      scaffoldMessengerKey:
+                          PresentationConstants.scaffoldMessengerKey,
+                      localizationsDelegates:
+                          AppLocalizations.localizationsDelegates,
+                      supportedLocales: AppLocalizations.supportedLocales,
+                      locale: l10nState.locale,
+                      theme: themeHelper
+                          .getCustomTheme(state.appTheme)
+                          .getTheme(ThemeMode.light),
+                      darkTheme: themeHelper
+                          .getCustomTheme(state.appTheme)
+                          .getTheme(ThemeMode.dark),
+                      themeMode: state.themeMode,
+                      builder: (context, child) {
+                        viewModel.injectAfterContext(context);
+                        return MediaQuery(
+                          data: context.mediaQuery.copyWith(
+                            textScaler: TextScaler.linear(
+                              context.textScaleFactor(baseWidth: 414),
+                            ),
+                          ),
+                          child: child!,
+                        );
+                      },
                     ),
-                    child: child!,
                   );
-                },
-              ),
-            );
+                });
           },
         ),
       ),

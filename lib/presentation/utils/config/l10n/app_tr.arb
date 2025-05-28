@@ -3,5 +3,8 @@
   "noInternet": "İnternet bağlantınız yok.",
   "login": "Giriş Yap",
   "username": "Kullanıcı adı",
-  "password": "Şifre"
+  "password": "Şifre",
+  "home": "Anasayfa",
+  "notifications": "Bildirimler",
+  "settings": "Ayarlar"
 }

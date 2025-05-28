@@ -3,5 +3,8 @@
   "noInternet": "You don''t have internet connection.",
   "login": "Login",
   "username": "Username",
-  "password": "Password"
+  "password": "Password",
+  "home": "Home",
+  "notifications": "Notifications",
+  "settings": "Settings"
 }
