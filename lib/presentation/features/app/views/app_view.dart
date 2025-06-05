@@ -16,8 +16,11 @@ import '../../theme/viewmodels/theme_cubit.dart';
 import '../viewmodels/app_view_cubit.dart';
 
 class AppView extends StatelessWidget {
+  final ThemeCubit themeCubit;
+
   const AppView({
     super.key,
+    required this.themeCubit,
   });
 
   @override
@@ -30,7 +33,7 @@ class AppView extends StatelessWidget {
           create: (_) => L10nCubit(),
         ),
         BlocProvider<ThemeCubit>(
-          create: (_) => ThemeCubit(),
+          create: (_) => themeCubit,
         ),
         BlocProvider<NetworkBloc>(
           lazy: false,
@@ -62,41 +65,42 @@ class AppView extends StatelessWidget {
                 BlocProvider.of<AppViewCubit>(context);
 
             return BlocBuilder<L10nCubit, L10nState>(
-                buildWhen: (previous, current) =>
-                    previous.locale != current.locale,
-                builder: (context, l10nState) {
-                  return KeyboardVisibilityProvider(
-                    child: MaterialApp.router(
-                      title: F.name,
-                      debugShowCheckedModeBanner: false,
-                      routerConfig: AppRoutes.router,
-                      scaffoldMessengerKey:
-                          PresentationConstants.scaffoldMessengerKey,
-                      localizationsDelegates:
-                          AppLocalizations.localizationsDelegates,
-                      supportedLocales: AppLocalizations.supportedLocales,
-                      locale: l10nState.locale,
-                      theme: themeHelper
-                          .getCustomTheme(state.appTheme)
-                          .getTheme(ThemeMode.light),
-                      darkTheme: themeHelper
-                          .getCustomTheme(state.appTheme)
-                          .getTheme(ThemeMode.dark),
-                      themeMode: state.themeMode,
-                      builder: (context, child) {
-                        viewModel.injectAfterContext(context);
-                        return MediaQuery(
-                          data: context.mediaQuery.copyWith(
-                            textScaler: TextScaler.linear(
-                              context.textScaleFactor(baseWidth: 414),
-                            ),
+              buildWhen: (previous, current) =>
+                  previous.locale != current.locale,
+              builder: (context, l10nState) {
+                return KeyboardVisibilityProvider(
+                  child: MaterialApp.router(
+                    title: F.name,
+                    debugShowCheckedModeBanner: false,
+                    routerConfig: AppRoutes.router,
+                    scaffoldMessengerKey:
+                        PresentationConstants.scaffoldMessengerKey,
+                    localizationsDelegates:
+                        AppLocalizations.localizationsDelegates,
+                    supportedLocales: AppLocalizations.supportedLocales,
+                    locale: l10nState.locale,
+                    theme: themeHelper
+                        .getCustomTheme(state.appTheme)
+                        .getTheme(ThemeMode.light),
+                    darkTheme: themeHelper
+                        .getCustomTheme(state.appTheme)
+                        .getTheme(ThemeMode.dark),
+                    themeMode: state.themeMode,
+                    builder: (context, child) {
+                      viewModel.injectAfterContext(context);
+                      return MediaQuery(
+                        data: context.mediaQuery.copyWith(
+                          textScaler: TextScaler.linear(
+                            context.textScaleFactor(baseWidth: 414),
                           ),
-                          child: child!,
-                        );
-                      },
-                    ),
-                  );
-                });
+                        ),
+                        child: child!,
+                      );
+                    },
+                  ),
+                );
+              },
+            );
           },
         ),
       ),

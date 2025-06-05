@@ -10,6 +10,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 import 'flavors.dart';
 import 'presentation/features/app/views/app_view.dart';
+import 'presentation/features/theme/viewmodels/theme_cubit.dart';
 import 'presentation/utils/extensions/string_extension.dart';
 import 'presentation/utils/helpers/bloc/all_bloc_observer.dart';
 import 'presentation/utils/helpers/http/my_http_overrides.dart';
@@ -23,12 +24,6 @@ import 'utils/di/app_di.dart';
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
-  await init();
-  runApp(const AppView());
-  FlutterNativeSplash.remove();
-}
-
-Future<void> init() async {
   F.appFlavor = appFlavor.asEnumOr<Flavor>(Flavor.values, Flavor.dev);
   inject();
   HttpOverrides.global = MyHttpOverrides();
@@ -42,6 +37,14 @@ Future<void> init() async {
         //options: DefaultFirebaseOptions.currentPlatform,
         ),
   ]);
+  HydratedBloc.storage = await HydratedStorage.build(
+    storageDirectory: kIsWeb
+        ? HydratedStorageDirectory.web
+        : HydratedStorageDirectory(getIt<Directory>(
+                instanceName: PathProviderConstants.applicationDocuments)
+            .path),
+  );
+  final themeCubit = ThemeCubit();
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
   };
@@ -50,12 +53,7 @@ Future<void> init() async {
     FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
     return true;
   };
-  HydratedBloc.storage = await HydratedStorage.build(
-    storageDirectory: kIsWeb
-        ? HydratedStorageDirectory.web
-        : HydratedStorageDirectory(getIt<Directory>(
-                instanceName: PathProviderConstants.applicationDocuments)
-            .path),
-  );
   Bloc.observer = AllBlocObserver();
+  runApp(AppView(themeCubit: themeCubit));
+  FlutterNativeSplash.remove();
 }

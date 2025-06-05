@@ -34,7 +34,7 @@ class ThemeHelper {
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
 
-  void setEnabledSystemUIMode(SystemUiMode systemUiMode) {
-    SystemChrome.setEnabledSystemUIMode(systemUiMode);
+  Future<void> setEnabledSystemUIMode(SystemUiMode systemUiMode) async {
+    await SystemChrome.setEnabledSystemUIMode(systemUiMode);
   }
 }
